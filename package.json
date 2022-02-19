@@ -5,8 +5,12 @@
   "repository": "https://github.com/WebSolutions2k21/CodersCamp2021.Project.Node.git",
   "license": "MIT",
   "scripts": {
+    "build": "tsc",
+    "start": "node ./dist/src/server.js",
     "dev": "ts-node ./src/server.ts",
-    "test": "jest"
+    "test": "jest  --watchAll --detectOpenHandles --verbose",
+    "test:c": "jest --watchAll --detectOpenHandles --verbose --coverage"
+
   },
   "dependencies": {
     "bcrypt": "^5.0.0",
