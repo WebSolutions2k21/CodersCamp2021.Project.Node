@@ -20,9 +20,8 @@ export const register = async (req: Request, res: Response) => {
 			email: req.body.email,
 			password: req.body.password,
 		});
-		// I dont know what to do: Property 'password' does not exist on type 'Document<any>'.
-		// const salt = await bcrypt.genSalt(10);
-		// user.password = await bcrypt.hash(user.password, salt);
+		const salt = await bcrypt.genSalt(10);
+		user.password = await bcrypt.hash(user.password, salt);
 
 		await user.save();
 		res.send(user);
