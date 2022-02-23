@@ -1,3 +1,16 @@
 ###
+# ____________________________ Authentication ____________________________
 
 ###
+# login
+POST http://localhost:3000/api/login 
+Content-Type: application/json
+
+{
+    "email": "test@ania.com",
+    "password": "12345678"
+
+}
+
+###
+

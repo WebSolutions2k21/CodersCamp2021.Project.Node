@@ -11,3 +11,12 @@ export default function validate(req: string) {
 
 	return schema.validate(req);
 }
+
+export const loginValidation = (req: string) => {
+	const schema = Joi.object({
+		email: Joi.string().min(5).max(250).required().email(),
+		password: Joi.string().min(8).max(500).required(),
+	});
+
+	return schema.validate(req);
+}
