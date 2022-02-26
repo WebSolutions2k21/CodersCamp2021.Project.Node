@@ -1,8 +1,8 @@
 import express, { Request, Response } from 'express'
 
-import registerUser from 'src/users/registerUser'
-import getAllUsers from 'src/users/getAllUsers'
-import editProfile from 'src/users/editProfile'
+import registerUser from '../src/users/registerUser'
+import getAllUsers from '../src/users/getAllUsers'
+import editProfile from '../src/users/editProfile'
 
 export default class UserController {
   public path = '/users'

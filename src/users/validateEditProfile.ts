@@ -1,5 +1,5 @@
 import Joi from "joi";
-import User from "interfaces/user.interface";
+import User from "../../interfaces/user.interface";
 
 
 
