@@ -15,7 +15,7 @@ export default class UserController {
   initializeRoutes() {
     this.router.get(this.path, this.getAllUsers);
     this.router.post(`${this.path}/register`, this.registerUser);
-    // this.router.put(`${this.path}/editProfile`, auth, this.editProfile);
+    this.router.put(`${this.path}/:id`, this.editProfile);
   }
 
   editProfile(req: Request, res: Response) {
