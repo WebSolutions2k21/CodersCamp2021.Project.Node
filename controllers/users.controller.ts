@@ -3,6 +3,7 @@ import { Response, Request } from "express";
 
 import userModel from "../models/user.model";
 import validate from "../src/auth/validateAuth";
+import sendEmail from "../src/auth/sendEmail"
 
 export const register = async (req: Request, res: Response) => {
 	const { error } = validate(req.body);
