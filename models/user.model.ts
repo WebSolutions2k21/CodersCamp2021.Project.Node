@@ -35,6 +35,10 @@ const userSchema = new Schema<User>({
 		maxlength: 500,
 		minlength: 8,
 	},
+	date: {
+		type: Date,
+		default: Date.now,
+	  },
 });
 
 userSchema.methods.generateAuthToken = function () {
