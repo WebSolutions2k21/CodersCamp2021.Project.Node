@@ -1,24 +1,20 @@
-import { Request, Response } from "express";
-import bcrypt from "bcrypt";
+import express, { Request, Response } from 'express';
 
-import userModel from "../models/user.model";
-import { loginValidation } from "../src/auth/validateAuth";
+import authUser from '../src/auth/auth';
 
-export const AuthController = async (req: Request, res: Response) => {
-    //validate the data before we a user
-    const { error } = loginValidation(req.body);
-	if (error) {
-		return res.status(400).send(error.details[0].message);
-	}
-    //checkinf if the email exist in the database
-    let user = await userModel.findOne({ email: req.body.email });
-	if (!user) {
-		return res.status(400).send("Invalid email or password.");
-	} 
-    //password is correct
-    const validPassword = await bcrypt.compare(req.body.password, user.password)
-    if (!validPassword) {return res.status(400).send("Invalid email or password.")}
+export default class AuthController {
+    public path = "/login";
+    public router = express.Router()
+
+    constructor() {
+        this.initializeRoutes();
+      }
     
-
-    res.send('Logged In!');
+      public initializeRoutes() {
+        this.router.post(this.path, this.authUser);
+      }
+    
+      authUser(req: Request, res: Response) {
+        authUser(req, res);
+      }
 } 

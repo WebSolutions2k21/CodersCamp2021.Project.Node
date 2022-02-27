@@ -1,24 +1,9 @@
-import express from "express";
+import AuthController from '../controllers/auth.controller'
+import UserController from '../controllers/users.controller'
+import App from './app/App'
 
-import AuthRoute from "./auth/auth";
+const app = new App([new UserController(), new AuthController(),])
 
-const app = express();
-const dotenv = require("dotenv");
-const mongoose = require("mongoose");
-const port = 3000;
+const server = app.listen()
 
-dotenv.config();
-
-mongoose.connect(
-	process.env.DB_CONNECT,
-	{ useNewUrlParser: true, useUnifiedTopology: true },
-	() => console.log("connected to db")
-);
-
-app.use(express.json());
-
-app.listen(port, () => {
-	console.log(`Example app listening on port ${port}`);
-});
-
-app.use("/api", AuthRoute);
+module.exports = server
