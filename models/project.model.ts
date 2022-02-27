@@ -22,7 +22,7 @@ const projectSchema = new mongoose.Schema<Project>({
     type: String,
     required: true,
     minlength: 3,
-    maxLength: 254,
+    maxLength: 255,
     default: null,
   },
 });
