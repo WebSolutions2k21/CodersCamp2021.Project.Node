@@ -1,29 +1,32 @@
-import bcrypt from "bcrypt";
-import { Response, Request } from "express";
+import express, { Request, Response } from 'express'
 
-import userModel from "../models/user.model";
-import validate from "../src/auth/validateAuth";
+import registerUser from '../src/users/registerUser'
+import getAllUsers from '../src/users/getAllUsers'
+import editProfile from '../src/users/editProfile'
 
-export const register = async (req: Request, res: Response) => {
-	const { error } = validate(req.body);
-	if (error) {
-		return res.status(400).send(error.details[0].message);
-	}
-	let user = await userModel.findOne({ email: req.body.email });
-	if (user) {
-		return res.status(400).send("That user already exisits!");
-	} else {
-		user = new userModel({
-			name: req.body.name,
-			firstname: req.body.firstname,
-			lastname: req.body.lastname,
-			email: req.body.email,
-			password: req.body.password,
-		});
-		const salt = await bcrypt.genSalt(10);
-		user.password = await bcrypt.hash(user.password, salt);
+export default class UserController {
+  public path = '/users'
+  public router = express.Router()
 
-		await user.save();
-		res.send(user);
-	}
-};
+  constructor() {
+    this.initializeRoutes()
+  }
+
+  initializeRoutes() {
+    this.router.get(this.path, this.getAllUsers);
+    this.router.post(`${this.path}/register`, this.registerUser);
+    this.router.put(`${this.path}/:id`, this.editProfile);
+  }
+
+  editProfile(req: Request, res: Response) {
+    editProfile(req, res)
+  }
+
+  registerUser(req: Request, res: Response) {
+    registerUser(req, res)
+  }
+
+  getAllUsers(req: Request, res: Response) {
+    getAllUsers(req, res)
+  }
+}
