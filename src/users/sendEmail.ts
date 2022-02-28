@@ -1,11 +1,12 @@
 import { Response, Request } from "express";
 const dotenv = require("dotenv");
+import { StatusCodes } from "http-status-codes";
 
 import validateEmail from "./validateEmail"
 import sendEmail from "../utils/email";
 import userModel from "../../models/user.model";
 
-export default async function sendEmailToUser(req: Request, res: Response) {
+const sendEmailToUser = async (req: Request, res: Response) => {
   const { error } = validateEmail(req.body);
   if (error)
     return res.status(400).send(error.details[0].message);
@@ -19,5 +20,7 @@ export default async function sendEmailToUser(req: Request, res: Response) {
   const message = await sendEmail(req.body.email, url);
   
 
-  res.send(message);
+  res.status(StatusCodes.OK).send(message);
 }
+
+export default sendEmailToUser;

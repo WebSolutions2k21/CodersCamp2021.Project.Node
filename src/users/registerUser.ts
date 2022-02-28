@@ -1,10 +1,14 @@
 import bcrypt from 'bcrypt'
 import { Response, Request } from 'express'
+import { StatusCodes } from 'http-status-codes'
+import "dotenv/config";
 
 import validate from '../auth/validateAuth'
 import userModel from '../../models/user.model'
+import sendEmail from '../utils/email'
 
-export default async function registerUser(req: Request, res: Response) {
+
+const registerUser = async (req: Request, res: Response) => {
   const { error } = validate(req.body)
   if (error) {
     return res.status(400).send(error.details[0].message)
@@ -24,7 +28,14 @@ export default async function registerUser(req: Request, res: Response) {
     const salt = await bcrypt.genSalt(10)
     user.password = await bcrypt.hash(user.password, salt)
 
+    const token = user.generateAuthToken();
+    const url = `http://${process.env.ADDRESS}/users/confirmation/${token}`;
+    sendEmail(req.body.email, url);
+    // const message = await sendEmail(req.body.email, url);
+    // sendEmail('marta.anna.probierz@gmail.com', '')
     await user.save()
-    res.send(user)
+    res.status(StatusCodes.OK).send(user._id)
   }
 }
+
+export default registerUser
