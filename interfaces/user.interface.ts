@@ -1,13 +1,13 @@
 import mongoose from 'mongoose'
-import ProgrammingLanguageArr from './programmingLanguageArr.interface'
+import ProgrammingLanguage from './programmingLanguage.interface'
 
 interface User extends mongoose.Document {
-  name: string
+  username: string
   firstname: string
   lastname: string
   email: string
   password: string
-  programmingLanguage: ProgrammingLanguageArr[]
+  programmingLanguage?: ProgrammingLanguage[]
   date?: Date
   roleIsMentor: boolean
   generateAuthToken(): string

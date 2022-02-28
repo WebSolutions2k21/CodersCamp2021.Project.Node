@@ -12,9 +12,15 @@ const editProfile = async (req: Request, res: Response) => {
   }
   const user = await userModel.findById(req.params.id)
   if (!user) return res.status(StatusCodes.NOT_FOUND).send('User not found')
-
-  const userProf = await userModel.findByIdAndUpdate(req.params.id, { ...req.body })
-
+  let userEmail = await userModel.findOne({ email: req.body.email })
+  if (userEmail) {
+    return res.status(400).send('That email already exisits!')
+  }
+  const userProf = await userModel.findByIdAndUpdate(
+    req.params.id,
+    { ...req.body },
+    { new: true, useFindAndModify: false }
+  )
   return res.status(StatusCodes.OK).send(userProf)
 }
 
