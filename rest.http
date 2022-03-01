@@ -13,11 +13,16 @@ Content-Type: application/json
 ###
 
 ###
-# get users
+# get all users
 GET http://localhost:3000/users HTTP/1.1
-
+###
 
 ###
+# get only one user
+GET http://localhost:3000/users/621d35383e5c3315845ca334 HTTP/1.1
+###
+
+
 # ____________________________ TEAM ____________________________
 
 ###

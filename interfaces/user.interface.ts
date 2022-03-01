@@ -9,7 +9,7 @@ interface User extends mongoose.Document {
   password: string
   programmingLanguage?: ProgrammingLanguage[]
   date?: Date
-  roleIsMentor: boolean
+  isMentor: boolean
   generateAuthToken(): string
 }
 

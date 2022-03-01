@@ -52,7 +52,7 @@ const userSchema = new Schema<User>({
       },
     },
   ],
-  roleIsMentor: {
+  isMentor: {
     type: Boolean,
     default: false,
   },
