@@ -90,7 +90,7 @@ export default async function sendEmail(email: string, url: string) {
 																font-weight: 300;
 																letter-spacing: 5px;
 															"
-															>ONBOARD!</span
+															>ON BOARD!</span
 														>
 													</td>
 												</tr>

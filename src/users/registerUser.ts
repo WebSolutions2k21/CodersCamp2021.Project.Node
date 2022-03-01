@@ -29,10 +29,8 @@ const registerUser = async (req: Request, res: Response) => {
     user.password = await bcrypt.hash(user.password, salt)
 
     const token = user.generateAuthToken();
-    const url = `http://${process.env.ADDRESS}/users/confirmation/${token}`;
+    const url = `http://${process.env.ADDRESSPORT}/users/confirmation/${token}`;
     sendEmail(req.body.email, url);
-    // const message = await sendEmail(req.body.email, url);
-    // sendEmail('marta.anna.probierz@gmail.com', '')
     await user.save()
     res.status(StatusCodes.OK).send(user._id)
   }
