@@ -1,4 +1,19 @@
 ###
+# ____________________________ Authentication ____________________________
+
+###
+# login
+POST http://localhost:3000/login 
+Content-Type: application/json
+
+{
+    "email": "test@ania.com",
+    "password": "12345678"
+
+}
+
+###
+
 # ____________________________ USERS ____________________________
 # create users only requied fields
 POST http://localhost:3000/users/register HTTP/1.1
