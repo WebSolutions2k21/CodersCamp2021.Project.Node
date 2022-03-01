@@ -4,12 +4,6 @@ import bcrypt from "bcrypt";
 import userModel from "../../models/user.model";
 import { loginValidation } from "../../src/auth/validateAuth";
 
-// import { register } from "../../controllers/users.controller";
-
-// const router = express.Router();
-// router.post("/register", register);
-
-// export default router;
 
 export default async function authUser(req: Request, res: Response) {
     //validate the data before we a user
