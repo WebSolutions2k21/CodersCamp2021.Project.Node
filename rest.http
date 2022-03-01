@@ -26,13 +26,22 @@ Content-Type: application/json
 }
 ###
 
+
 ###
 # get users
 GET http://localhost:3000/users HTTP/1.1
 
+
 ###
 # change Password
 PUT http://localhost:3000/users/changepassword HTTP/1.1
+Content-Type: application/json
+
+{
+    "oldPassword": "12345678",
+    "password": "12345678",
+    "confirmPassword": "12345678"
+}
 
 
 ###

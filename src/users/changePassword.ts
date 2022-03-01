@@ -1,9 +1,11 @@
 import { Request, Response } from "express"
-import userModel from "../../models/user.model";
+import bcrypt from 'bcrypt'
 
+import userModel from "../../models/user.model";
 import validateChangePassword from "./validatePassword";
 
-const changePassword = async (req: Request, res: Response) => {
+export default async function changePassword(req: Request, res: Response) {
+    console.log("change password")
     
     const { error } = validateChangePassword(req.body);
 	if (error) {
@@ -17,10 +19,23 @@ const changePassword = async (req: Request, res: Response) => {
     return res.status(400)
     .send("New password and confirm password must be the same.");
 
-    
+    const validPassword = await bcrypt.compare(
+        req.body.oldPassword,
+        user.password
+      );
+      if (!validPassword)
+        return res.status(400).send("Invalid  password.");
 
+        const salt = await bcrypt.genSalt(10);
+        const newPassword = await bcrypt.hash(req.body.newPassword, salt);
+
+        user = await userModel.findByIdAndUpdate(
+            req.params._id,
+            { password: newPassword },
+            { new: true }
+          );
+          if (!user) return res.status(404).send("User not found");
+        
 	
     res.status(200).send('password Changed')
 }
-
-export default changePassword;
