@@ -10,6 +10,8 @@ interface User extends mongoose.Document {
   programmingLanguage?: ProgrammingLanguage[]
   date?: Date
   isMentor: boolean
+  isVerified?: boolean;
+  roleIsMentor: boolean
   generateAuthToken(): string
 }
 
