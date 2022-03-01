@@ -6,6 +6,7 @@ import getUser from '../src/users/getUser'
 import editProfile from '../src/users/editProfile'
 import sendEmailToUser from '../src/users/sendEmail'
 import confirmation from "../src/users/confirmation";
+import deleteUser from '../src/users/deleteUser'
 
 export default class UserController {
   public path = '/users'
@@ -22,6 +23,7 @@ export default class UserController {
     this.router.get(`${this.path}/:id`, this.getUser);
     this.router.post(`${this.path}/email`, this.sendEmailToUser);
     this.router.get(`${this.path}/confirmation/:token`, this.confirmation);
+    this.router.delete(`${this.path}/:id`, this.deleteUser)
   }
 
   editProfile(req: Request, res: Response) {
@@ -46,5 +48,9 @@ export default class UserController {
 
   confirmation(req: Request, res: Response) {
     confirmation(req, res);
+  }
+
+  deleteUser(req: Request, res: Response){
+    deleteUser(req, res)
   }
 }
