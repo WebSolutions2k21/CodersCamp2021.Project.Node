@@ -1,21 +1,24 @@
-import bcrypt from 'bcrypt'
-import { Response, Request } from 'express'
-import { StatusCodes } from 'http-status-codes'
+import bcrypt from "bcrypt";
+import { Response, Request } from "express";
+import { StatusCodes } from "http-status-codes";
 
-import userModel from '../../models/user.model'
-import validateEditProfile from './validateEditProfile'
+import userModel from "../../models/user.model";
+import validateEditProfile from "./validateEditProfile";
 
 const editProfile = async (req: Request, res: Response) => {
-  const { error } = validateEditProfile(req.body)
+  console.log("edit profile");
+  const { error } = validateEditProfile(req.body);
   if (error) {
-    return res.status(StatusCodes.BAD_REQUEST).send(error.details[0].message)
+    return res.status(StatusCodes.BAD_REQUEST).send(error.details[0].message);
   }
-  const user = await userModel.findById(req.params.id)
-  if (!user) return res.status(StatusCodes.NOT_FOUND).send('User not found')
+  const user = await userModel.findById(req.params.id);
+  if (!user) return res.status(StatusCodes.NOT_FOUND).send("User not found");
 
-  const userProf = await userModel.findByIdAndUpdate(req.params.id, { ...req.body })
+  const userProf = await userModel.findByIdAndUpdate(req.params.id, {
+    ...req.body,
+  });
 
-  return res.status(StatusCodes.OK).send(userProf)
-}
+  return res.status(StatusCodes.OK).send(userProf);
+};
 
-export default editProfile
+export default editProfile;

@@ -1,8 +1,8 @@
 import mongoose from "mongoose";
-import Project from "../interfaces/project..interface";
+import Project from "../interfaces/project.interface";
 
 const projectSchema = new mongoose.Schema<Project>({
-  projectName: {
+  name: {
     type: String,
     required: true,
     minlength: 3,

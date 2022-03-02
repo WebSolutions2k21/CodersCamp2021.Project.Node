@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
 interface Project extends mongoose.Document {
-  projectName: string;
+  name: string;
   userId: number;
   mentorId?: number;
   content: string;
