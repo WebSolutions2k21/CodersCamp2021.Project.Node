@@ -20,8 +20,10 @@ POST http://localhost:3000/users/register HTTP/1.1
 Content-Type: application/json
 
 {
-    "name": "Gosia300",
-    "email": "test9@test.com",
+    "name": "Marta",
+    "firstname":"Marta",
+    "lastname":"Probierz",
+    "email": "marta.anna.probierz@gmail.com",
     "password": "12345678"
 }
 ###

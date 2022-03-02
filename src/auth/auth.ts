@@ -1,10 +1,21 @@
 import { Request, Response } from "express";
 import bcrypt from "bcrypt";
+<<<<<<< HEAD
+=======
+
+import userModel from "../../models/user.model";
+import { loginValidation } from "../../src/auth/validateAuth";
+>>>>>>> 413709ea9edde123522623ab3c123a001a3cd9b5
 
 import userModel from "../../models/user.model";
 import { loginValidation } from "../../src/auth/validateAuth";
 
 
+<<<<<<< HEAD
+=======
+// export default router;
+
+>>>>>>> 413709ea9edde123522623ab3c123a001a3cd9b5
 export default async function authUser(req: Request, res: Response) {
     //validate the data before we a user
     const { error } = loginValidation(req.body);
