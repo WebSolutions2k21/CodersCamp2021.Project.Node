@@ -66,3 +66,4 @@ export default class OpinionController {
     res.status(StatusCodes.OK).send(opinions);
   }
 }
+//
