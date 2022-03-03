@@ -1,4 +1,4 @@
-import express, { Request, Response } from 'express'
+import express, { Request, Response } from "express";
 
 import registerUser from '../src/users/registerUser'
 import getAllUsers from '../src/users/getAllUsers'
@@ -7,11 +7,11 @@ import sendEmailToUser from '../src/users/sendEmail'
 import confirmation from "../src/users/confirmation";
 
 export default class UserController {
-  public path = '/users'
-  public router = express.Router()
+  public path = "/users";
+  public router = express.Router();
 
   constructor() {
-    this.initializeRoutes()
+    this.initializeRoutes();
   }
 
   initializeRoutes() {
@@ -23,15 +23,15 @@ export default class UserController {
   }
 
   editProfile(req: Request, res: Response) {
-    editProfile(req, res)
+    editProfile(req, res);
   }
 
   registerUser(req: Request, res: Response) {
-    registerUser(req, res)
+    registerUser(req, res);
   }
 
   getAllUsers(req: Request, res: Response) {
-    getAllUsers(req, res)
+    getAllUsers(req, res);
   }
 
   sendEmailToUser(req: Request, res: Response) {
