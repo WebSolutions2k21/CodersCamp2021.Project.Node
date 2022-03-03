@@ -5,9 +5,8 @@ import getAllUsers from '../src/users/getAllUsers'
 import getUser from '../src/users/getUser'
 import editProfile from '../src/users/editProfile'
 import sendEmailToUser from '../src/users/sendEmail'
-import confirmation from "../src/users/confirmation";
+import confirmation from '../src/users/confirmation'
 import deleteUser from '../src/users/deleteUser'
-
 export default class UserController {
   public path = '/users'
   public router = express.Router()
@@ -17,12 +16,12 @@ export default class UserController {
   }
 
   initializeRoutes() {
-    this.router.get(this.path, this.getAllUsers);
-    this.router.post(`${this.path}/register`, this.registerUser);
-    this.router.put(`${this.path}/:id`, this.editProfile);
-    this.router.get(`${this.path}/:id`, this.getUser);
-    this.router.post(`${this.path}/email`, this.sendEmailToUser);
-    this.router.get(`${this.path}/confirmation/:token`, this.confirmation);
+    this.router.get(this.path, this.getAllUsers)
+    this.router.post(`${this.path}/register`, this.registerUser)
+    this.router.put(`${this.path}/:id`, this.editProfile)
+    this.router.get(`${this.path}/:id`, this.getUser)
+    this.router.post(`${this.path}/email`, this.sendEmailToUser)
+    this.router.get(`${this.path}/confirmation/:token`, this.confirmation)
     this.router.delete(`${this.path}/:id`, this.deleteUser)
   }
 
@@ -43,14 +42,14 @@ export default class UserController {
   }
 
   sendEmailToUser(req: Request, res: Response) {
-    sendEmailToUser(req, res);
+    sendEmailToUser(req, res)
   }
 
   confirmation(req: Request, res: Response) {
-    confirmation(req, res);
+    confirmation(req, res)
   }
 
-  deleteUser(req: Request, res: Response){
+  deleteUser(req: Request, res: Response) {
     deleteUser(req, res)
   }
 }

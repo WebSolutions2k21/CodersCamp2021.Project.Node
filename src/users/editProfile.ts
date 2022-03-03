@@ -11,13 +11,11 @@ const editProfile = async (req: Request, res: Response) => {
   }
   const user = await userModel.findById(req.params.id)
   if (!user) return res.status(StatusCodes.NOT_FOUND).send('User not found')
-  console.log('res body email', req.body.email)
 
   let userEmail = await userModel.findOne({ email: req.body.email })
-  // let isVeryfied = aw
-  console.log('User email', userEmail)
+
   res.locals.email = userEmail
-  console.log('user email local', res.locals.email)
+
   if (userEmail) {
     return res.status(400).send('That email already exisits!')
   }
