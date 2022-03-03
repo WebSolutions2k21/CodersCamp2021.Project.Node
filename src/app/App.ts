@@ -10,22 +10,23 @@ export default class App {
   private port = process.env.PORT || 3000
 
   constructor(controllers: Controller[]) {
-    this.app = express()
+    this.app = express();
 
-    this.connectToDatabase()
-    this.initializeMiddlewares()
-    this.initializeControllers(controllers)
+    this.connectToDatabase();
+    this.initializeMiddlewares();
+    this.initializeControllers(controllers);
   }
 
   initializeMiddlewares() {
-    this.app.use(express.json())
-    this.app.use(express.urlencoded({ extended: true }))
+    this.app.use(express.json());
+    this.app.use(express.urlencoded({ extended: true }));
   }
 
   initializeControllers(controllers: Controller[]) {
     controllers.forEach((controller) => {
-      this.app.use('/', controller.router)
-    })
+      this.app.use("/", controller.router);
+      console.log(`\t${controller.path}`);
+    });
   }
 
   connectToDatabase() {
@@ -51,7 +52,7 @@ export default class App {
 
   public listen() {
     return this.app.listen(this.port, () => {
-      console.log(`App listening on the port ${this.port}`)
-    })
+      console.log(`App listening on the port ${this.port}`);
+    });
   }
 }
