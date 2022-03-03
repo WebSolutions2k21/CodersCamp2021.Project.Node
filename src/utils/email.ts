@@ -43,7 +43,7 @@ export default async function sendEmail(email: string, url: string) {
 										<table
 											class="col-600"
 											width="600"
-											height="400"
+											height="200"
 											border="0"
 											align="center"
 											cellpadding="0"
@@ -55,17 +55,6 @@ export default async function sendEmail(email: string, url: string) {
 												</tr>
 												<tr>
 													<td align="center" style="line-height: 0px">
-														<img
-															style="
-																display: block;
-																line-height: 0px;
-																font-size: 0px;
-																border: 0px;
-																height: 100px;
-															"
-															src=""
-															alt="logo"
-														/>
 													</td>
 												</tr>
 												<tr>
