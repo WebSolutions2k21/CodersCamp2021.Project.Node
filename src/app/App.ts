@@ -34,7 +34,6 @@ export default class App {
     const dbName = !!config.get("dbName")
     ? <string>config.get("dbName")
     : MONGO_DB_NAME;
-    // mongodb+srv://codersCampNode:Coderscamp2021@cluster0.sfyfo.mongodb.net/node_database?retryWrites=true&w=majority
 
     mongoose
       .connect(`mongodb+srv://@cluster0.sfyfo.mongodb.net/`, {

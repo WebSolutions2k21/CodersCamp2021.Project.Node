@@ -1,10 +1,10 @@
-import mongoose from 'mongoose'
-import jwt from 'jsonwebtoken'
-import config from 'config'
+import mongoose from "mongoose";
+import jwt from "jsonwebtoken";
+import config from "config";
 
-import User from '../interfaces/user.interface'
+import User from "../interfaces/user.interface";
 
-const Schema = mongoose.Schema
+const Schema = mongoose.Schema;
 const userSchema = new Schema<User>({
   username: {
     type: String,
@@ -60,13 +60,13 @@ const userSchema = new Schema<User>({
     type: Boolean,
     default: false,
   },
-})
+});
 
 userSchema.methods.generateAuthToken = function () {
-  const token = jwt.sign({ _id: this._id, username: this.username }, config.get('jwtPrivateKey'))
-  return token
-}
+  const token = jwt.sign({ _id: this._id, username: this.username }, config.get("jwtPrivateKey"));
+  return token;
+};
 
-const userModel = mongoose.model<User & mongoose.Document>('User', userSchema)
+const userModel = mongoose.model<User & mongoose.Document>("User", userSchema);
 
-export default userModel
+export default userModel;
