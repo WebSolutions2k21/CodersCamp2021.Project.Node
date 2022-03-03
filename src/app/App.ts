@@ -1,13 +1,13 @@
-import express, { Application } from "express";
-import Controller from "../../interfaces/controller.interface";
+import express, { Application } from 'express'
+import config from "config";
+const mongoose = require('mongoose')
+const dotenv = require('dotenv')
 
-const mongoose = require("mongoose");
-const dotenv = require("dotenv");
-dotenv.config();
+import Controller from '../../interfaces/controller.interface'
 
 export default class App {
-  public app: Application;
-  private port = process.env.PORT || 3000;
+  public app: Application
+  private port = process.env.PORT || 3000
 
   constructor(controllers: Controller[]) {
     this.app = express();
@@ -30,14 +30,23 @@ export default class App {
   }
 
   connectToDatabase() {
+    const { MONGO_USER, MONGO_PASSWORD, MONGO_DB_NAME } = process.env;
+    const dbName = !!config.get("dbName")
+    ? <string>config.get("dbName")
+    : MONGO_DB_NAME;
+
     mongoose
-      .connect(process.env.DB_CONNECT, {
+      .connect(`mongodb+srv://@cluster0.sfyfo.mongodb.net/`, {
+        dbName: dbName,
+        user: MONGO_USER,
+        pass: MONGO_PASSWORD,
         useNewUrlParser: true,
         useUnifiedTopology: true,
         useCreateIndex: true,
+        serverSelectionTimeoutMS: 5000,
       })
       .then(() => console.log(`Connected to MongoDB`))
-      .catch((err: { message: any }) => console.log(err.message));
+      .catch((err: { message: any }) => console.log(err.message))
   }
 
   public listen() {
