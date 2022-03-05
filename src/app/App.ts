@@ -40,7 +40,7 @@ export default class App {
         useUnifiedTopology: true,
         useCreateIndex: true,
       })
-      .then(() => console.log(`Connected to MongoDB`))
+      .then(() => console.log(`Connected to MongoDB ${dbName}`))
       .catch((err: { message: any }) => console.log(err.message));
   }
 

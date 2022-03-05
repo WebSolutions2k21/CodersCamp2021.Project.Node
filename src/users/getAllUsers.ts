@@ -3,7 +3,7 @@ import { StatusCodes } from "http-status-codes";
 import userModel from "../../models/user.model";
 
 const getAllUsers = async (req: Request, res: Response) => {
-  const users = await userModel.find().select("-_id");
+  const users = await userModel.find().select("-passsword");
   if (!users) {
     return res.status(StatusCodes.NOT_FOUND).send("Users not found");
   }
