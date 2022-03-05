@@ -77,11 +77,10 @@ describe("/project", () => {
       const res = await request(server).get("/project/" + project._id);
 
       expect(res.status).toBe(200);
-      const body = res.body;
-      expect(body.name).toEqual(project.name);
-      expect(body.userId).toBe(project.userId);
-      expect(body.mentorId).toBe(project.mentorId);
-      expect(body.content).toBe(project.content);
+      expect(res.body.name).toEqual(project.name);
+      expect(res.body.userId).toBe(project.userId);
+      expect(res.body.mentorId).toBe(project.mentorId);
+      expect(res.body.content).toBe(project.content);
     });
 
     it("should return 404 if project not found by id", async () => {
@@ -98,7 +97,7 @@ describe("/project", () => {
       const projects = [{ name: "project 1" }, { name: "project 2" }];
       await projectModel.collection.insertMany(projects);
 
-      const res = await request(server).get("project");
+      const res = await request(server).get("/project/");
 
       expect(res.status).toBe(200);
       expect(res.body.length).toEqual(2);
