@@ -5,7 +5,6 @@ import userModel from "../../models/user.model";
 import validateEditProfile from "./validateEditProfile";
 
 const editProfile = async (req: Request, res: Response) => {
-  console.log("edit profile");
   const { error } = validateEditProfile(req.body);
   if (error) {
     return res.status(StatusCodes.BAD_REQUEST).send(error.details[0].message);
@@ -13,19 +12,21 @@ const editProfile = async (req: Request, res: Response) => {
   const user = await userModel.findById(req.params.id);
   if (!user) return res.status(StatusCodes.NOT_FOUND).send("User not found");
 
-  let userEmail = await userModel.findOne({ email: req.body.email });
-
-  res.locals.email = userEmail;
-
-  if (userEmail) {
-    return res.status(400).send("That email already exisits!");
+  let userEmail = user.email;
+  let isVerifiedValue = user.isVerified;
+  //  let isVerified =
+  console.log(" is verified", isVerifiedValue, userEmail);
+  if (isVerifiedValue == true && userEmail != req.body.email) {
+    return res.status(StatusCodes.LOCKED).send("That email is verified and you couldn't change ");
   }
+
   const userProf = await userModel.findByIdAndUpdate(
     req.params.id,
+
     {
       ...req.body,
     },
-    { new: true }
+    { new: true },
   );
   return res.status(StatusCodes.OK).send(userProf);
 };
