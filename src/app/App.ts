@@ -25,7 +25,6 @@ export default class App {
   initializeControllers(controllers: Controller[]) {
     controllers.forEach((controller) => {
       this.app.use("/", controller.router);
-      console.log(`\t${controller.path}`);
     });
   }
 
@@ -43,7 +42,6 @@ export default class App {
         useNewUrlParser: true,
         useUnifiedTopology: true,
         useCreateIndex: true,
-        serverSelectionTimeoutMS: 5000,
       })
       .then(() => console.log(`Connected to MongoDB`))
       .catch((err: { message: any }) => console.log(err.message))
