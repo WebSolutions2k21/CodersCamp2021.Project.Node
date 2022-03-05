@@ -2,6 +2,7 @@ import { Server } from "http";
 import { StatusCodes } from "http-status-codes";
 import request from "supertest";
 import projectModel from "../../models/project.model";
+import mongoose from "mongoose";
 
 let server: Server;
 
@@ -78,8 +79,8 @@ describe("/project", () => {
 
       expect(res.status).toBe(200);
       expect(res.body.name).toEqual(project.name);
-      expect(res.body.userId).toBe(project.userId);
-      expect(res.body.mentorId).toBe(project.mentorId);
+      expect(res.body.userId).toBe(project.userId.toString());
+      expect(res.body.mentorId).toBe(project.mentorId?.toString());
       expect(res.body.content).toBe(project.content);
     });
 

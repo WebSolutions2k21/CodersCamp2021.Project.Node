@@ -51,6 +51,11 @@ export default class ProjectController {
 
   async get(req: Request, res: Response) {
     const project = await projectModel.findById(req.params.id);
+    if (project === null) {
+      res.status(404).send();
+      return;
+    }
+
     res.status(StatusCodes.OK).send(project);
   }
 
