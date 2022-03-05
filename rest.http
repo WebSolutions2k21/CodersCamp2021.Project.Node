@@ -7,7 +7,7 @@ POST http://localhost:3000/login
 Content-Type: application/json
 
 {
-    "email": "ania2@test.com",
+    "email": "test@test.com",
     "password": "12345678"
 
 }
@@ -37,13 +37,13 @@ GET http://localhost:3000/users HTTP/1.1
 ###
 # change Password
 PUT http://localhost:3000/users/changepassword HTTP/1.1
-x-auth-token:  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjIzN2Y2Y2E4NmFmZDAwZDQzMzI1MzUiLCJ1c2VybmFtZSI6IkFuaWEiLCJpYXQiOjE2NDY0OTg4MjR9.CvZGSaqxttdyd_jNyhbgWY0-oQEcxHTF8cON_RoPC4U
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjIzN2NhZDgyOWEzNzA2MTA3YzExOTciLCJ1c2VybmFtZSI6InRlc3QiLCJpYXQiOjE2NDY1MDY5NDd9.7oqLsG1H53bVgUDHCmaKxzbF2wCdUsXAWcNyPbCvZvE
 Content-Type: application/json
 
 {
-    "oldPassword": "123456780",
-    "newPassword": "123456789",
-    "confirmNewPassword": "123456789"
+    "oldPassword": "123456789",
+    "newPassword": "12345678",
+    "confirmNewPassword": "12345678"
 }
 
 

@@ -12,7 +12,7 @@ export default async function changePassword(req: Request, res: Response) {
 	}
 
     let user = await userModel.findOne({ id: req.params._id});
-	if (!user) return res.status(400).send("Invalid password-nie znalezniowo usera.");
+	if (!user) return res.status(400).send("User not found");
 
     if (req.body.newPassword !== req.body.confirmNewPassword) 
     return res.status(400)
@@ -28,13 +28,18 @@ export default async function changePassword(req: Request, res: Response) {
         const salt = await bcrypt.genSalt(10);
         const newPassword = await bcrypt.hash(req.body.newPassword, salt);
 
-        await userModel.findOneAndUpdate(
-            req.params,
+        console.log(user.password)
+
+        user = await userModel.findOneAndUpdate(
+            { id: req.params._id},
             { password: newPassword },
             { new: true }
           );
           if (!user) return res.status(404).send("User not found");
         
-	
-    res.status(200).send('Password changed')
+          console.log(user._id)
+
+          const id = user._id;
+
+    res.status(200).send(`Password changed ${id}`)
 }

@@ -16,6 +16,9 @@ export default async function authUser(req: Request, res: Response) {
 	if (!user) {
 		return res.status(400).send("Invalid email or password.");
 	} 
+
+    console.log(user.email)
+
     //password is correct
     const validPassword = await bcrypt.compare(req.body.password, user.password)
     if (!validPassword) {return res.status(400).send("Invalid email or password.")}
