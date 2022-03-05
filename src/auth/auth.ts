@@ -20,12 +20,14 @@ export default async function authUser(req: Request, res: Response) {
     const validPassword = await bcrypt.compare(req.body.password, user.password)
     if (!validPassword) {return res.status(400).send("Invalid email or password.")}
     
-    if (!user.isVerified) 
+    if (user.isVerified) 
     return res
       .status(400)
       .send("You must first confirm the registration.");
 
+      const id = user._id;
+      const token = user.generateAuthToken();
 
-    res.send('Logged In!');
+    res.send(`Logged In! Your ID: ${id}, Your token: ${token}`);
     
 }

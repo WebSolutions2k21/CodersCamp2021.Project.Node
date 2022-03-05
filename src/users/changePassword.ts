@@ -5,15 +5,14 @@ import userModel from "../../models/user.model";
 import validateChangePassword from "./validatePassword";
 
 export default async function changePassword(req: Request, res: Response) {
-    console.log("change password")
     
     const { error } = validateChangePassword(req.body);
 	if (error) {
 		return res.status(400).send(error.details[0].message);
 	}
 
-    let user = await userModel.findById(req.params._id);
-	if (!user) return res.status(400).send("Invalid password.");
+    let user = await userModel.findOne({ id: req.params._id});
+	if (!user) return res.status(400).send("Invalid password-nie znalezniowo usera.");
 
     if (req.body.newPassword !== req.body.confirmNewPassword) 
     return res.status(400)
@@ -29,13 +28,13 @@ export default async function changePassword(req: Request, res: Response) {
         const salt = await bcrypt.genSalt(10);
         const newPassword = await bcrypt.hash(req.body.newPassword, salt);
 
-        user = await userModel.findByIdAndUpdate(
-            req.params._id,
+        await userModel.findOneAndUpdate(
+            req.params,
             { password: newPassword },
             { new: true }
           );
           if (!user) return res.status(404).send("User not found");
         
 	
-    res.status(200).send('password Changed')
+    res.status(200).send('Password changed')
 }
