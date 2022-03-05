@@ -2,8 +2,8 @@ import { Request, Response } from 'express'
 import { StatusCodes } from 'http-status-codes'
 import teamModel from '../../models/team.model'
 
-const createTeamProject = async (req: Request, res: Response) => {
-    
+const addMentor = async (req: Request, res: Response) => {
+
 }
 
-export default createTeamProject
+export default addMentor

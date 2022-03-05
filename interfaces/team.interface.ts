@@ -1,12 +1,13 @@
-import mongoose from 'mongoose'
-import ProgrammingLanguageArr from './programmingLanguageArr.interface'
+import mongoose from 'mongoose';
+import ProgrammingLanguage from "./programmingLanguage.interface";
 
 interface Team extends mongoose.Document {
-    name: string
-    usersIds: []
-    mentorId: string
-    programmingLanguage: ProgrammingLanguageArr[]
-    status: string
+    teamname: any;
+    name: string;
+    usersIds: [];
+    mentorId: string;
+    programmingLanguage: ProgrammingLanguage[];
+    status: string;
 }
 
 export default Team
