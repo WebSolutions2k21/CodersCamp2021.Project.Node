@@ -17,11 +17,11 @@ export default class UserController {
 
   initializeRoutes() {
     this.router.get(this.path, this.getAllUsers);
-    this.router.post(`${this.path}/register`, this.registerUser);
-    this.router.put(`${this.path}/:id`, this.editProfile);
-    this.router.put(`${this.path}/changepassword`, this.changePassword)
-    this.router.post(`${this.path}/email`, this.sendEmailToUser);
     this.router.get(`${this.path}/confirmation/:token`, this.confirmation);
+    this.router.post(`${this.path}/register`, this.registerUser);
+    this.router.post(`${this.path}/email`, this.sendEmailToUser);
+    this.router.put(`${this.path}/changepassword`, this.changePassword);
+    this.router.put(`${this.path}/:id`, this.editProfile);
   }
 
   editProfile(req: Request, res: Response) {

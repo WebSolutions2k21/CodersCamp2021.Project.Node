@@ -41,8 +41,8 @@ Content-Type: application/json
 
 {
     "oldPassword": "12345678",
-    "password": "12345678",
-    "confirmPassword": "12345678"
+    "newPassword": "12345678",
+    "confirmNewPassword": "12345678"
 }
 
 
