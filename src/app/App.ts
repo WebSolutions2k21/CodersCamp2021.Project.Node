@@ -24,7 +24,6 @@ export default class App {
   initializeControllers(controllers: Controller[]) {
     controllers.forEach((controller) => {
       this.app.use("/", controller.router);
-      console.log(`\t${controller.path}`);
     });
   }
 
