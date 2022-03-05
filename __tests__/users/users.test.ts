@@ -1,5 +1,6 @@
 import { Server } from "http";
 import request from "supertest";
+import mongoose from "mongoose";
 
 import userModel from "../../models/user.model";
 let server: Server;
@@ -59,6 +60,29 @@ describe("/users", () => {
 
       expect(res.status).toBe(200);
       expect(res.body.length).toEqual(2);
+    });
+  });
+
+  describe("DELETE /:id", () => {
+    it("should delete user if id exists", async () => {
+      const user = await createUser();
+      const id = user._id;
+
+      const res = await request(server).delete("/users/" + id);
+      const userInDb = await userModel.findById(id);
+
+      expect(res.status).toBe(200);
+      expect(userInDb).toBeNull();
+    });
+
+    it("should return 404 if user not found", async () => {
+      const user = {
+        _id: "6220f62b09ad6213d719a4b9",
+        __v: 0,
+      };
+      const res = await request(server).delete("/users/" + user._id);
+
+      expect(res.status).toBe(404);
     });
   });
 });
