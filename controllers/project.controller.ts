@@ -15,6 +15,7 @@ export default class ProjectController {
     this.router.get(this.path, this.getAll);
     this.router.post(`${this.path}/create`, this.create);
     this.router.put(`${this.path}/:id`, this.edit);
+    this.router.delete(`${this.path}/:id`, this.delete);
   }
 
   async create(req: Request, res: Response) {
@@ -42,8 +43,7 @@ export default class ProjectController {
     console.log("edit", req.body);
 
     let project = await projectModel.findById(req.params.id);
-    if (!project)
-      return res.status(StatusCodes.NOT_FOUND).send("Project not found");
+    if (!project) return res.status(StatusCodes.NOT_FOUND).send("Project not found");
 
     project = await projectModel.findByIdAndUpdate(req.params.id, {
       ...req.body,
@@ -57,5 +57,12 @@ export default class ProjectController {
 
     const projects = await projectModel.find().select("-_id");
     res.status(StatusCodes.OK).send(projects);
+  }
+
+  async delete(req: Request, res: Response) {
+    const project = await projectModel.findByIdAndDelete(req.params.id);
+    if (!project) return res.status(StatusCodes.NOT_FOUND).send("Project not found");
+
+    return res.status(StatusCodes.OK).send(`Project with id: ${req.params.id} has been deleted`);
   }
 }
