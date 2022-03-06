@@ -26,6 +26,7 @@ describe("error", () => {
       expect(e).toEqual({
         error: "Mail doesn't send!",
       });
+      expect(e).toMatch('error');
       expect.assertions(1);
     }
   });
