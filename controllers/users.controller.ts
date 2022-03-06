@@ -9,7 +9,7 @@ import editProfile from "../src/users/editProfile";
 import sendEmailToUser from "../src/users/sendEmail";
 import confirmation from "../src/users/confirmation";
 import deleteUser from "../src/users/deleteUser";
-import changePassword from '../src/users/changePassword'
+import changePassword from "../src/users/changePassword";
 export default class UserController {
   public path = "/users";
   public router = express.Router();
@@ -46,7 +46,7 @@ export default class UserController {
   }
 
   changePassword(req: Request, res: Response) {
-    changePassword(req, res)
+    changePassword(req, res);
   }
 
   sendEmailToUser(req: Request, res: Response) {
