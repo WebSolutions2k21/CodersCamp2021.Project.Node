@@ -1,5 +1,7 @@
 import express, { Request, Response } from "express";
 
+import auth from "../middleware/auth";
+
 import registerUser from "../src/users/registerUser";
 import getAllUsers from "../src/users/getAllUsers";
 import getUser from "../src/users/getUser";
@@ -22,7 +24,7 @@ export default class UserController {
     this.router.get(`${this.path}/confirmation/:token`, this.confirmation);
     this.router.post(`${this.path}/register`, this.registerUser);
     this.router.post(`${this.path}/email`, this.sendEmailToUser);
-    this.router.put(`${this.path}/changepassword`, this.changePassword);
+    this.router.put(`${this.path}/changepassword`, auth, this.changePassword);
     this.router.put(`${this.path}/:id`, this.editProfile);
     this.router.delete(`${this.path}/:id`, this.deleteUser);
   }

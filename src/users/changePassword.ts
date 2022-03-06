@@ -31,7 +31,7 @@ export default async function changePassword(req: Request, res: Response) {
         console.log(user.password)
 
         user = await userModel.findOneAndUpdate(
-            { id: req.params._id},
+            req.userInfo._id,
             { password: newPassword },
             { new: true }
           );

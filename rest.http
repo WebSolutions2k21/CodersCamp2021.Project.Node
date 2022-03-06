@@ -37,19 +37,19 @@ GET http://localhost:3000/users HTTP/1.1
 ###
 # change Password
 PUT http://localhost:3000/users/changepassword HTTP/1.1
-x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjIzN2NhZDgyOWEzNzA2MTA3YzExOTciLCJ1c2VybmFtZSI6InRlc3QiLCJpYXQiOjE2NDY1MDY5NDd9.7oqLsG1H53bVgUDHCmaKxzbF2wCdUsXAWcNyPbCvZvE
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjIzN2NhZDgyOWEzNzA2MTA3YzExOTciLCJ1c2VybmFtZSI6InRlc3QiLCJpYXQiOjE2NDY1ODQzNTh9.LN9uhBe-vo2MXgKBhZXLg1iFKk33bnn-M-GPswaBs4A
 Content-Type: application/json
 
 {
-    "oldPassword": "123456789",
-    "newPassword": "12345678",
-    "confirmNewPassword": "12345678"
+    "oldPassword": "123456780",
+    "newPassword": "123456789",
+    "confirmNewPassword": "123456789"
 }
 
 
 ###
 # get only one user
-GET http://localhost:3000/users/621d35383e5c3315845ca334 HTTP/1.1
+GET http://localhost:3000/users/62237cad829a3706107c1197 HTTP/1.1
 ###
 
 
