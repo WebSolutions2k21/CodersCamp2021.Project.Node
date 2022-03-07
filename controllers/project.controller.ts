@@ -28,8 +28,9 @@ export default class ProjectController {
         name: req.body.name,
         userId: mongoose.Types.ObjectId(req.body.userId),
         mentorId: mongoose.Types.ObjectId(req.body.mentorId),
-        // mentorId: req.body.mentorId,
+        teamId: mongoose.Types.ObjectId(req.body.teamId),
         content: req.body.content,
+        status: req.body.content,
       });
 
       await project.save();
@@ -39,8 +40,7 @@ export default class ProjectController {
 
   async edit(req: Request, res: Response) {
     let project = await projectModel.findById(req.params.id);
-    if (!project)
-      return res.status(StatusCodes.NOT_FOUND).send("Project not found");
+    if (!project) return res.status(StatusCodes.NOT_FOUND).send("Project not found");
 
     project = await projectModel.findByIdAndUpdate(req.params.id, {
       ...req.body,
@@ -66,11 +66,8 @@ export default class ProjectController {
 
   async delete(req: Request, res: Response) {
     const project = await projectModel.findByIdAndDelete(req.params.id);
-    if (!project)
-      return res.status(StatusCodes.NOT_FOUND).send("Project not found");
+    if (!project) return res.status(StatusCodes.NOT_FOUND).send("Project not found");
 
-    return res
-      .status(StatusCodes.OK)
-      .send(`Project with id: ${req.params.id} has been deleted`);
+    return res.status(StatusCodes.OK).send(`Project with id: ${req.params.id} has been deleted`);
   }
 }
