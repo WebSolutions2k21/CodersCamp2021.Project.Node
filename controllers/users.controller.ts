@@ -7,6 +7,8 @@ import editProfile from "../src/users/editProfile";
 import sendEmailToUser from "../src/users/sendEmail";
 import confirmation from "../src/users/confirmation";
 import deleteUser from "../src/users/deleteUser";
+import isMentor from "../src/users/isMentor";
+
 export default class UserController {
   public path = "/users";
   public router = express.Router();
@@ -23,6 +25,7 @@ export default class UserController {
     this.router.post(`${this.path}/email`, this.sendEmailToUser);
     this.router.get(`${this.path}/confirmation/:token`, this.confirmation);
     this.router.delete(`${this.path}/:id`, this.deleteUser);
+    this.router.get(`${this.path}/role/:id`, this.isMentor)
   }
 
   editProfile(req: Request, res: Response) {
@@ -51,5 +54,9 @@ export default class UserController {
 
   deleteUser(req: Request, res: Response) {
     deleteUser(req, res);
+  }
+
+  isMentor(req: Request, res: Response){
+    isMentor(req, res);
   }
 }
