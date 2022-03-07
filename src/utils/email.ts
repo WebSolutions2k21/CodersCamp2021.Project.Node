@@ -193,8 +193,8 @@ export default async function sendEmail(email: string, url: string) {
 
 	try {
 		await transporter.sendMail(mailOptions);
-		return "Mail Send!";
-	} catch (ex) {
-		return ex;
+		return "Mail send!";
+	} catch {
+		return "Mail doesn't send!";
 	}
 }
