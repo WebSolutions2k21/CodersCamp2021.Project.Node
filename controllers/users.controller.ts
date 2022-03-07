@@ -1,5 +1,7 @@
 import express, { Request, Response } from "express";
 
+import auth from "../middleware/auth";
+
 import registerUser from "../src/users/registerUser";
 import getAllUsers from "../src/users/getAllUsers";
 import getUser from "../src/users/getUser";
@@ -8,6 +10,7 @@ import sendEmailToUser from "../src/users/sendEmail";
 import confirmation from "../src/users/confirmation";
 import deleteUser from "../src/users/deleteUser";
 import isMentor from "../src/users/isMentor";
+import changePassword from "../src/users/changePassword";
 
 export default class UserController {
   public path = "/users";
@@ -20,10 +23,11 @@ export default class UserController {
   initializeRoutes() {
     this.router.get(this.path, this.getAllUsers);
     this.router.post(`${this.path}/register`, this.registerUser);
-    this.router.patch(`${this.path}/:id`, this.editProfile);
     this.router.get(`${this.path}/:id`, this.getUser);
-    this.router.post(`${this.path}/email`, this.sendEmailToUser);
     this.router.get(`${this.path}/confirmation/:token`, this.confirmation);
+    this.router.post(`${this.path}/email`, this.sendEmailToUser);
+    this.router.put(`${this.path}/changepassword`, auth, this.changePassword);
+    this.router.put(`${this.path}/:id`, this.editProfile);
     this.router.delete(`${this.path}/:id`, this.deleteUser);
     this.router.get(`${this.path}/role/:id`, this.isMentor)
   }
@@ -42,6 +46,10 @@ export default class UserController {
 
   getUser(req: Request, res: Response) {
     getUser(req, res);
+  }
+
+  changePassword(req: Request, res: Response) {
+    changePassword(req, res);
   }
 
   sendEmailToUser(req: Request, res: Response) {
