@@ -11,7 +11,9 @@ const createProject = async () => {
     name: "Projekt testowy",
     userId: "4edd40c86762e0fb12000003",
     mentorId: "fcee56c86762e0fb12000112",
+    teamId: "fcee56c86762e0fb12000113",
     content: "To jest opis dla aplikacji",
+    status: "open",
   });
 
   await project.save();
@@ -102,6 +104,23 @@ describe("/project", () => {
 
       expect(res.status).toBe(200);
       expect(res.body.length).toEqual(2);
+    });
+  });
+
+  describe("DELETE", () => {
+    it("should delete project if exists", async () => {
+      const project = await createProject();
+
+      const res = await request(server).delete("/project/" + project._id);
+
+      expect(res.status).toBe(200);
+    });
+
+    it("should return 404 if project not exist", async () => {
+      let nonExistingId = "1420f53b09ff6213d719b4b2";
+      const res = await request(server).delete("/project/" + nonExistingId);
+
+      expect(res.status).toBe(404);
     });
   });
 });

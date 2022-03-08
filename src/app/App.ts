@@ -1,7 +1,6 @@
 import express, { Application } from "express";
 import config from "config";
 const mongoose = require("mongoose");
-const dotenv = require("dotenv");
 
 import Controller from "../../interfaces/controller.interface";
 
@@ -40,8 +39,9 @@ export default class App {
         useNewUrlParser: true,
         useUnifiedTopology: true,
         useCreateIndex: true,
+        useFindAndModify: true,
       })
-      .then(() => console.log(`Connected to MongoDB`))
+      .then(() => console.log(`Connected to MongoDB ${dbName}`))
       .catch((err: { message: any }) => console.log(err.message));
   }
 
