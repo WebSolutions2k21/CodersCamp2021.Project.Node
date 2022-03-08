@@ -1,3 +1,7 @@
 node_modules
 .env
+<<<<<<< HEAD
 dist
+=======
+coverage
+>>>>>>> 6d0f574ed450a162fb46eedf7686fe0c6a9abf00
