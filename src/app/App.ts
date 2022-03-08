@@ -1,13 +1,12 @@
-import express, { Application } from 'express'
+import express, { Application } from "express";
 import config from "config";
-const mongoose = require('mongoose')
-const dotenv = require('dotenv')
+const mongoose = require("mongoose");
 
-import Controller from '../../interfaces/controller.interface'
+import Controller from "../../interfaces/controller.interface";
 
 export default class App {
-  public app: Application
-  private port = process.env.PORT || 3000
+  public app: Application;
+  private port = process.env.PORT || 5000;
 
   constructor(controllers: Controller[]) {
     this.app = express();
@@ -30,9 +29,7 @@ export default class App {
 
   connectToDatabase() {
     const { MONGO_USER, MONGO_PASSWORD, MONGO_DB_NAME } = process.env;
-    const dbName = !!config.get("dbName")
-    ? <string>config.get("dbName")
-    : MONGO_DB_NAME;
+    const dbName = !!config.get("dbName") ? <string>config.get("dbName") : MONGO_DB_NAME;
 
     mongoose
       .connect(`mongodb+srv://@cluster0.sfyfo.mongodb.net/`, {
@@ -43,8 +40,8 @@ export default class App {
         useUnifiedTopology: true,
         useCreateIndex: true,
       })
-      .then(() => console.log(`Connected to MongoDB`))
-      .catch((err: { message: any }) => console.log(err.message))
+      .then(() => console.log(`Connected to MongoDB ${dbName}`))
+      .catch((err: { message: any }) => console.log(err.message));
   }
 
   public listen() {
@@ -53,3 +50,5 @@ export default class App {
     });
   }
 }
+
+
