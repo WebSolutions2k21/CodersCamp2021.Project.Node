@@ -2,7 +2,7 @@
 Trzeci projekt. Tworzenie bazy danych 
 
 ## Praca z projektem
-
+https://ws-server-2022.herokuapp.com/
 ### Branch Name
 
 Używamy kebab-case do nazywania branchy
