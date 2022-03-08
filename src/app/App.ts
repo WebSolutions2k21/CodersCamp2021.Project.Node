@@ -5,8 +5,8 @@ const mongoose = require("mongoose");
 import Controller from "../../interfaces/controller.interface";
 
 export default class App {
-  public app: Application;
-  private port = process.env.PORT || 5000;
+  public app: Application
+  private port = process.env.PORT || 5000
 
   constructor(controllers: Controller[]) {
     this.app = express();
@@ -39,6 +39,7 @@ export default class App {
         useNewUrlParser: true,
         useUnifiedTopology: true,
         useCreateIndex: true,
+        useFindAndModify:true,
       })
       .then(() => console.log(`Connected to MongoDB ${dbName}`))
       .catch((err: { message: any }) => console.log(err.message));
