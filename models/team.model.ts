@@ -12,34 +12,34 @@ const teamSchema = new Schema<Team>({
 		maxlength: 50,
 		minlength: 2,
 	},
-    usersIds: [
-        {
-            id: {
-              type: mongoose.Schema.Types.ObjectId,
-            }
-        }
-    ],
-    mentorId: {
+  usersIds: [
+    {
+      id: {
         type: mongoose.Schema.Types.ObjectId,
-        required: true,
-    },
-    programmingLanguage: [
-        {
-          id: {
-            type: mongoose.Schema.Types.ObjectId,
-          },
-          nameLang: {
-            type: String,
-          },
-          level: {
-            type: String,
-          },
-        },
-    ],
-    status: {
+        }
+      }
+  ],
+  mentorId: {
+      type: mongoose.Schema.Types.ObjectId,
+      required: true,
+  },
+  programmingLanguage: [
+    {
+      id: {
+        type: mongoose.Schema.Types.ObjectId,
+      },
+      nameLang: {
         type: String,
-        required: true,
-    }
+      },
+      level: {
+        type: String,
+        },
+      },
+    ],
+  status: {
+    type: String,
+    required: true,
+  }
 });
 
 teamSchema.methods.generateAuthToken = function () {
