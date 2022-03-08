@@ -1,5 +1,6 @@
 import { Response, Request } from "express";
 import { StatusCodes } from "http-status-codes";
+import _ from "lodash";
 
 import userModel from "../../models/user.model";
 import validateEditProfile from "./validateEditProfile";
@@ -26,7 +27,9 @@ const editProfile = async (req: Request, res: Response) => {
     },
     { new: true },
   );
-  return res.status(StatusCodes.OK).send(userProf);
+  res
+    .status(StatusCodes.OK)
+    .send(_.pick(userProf, ["_id", "username", "email", "lastname", "firstname", "programmingLanguage"]));
 };
 
 export default editProfile;

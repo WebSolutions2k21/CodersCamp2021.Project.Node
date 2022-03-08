@@ -134,72 +134,64 @@ describe("/users", () => {
       expect(res.status).toBe(400);
     });
 
-    let token: string;
-
     it("should display warning if user is veryfied and try change email", async () => {
-      //TODO waiting for confirmation
-      const user = await createUser();
-      const token = user.generateAuthToken();
-
-      const exec = async () => {
-        console.log("token w exec", token);
-        return await request(server).get("/users/confirmation/" + token);
-      };
-
-      console.log("#########res", user.isVerified);
-      const userUdated = {
-        lastname: "test",
-        email: "sometest_3@gmail.com",
-      };
-      const reqConfirm = await exec();
-      // expect(reqConfirm.status).toBe(200);
-      console.log("#########res after confirm", user.isVerified);
-      //   const res = await request(server)
-      //  .patch("/users/" + user.id)
-      //  .send(userUdated);
-      //   console.log("#########res after confirmation", res.body);
-    });
-  });
-
-  describe("GET role/:id", () => {
-    it("should return user as user", async () => {
-      const user = await createUser();
-      const id = user._id;
-
-      const res = await request(server).get("/users/role/" + id);
-
-      expect(res.status).toBe(200);
-      console.log("res", res.body);
-      expect(res.body).toBe(false);
+      //   //TODO waiting for confirmation
+      //   const user = await createUser();
+      //   const token = user.generateAuthToken();
+      //   // const exec = async () => {
+      //   //   console.log("token w exec", token);
+      //   //   return await request(server).get("/users/confirmation/" + token);
+      //   // };
+      //   console.log("#########res", user.isVerified);
+      //   const reqConfirm = await request(server).get("/users/confirmation/" + token).send();
+      //   // expect(reqConfirm.status).toBe(200);
+      //   console.log("#########res after confirm", user.isVerified);
+      //   //   const res = await request(server)
+      //   //  .patch("/users/" + user.id)
+      //   //  .send(userUdated);
+      //   //   console.log("#########res after confirmation", res.body);
+      // });
     });
 
-    it("should return user as mentor", async () => {
-      const user = await createUser();
-      const id = user._id;
-      const updatedBody = {
-        username: "test editt",
-        email: "updateEmail33@test.com",
-        isMentor: true,
-      };
+    describe("GET role/:id", () => {
+      it("should return user as user", async () => {
+        const user = await createUser();
+        const id = user._id;
 
-      await request(server)
-        .patch("/users/" + id)
-        .send(updatedBody);
+        const res = await request(server).get("/users/role/" + id);
 
-      const res = await request(server).get("/users/role/" + id);
+        expect(res.status).toBe(200);
+        expect(res.body).toBe(false);
+      });
 
-      expect(res.body).toEqual(true);
-    });
+      it("should return user as mentor", async () => {
+        const user = await createUser();
+        const id = user._id;
+        const updatedBody = {
+          username: "test editt",
+          email: "updateEmail33@test.com",
+          isMentor: true,
+        };
 
-    it("should return a error if user does not exist", async () => {
-      const user = {
-        _id: "6220f62b09ad6213d719a4b9",
-        __v: 0,
-      };
+        await request(server)
+          .patch("/users/" + id)
+          .send(updatedBody);
 
-      const res = await request(server).get("/users/role/" + user._id);
+        const res = await request(server).get("/users/role/" + id);
 
-      expect(res.status).toBe(404);
+        expect(res.body).toEqual(true);
+      });
+
+      it("should return a error if user does not exist", async () => {
+        const user = {
+          _id: "6220f62b09ad6213d719a4b9",
+          __v: 0,
+        };
+
+        const res = await request(server).get("/users/role/" + user._id);
+
+        expect(res.status).toBe(404);
+      });
     });
   });
 });

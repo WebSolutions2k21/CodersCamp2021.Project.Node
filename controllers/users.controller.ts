@@ -27,7 +27,7 @@ export default class UserController {
     this.router.get(`${this.path}/confirmation/:token`, this.confirmation);
     this.router.post(`${this.path}/email`, this.sendEmailToUser);
     this.router.put(`${this.path}/changepassword`, auth, this.changePassword);
-    this.router.put(`${this.path}/:id`, this.editProfile);
+    this.router.patch(`${this.path}/:id`, this.editProfile);
     this.router.delete(`${this.path}/:id`, this.deleteUser);
     this.router.get(`${this.path}/role/:id`, this.isMentor)
   }
