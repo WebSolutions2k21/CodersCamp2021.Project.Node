@@ -5,6 +5,6 @@ module.exports = {
     "^.+\\.(ts|tsx)$": "ts-jest",
   },
   testEnvironment: "node",
-  setTimeout: 3000,
-  // testPathIgnorePatterns: ["project"],
+  testTimeout: 30000,
+    // testPathIgnorePatterns: ["project"],
 };
