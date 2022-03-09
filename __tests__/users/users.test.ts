@@ -1,9 +1,21 @@
 import { Server } from "http";
 import request from "supertest";
+import mongoose from "mongoose";
 
 import userModel from "../../models/user.model";
+import User from "../../interfaces/user.interface";
 
 let server: Server;
+
+async function testUser() {
+  const user = new userModel({
+    username: "test",
+    email: "test@test.com",
+    password: "12345678",
+  });
+  await user.save();
+  return user;
+}
 
 const createUser = async () => {
   const user = new userModel({
@@ -25,6 +37,102 @@ describe("/users", () => {
   afterEach(async () => {
     await userModel.deleteMany({});
     await server.close();
+  });
+
+  describe("POST /register", () => {
+    let body: Body | {} = {};
+    const exec = async () => {
+      return await request(server).post("/users/register").send(body);
+    };
+
+    beforeEach(() => {
+      body = {
+        username: "test",
+        email: "test@test.com",
+        password: "12345678",
+        confirmPassword: "12345678",
+      };
+    });
+
+    it("should return 400 if user already registered", async () => {
+      body = {
+        name: "test",
+        email: "test@test.com",
+        password: "12345678",
+        confirmPassword: "12345678",
+      };
+      await exec();
+      let res = await exec();
+      expect(res.status).toBe(400);
+    });
+
+    it("should return 400 if password are not matching", async () => {
+      body = {
+        username: "test",
+        email: "test@test.com",
+        password: "12345678",
+        confirmPassword: "123456789",
+      };
+      let res = await exec();
+      expect(res.status).toBe(400);
+    });
+
+    it("should save the user if it is valid", async () => {
+      await exec();
+      const user = await userModel.find({ username: "test" });
+      expect(user).not.toBeNull();
+    });
+  });
+
+  describe("POST /email", () => {
+    let token: string;
+    let body: { email: string; token: string } | {} = {};
+
+    const exec = async () => {
+      return await request(server).post("/users/email").set("x-auth-token", token).send(body);
+    };
+
+    beforeEach(() => {
+      token = new userModel().generateAuthToken();
+      body = {
+        email: "test@test.com",
+        token: token,
+      };
+    });
+
+    it("should return 400 if email is less than 5 characters", async () => {
+      body = {
+        email: "t@t.",
+        token: token,
+      };
+      const res = await exec();
+      expect(res.status).toBe(400);
+    });
+  });
+
+  describe("GET /confirmation/:token", () => {
+    let token: string;
+    let user: User & mongoose.Document<any>;
+    const exec = async () => {
+      return await request(server).get("/users/confirmation/" + token);
+    };
+
+    beforeEach(async () => {
+      user = await testUser();
+      token = user.generateAuthToken();
+    });
+
+    it("should return 400 if user not found", async () => {
+      token = new userModel().generateAuthToken();
+      const res = await exec();
+      expect(res.status).toBe(404);
+    });
+
+    it("should return 400 if invalid token is passed", async () => {
+      token = "400";
+      const res = await exec();
+      expect(res.status).toBe(400);
+    });
   });
 
   describe("GET /:id", () => {
