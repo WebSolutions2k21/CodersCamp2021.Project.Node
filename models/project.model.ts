@@ -18,12 +18,24 @@ const projectSchema = new mongoose.Schema<Project>({
     required: true,
   },
 
+  teamId: {
+    type: mongoose.Schema.Types.ObjectId,
+    required: true,
+  },
+
   content: {
     type: String,
     required: true,
     minlength: 3,
     maxLength: 255,
     default: null,
+  },
+
+  status: {
+    type: String,
+    required: true,
+    minlength: 3,
+    maxLength: 12,
   },
 });
 

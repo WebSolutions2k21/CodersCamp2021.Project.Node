@@ -2,9 +2,11 @@ import mongoose from "mongoose";
 
 interface Project extends mongoose.Document {
   name: string;
-  userId: number;
-  mentorId?: number;
+  userId: string;
+  mentorId?: string;
+  teamId?: string;
   content: string;
+  status: string;
 }
 
 export default Project;

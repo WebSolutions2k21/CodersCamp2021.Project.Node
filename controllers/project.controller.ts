@@ -13,24 +13,24 @@ export default class ProjectController {
 
   initializeRoutes() {
     this.router.get(this.path, this.getAll);
+    this.router.get(`${this.path}/:id`, this.get);
     this.router.post(`${this.path}/create`, this.create);
     this.router.put(`${this.path}/:id`, this.edit);
+    this.router.delete(`${this.path}/:id`, this.delete);
   }
 
   async create(req: Request, res: Response) {
-    console.log("create", req.body);
-
     let project = await projectModel.findOne({ name: req.body.name });
     if (project) {
       return res.status(400).send("Project already exists");
     } else {
-      console.log("creating");
       project = new projectModel({
         name: req.body.name,
         userId: mongoose.Types.ObjectId(req.body.userId),
         mentorId: mongoose.Types.ObjectId(req.body.mentorId),
-        // mentorId: req.body.mentorId,
+        teamId: mongoose.Types.ObjectId(req.body.teamId),
         content: req.body.content,
+        status: req.body.content,
       });
 
       await project.save();
@@ -39,11 +39,8 @@ export default class ProjectController {
   }
 
   async edit(req: Request, res: Response) {
-    console.log("edit", req.body);
-
     let project = await projectModel.findById(req.params.id);
-    if (!project)
-      return res.status(StatusCodes.NOT_FOUND).send("Project not found");
+    if (!project) return res.status(StatusCodes.NOT_FOUND).send("Project not found");
 
     project = await projectModel.findByIdAndUpdate(req.params.id, {
       ...req.body,
@@ -52,10 +49,25 @@ export default class ProjectController {
     return res.status(StatusCodes.OK).send(project);
   }
 
-  async getAll(req: Request, res: Response) {
-    console.log("getAll", req.body);
+  async get(req: Request, res: Response) {
+    const project = await projectModel.findById(req.params.id);
+    if (project === null) {
+      res.status(404).send();
+      return;
+    }
 
+    res.status(StatusCodes.OK).send(project);
+  }
+
+  async getAll(req: Request, res: Response) {
     const projects = await projectModel.find().select("-_id");
     res.status(StatusCodes.OK).send(projects);
+  }
+
+  async delete(req: Request, res: Response) {
+    const project = await projectModel.findByIdAndDelete(req.params.id);
+    if (!project) return res.status(StatusCodes.NOT_FOUND).send("Project not found");
+
+    return res.status(StatusCodes.OK).send(`Project with id: ${req.params.id} has been deleted`);
   }
 }
