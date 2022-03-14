@@ -30,7 +30,7 @@ Zespół pracował w ramach kursu CodersCamp. Aplikację wykonali uczestnicy kur
 
 ## Cel projektu
 
-Celem projektu było stworzenie własnego API, z którego będziemy korzystać w kolejnych modułach kursu. Za pomocą bazy danych możemy stworzyć użytkownika, zalogować się, edytować swoje hasło, tworzyć i usówać projekty, a także dodawać opinie.
+Celem projektu było stworzenie własnego API, z którego będziemy korzystać w kolejnych modułach kursu. Za pomocą bazy danych możemy stworzyć użytkownika, zalogować się, edytować swoje hasło, tworzyć i usuwać projekty, a także dodawać opinie.
 
 Aplikacja została wykonana według wymagań dostarczonych przez organizatorów CodersCamp.
 
