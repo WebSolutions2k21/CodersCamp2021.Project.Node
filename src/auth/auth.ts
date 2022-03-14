@@ -22,7 +22,7 @@ export default async function authUser(req: Request, res: Response) {
     return res.status(400).send("Invalid email or password.");
   }
 
-  if (user.isVerified) return res.status(400).send("You must first confirm the registration.");
+  if (!user.isVerified) return res.status(400).send("You must first confirm the registration.");
 
   const id = user._id;
   const token = user.generateAuthToken();
