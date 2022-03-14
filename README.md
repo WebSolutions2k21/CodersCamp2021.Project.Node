@@ -26,7 +26,7 @@ Zespół pracował w ramach kursu CodersCamp. Aplikację wykonali uczestnicy kur
 
 [Diagram ERD](https://www.figma.com/file/rKjruMuYjpcQelDVIyJRZy/Projekt-3?node-id=0%3A1)
 
-### [WEJDŹ NA STRONĘ](https://puppylog.netlify.app/) TODO do zmiany na link heroku!
+### [WEJDŹ NA STRONĘ](https://ws-server-2022.herokuapp.com/)
 
 ## Cel projektu
 
@@ -67,7 +67,7 @@ MONGO_DB_NAME = <your db name>
 ADDRESSPORT=localhost:5000 <= Tego nie ruszaj!
 EMAIL=<your email>
 PASSWORD=<your email's password>
-PASSWORDYAHOO=isylsovwwvqggluw TODO = Co tu wpisać?
+PASSWORDYAHOO=<your password to email>
 JWT_PRIVATE_KEY = <some random password>
 NODE_ENV=production <= Tego nie ruszaj!
 
