@@ -11,7 +11,7 @@ export default async function changePassword(req: Request, res: Response) {
   }
 
   let user = await userModel.findById(req.userInfo._id);
-  if (!user) return res.status(400).send("User not found");
+  if (!user) return res.status(404).send("User not found");
 
   if (req.body.newPassword !== req.body.confirmNewPassword)
     return res.status(400).send("New password and confirm password must be the same.");
