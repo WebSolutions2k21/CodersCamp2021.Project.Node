@@ -1,9 +1,8 @@
 import { Server } from "http";
 import userModel from "../../models/user.model";
 import request from "supertest";
-import User from "../../interfaces/user.interface";
-import mongoose from "mongoose";
-import sendEmailNewPassword from "../../src/users/sendEmailNewPassword";
+
+import emailNewPassword from "../../src/utils/emailNewPassword";
 
 let server: Server;
 
@@ -18,24 +17,34 @@ describe("/resetpassword", () => {
 
   describe(" PUT /resetpassword", () => {
     let token: string;
-    let email: string;
+    let body: { email: string; token: string } | {} = {};
 
     const exec = async () => {
-      return await request(server).put("/users/resetpassword").set("x-auth-token", token).send({ email: email });
+      return await request(server).post("/users/resetpassword").set("x-auth-token", token).send(body);
     };
 
-    beforeEach(async () => {
-      email = "user1@mail.com";
+    beforeEach(() => {
+      token = new userModel().generateAuthToken();
+      body = {
+        email: "test@mail.com",
+        token: token,
+      };
     });
 
     it("should send email", async () => {
       const email = "user1@mail.com";
       const token = new userModel().generateAuthToken();
 
-      const res = await sendEmailNewPassword(email, token);
+      const res = await emailNewPassword(email, token);
       expect(res).not.toBeNull();
       expect(res).not.toBeUndefined();
       expect(res).toBe("Mail has been sent!");
+    });
+
+    it("should send the email if it is valid", async () => {
+      const res = await exec();
+
+      expect(res.status).toBe(200);
     });
   });
 });
