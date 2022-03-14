@@ -46,11 +46,16 @@ Aplikacja została wykonana według wymagań dostarczonych przez organizatorów 
 3. Express.js
 4. Jest
 5. MongoDB
+6. Joi
+7. Nodemailer
+8. Mongoose
+9. SuperTest
 
 ## Narzędzia pomocnicze
 
 - Visual Studio Code
 - Yarn
+- Nodemon
 - Figma
 - Trello
 
