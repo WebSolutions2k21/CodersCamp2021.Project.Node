@@ -22,7 +22,7 @@ export default class ProjectController {
   async create(req: Request, res: Response) {
     let project = await projectModel.findOne({ name: req.body.name });
     if (project) {
-      return res.status(400).send("Project already exists");
+      return res.status(StatusCodes.BAD_REQUEST).send("Project already exists");
     } else {
       project = new projectModel({
         name: req.body.name,
