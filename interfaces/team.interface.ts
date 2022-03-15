@@ -2,12 +2,11 @@ import mongoose from 'mongoose';
 import ProgrammingLanguage from "./programmingLanguage.interface";
 
 interface Team extends mongoose.Document {
-    teamname: any;
-    name: string;
+    teamName: any;
     usersIds: [];
     mentorId: string;
     programmingLanguage: ProgrammingLanguage[];
-    status: string;
+    status: boolean;
 }
 
 export default Team

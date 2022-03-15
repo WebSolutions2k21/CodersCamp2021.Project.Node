@@ -1,12 +1,9 @@
 import mongoose from "mongoose";
-import jwt from "jsonwebtoken";
-import config from "config";
-
 import Team from "../interfaces/team.interface";
 
 const Schema = mongoose.Schema;
 const teamSchema = new Schema<Team>({
-	teamname: {
+	teamName: {
 		type: String,
 		required: true,
 		maxlength: 50,
@@ -41,14 +38,6 @@ const teamSchema = new Schema<Team>({
     required: true,
   }
 });
-
-teamSchema.methods.generateAuthToken = function () {
-	const token = jwt.sign(
-		{ _id: this._id, teamname: this.teamname },
-		config.get("jwtPrivateKey")
-	);
-	return token;
-};
 
 const teamModel = mongoose.model<Team & mongoose.Document>("Team", teamSchema);
 
