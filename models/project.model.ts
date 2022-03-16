@@ -15,7 +15,7 @@ const projectSchema = new mongoose.Schema<Project>({
 
   mentorId: {
     type: mongoose.Schema.Types.ObjectId,
-    required: true,
+    required: false,
   },
 
   teamId: {

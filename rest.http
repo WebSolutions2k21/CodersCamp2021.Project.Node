@@ -88,7 +88,33 @@ Content-Type: application/json
 # ____________________________ TEAM ____________________________
 
 ###
-# ____________________________ PROJECT ____________________________
+# ____________________________ PROJECT____________________________
+
+POST http://localhost:5000/project/create
+Content-Type: application/json
+
+{
+	"name": "apka1",
+	"userId": "622b9441f2950d6fe0a2b40c",
+    "mentorId": "622f91e5e0d35f0c08e80e78",
+	"content": "Tajna apka 5"
+}
+###
+PUT http://localhost:5000/project/621d56f22babbb717cfe0e46
+Content-Type: application/json
+
+{
+	"name": "testowy projekt (edited)",
+	"userId": "4edd40c86762e0fb12000003",
+	"mentorId": "fcee56c86762e0fb12000112",
+	"content": "Tajna apka hahahaHAHA"
+}
+###
+GET http://localhost:5000/project/
+
+###
+DELETE http://localhost:5000/project/622b96d05564155028570b45
+
 
 ###
 # ____________________________TEAM PROJECT ____________________________
