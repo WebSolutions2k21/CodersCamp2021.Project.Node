@@ -3,7 +3,6 @@ import { StatusCodes } from 'http-status-codes'
 import jwt from 'jsonwebtoken'
 import mongoose from 'mongoose'
 import config from 'config'
-import 'dotenv/config'
 
 import userModel from '../../models/user.model'
 import User from '../../interfaces/user.interface'

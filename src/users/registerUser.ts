@@ -1,20 +1,19 @@
 import bcrypt from "bcrypt";
 import { Response, Request } from "express";
 import { StatusCodes } from "http-status-codes";
-import "dotenv/config";
 
-import validate from "../auth/validateAuth";
+import validate from "./validateUser";
 import userModel from "../../models/user.model";
 import sendEmail from "../utils/email";
 
 const registerUser = async (req: Request, res: Response) => {
   const { error } = validate(req.body);
   if (error) {
-    return res.status(400).send(error.details[0].message);
+    return res.status(StatusCodes.BAD_REQUEST).send(error.details[0].message);
   }
   let user = await userModel.findOne({ email: req.body.email });
   if (user) {
-    return res.status(400).send("That user already exisits!");
+    return res.status(StatusCodes.BAD_REQUEST).send("That user already exisits!");
   } else {
     user = new userModel({
       username: req.body.username,
