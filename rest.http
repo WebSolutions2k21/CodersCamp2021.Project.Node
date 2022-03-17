@@ -94,9 +94,9 @@ POST http://localhost:5000/project/create
 Content-Type: application/json
 
 {
-	"name": "apka1",
+	"name": "apka4",
 	"userId": "622b9441f2950d6fe0a2b40c",
-    "mentorId": "622f91e5e0d35f0c08e80e78",
+    
 	"content": "Tajna apka 5"
 }
 ###

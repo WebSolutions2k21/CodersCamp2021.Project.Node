@@ -32,8 +32,8 @@ export default class ProjectController {
       project = new projectModel({
         name: req.body.name,
         userId: mongoose.Types.ObjectId(req.body.userId),
-        mentorId: mongoose.Types.ObjectId(req.body.mentorId),
-        teamId: mongoose.Types.ObjectId(req.body.teamId),
+        mentorId: req.body.mentorId && mongoose.Types.ObjectId(req.body.mentorId),
+        teamId: req.body.teamId && mongoose.Types.ObjectId(req.body.teamId),
         content: req.body.content,
         status: req.body.content,
       });

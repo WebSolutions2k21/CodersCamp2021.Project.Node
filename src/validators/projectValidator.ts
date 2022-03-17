@@ -12,7 +12,7 @@ export default function validateProject(project: Project) {
     name: Joi.string().min(2).max(300),
     userId: Joi.string().min(5),
     mentorId: Joi.optional(),
-    teamId: Joi.string().min(5),
+    teamId: Joi.optional(),
     content: Joi.string().min(2).max(300),
     status: Joi.boolean(),
   });
