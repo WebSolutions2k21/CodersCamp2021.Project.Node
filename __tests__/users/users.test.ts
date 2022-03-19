@@ -56,13 +56,13 @@ describe("/users", () => {
 
     it("should return 400 if user already registered", async () => {
       body = {
-        name: "test",
+        username: "test",
         email: "test@test.com",
         password: "12345678",
-        confirmPassword: "12345678",
       };
       await exec();
       let res = await exec();
+      expect(res.text).toBe('That user already exisits!')
       expect(res.status).toBe(400);
     });
 

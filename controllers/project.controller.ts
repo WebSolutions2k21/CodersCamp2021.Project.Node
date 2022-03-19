@@ -3,6 +3,7 @@ import { StatusCodes } from "http-status-codes";
 import projectModel from "../models/project.model";
 import mongoose from "mongoose";
 
+import validateProject from "../src/validators/projectValidator";
 export default class ProjectController {
   public path = "/project";
   public router = express.Router();
@@ -20,9 +21,13 @@ export default class ProjectController {
   }
 
   async create(req: Request, res: Response) {
+    const { error } = validateProject(req.body);
+    if (error) return res.status(400).send(error.details[0].message);
+
     let project = await projectModel.findOne({ name: req.body.name });
+
     if (project) {
-      return res.status(400).send("Project already exists");
+      return res.status(StatusCodes.BAD_REQUEST).send("Project already exists");
     } else {
       project = new projectModel({
         name: req.body.name,
