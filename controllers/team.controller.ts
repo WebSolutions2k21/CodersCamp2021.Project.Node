@@ -32,9 +32,9 @@ export default class TeamController {
     } else {
       team = new teamModel({
         teamName: req.body.teamName,
-        // usersIds: mongoose.Types.ObjectId(req.body.usersIds),
-        mentorId: mongoose.Types.ObjectId(req.body.mentorId),
-        // programmingLanguage: mongoose.Types.ObjectId(req.body.programmingLanguage),
+        usersIds: req.body.usersIds,
+        mentorId: new Array(req.body.mentorId),
+        programmingLanguage: mongoose.Types.ObjectId(req.body.programmingLanguage),
         status: req.body.status
       });
 
