@@ -7,8 +7,8 @@ POST http://localhost:5000/login
 Content-Type: application/json
 
 {
-    "email": "ania@test.com",
-    "password": "12345678"
+    "email": "zioqzpqrrzzahktysg@bvhrk.com",
+    "password": "123456789"
 
 }
 
@@ -20,10 +20,10 @@ POST http://localhost:5000/users/register HTTP/1.1
 Content-Type: application/json
 
 {
-    "username": "test",
-    "firstname":"test firstname",
+    "username": "Ania",
+    "firstname":"Fake mail",
     "lastname":"test last name",
-    "email": "marta.anna.probierz@gmail.com",
+    "email": "skizzkfpmmojheobwc@nthrw.com",
     "password": "12345678"
 }
 ###
@@ -45,7 +45,25 @@ Content-Type: application/json
     "newPassword": "12345678",
     "confirmNewPassword": "12345678"
 }
+###
+# send email newPassword
+POST http://localhost:5000/users/resetpassword HTTP/1.1
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjI1MTU4OTIxODY2MTE4NTBkZDc2ZDMiLCJ1c2VybmFtZSI6IkFuaWEiLCJpYXQiOjE2NDY1OTc1Mzl9.yw4gpU7qJHsjQDS0DFqahfn_sb4u9xKEZYH3OGuxmfU
+Content-Type: application/json
 
+{
+    "email": "zioqzpqrrzzahktysg@bvhrk.com"
+}
+###
+# new password
+PUT http://localhost:5000/users/newpassword HTTP/1.1
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjI1MTU4OTIxODY2MTE4NTBkZDc2ZDMiLCJ1c2VybmFtZSI6IkFuaWEiLCJpYXQiOjE2NDY1OTc1Mzl9.yw4gpU7qJHsjQDS0DFqahfn_sb4u9xKEZYH3OGuxmfU
+Content-Type: application/json
+
+{
+    "newPassword": "123456789",
+    "confirmNewPassword": "123456789"
+}
 
 ###
 # get only one user
@@ -70,7 +88,33 @@ Content-Type: application/json
 # ____________________________ TEAM ____________________________
 
 ###
-# ____________________________ PROJECT ____________________________
+# ____________________________ PROJECT____________________________
+
+POST http://localhost:5000/project/create
+Content-Type: application/json
+
+{
+	"name": "apka1",
+	"userId": "622b9441f2950d6fe0a2b40c",
+    "mentorId": "622f91e5e0d35f0c08e80e78",
+	"content": "Tajna apka 5"
+}
+###
+PUT http://localhost:5000/project/621d56f22babbb717cfe0e46
+Content-Type: application/json
+
+{
+	"name": "testowy projekt (edited)",
+	"userId": "4edd40c86762e0fb12000003",
+	"mentorId": "fcee56c86762e0fb12000112",
+	"content": "Tajna apka hahahaHAHA"
+}
+###
+GET http://localhost:5000/project/
+
+###
+DELETE http://localhost:5000/project/622b96d05564155028570b45
+
 
 ###
 # ____________________________TEAM PROJECT ____________________________

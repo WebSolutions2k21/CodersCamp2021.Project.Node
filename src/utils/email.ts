@@ -1,25 +1,24 @@
 import nodemailer from "nodemailer";
-import "dotenv/config";
 
 export default async function sendEmail(email: string, url: string) {
-	const transporter = nodemailer.createTransport({
-		host: "smtp.mail.yahoo.com",
-		port: 465,
-		service: "yahoo",
-		secure: false,
-		auth: {
-			user: process.env.EMAIL,
-			pass: process.env.PASSWORDYAHOO,
-		},
-		debug: false,
-		logger: true,
-	});
+  const transporter = nodemailer.createTransport({
+    host: "smtp.mail.yahoo.com",
+    port: 465,
+    service: "yahoo",
+    secure: false,
+    auth: {
+      user: process.env.EMAIL,
+      pass: process.env.PASSWORDYAHOO,
+    },
+    debug: false,
+    logger: true,
+  });
 
-	const mailOptions = {
-		from: process.env.EMAIL,
-		to: email,
-		subject: "Confirm Email",
-		html: `
+  const mailOptions = {
+    from: process.env.EMAIL,
+    to: email,
+    subject: "Confirm Email",
+    html: `
 		<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
 			<tbody>
 				<tr>
@@ -189,12 +188,12 @@ export default async function sendEmail(email: string, url: string) {
 				</tr>
 			</tbody>
 		</table>`,
-	};
+  };
 
-	try {
-		await transporter.sendMail(mailOptions);
-		return "Mail has been sent!";
-	} catch {
-		return "Something is wrong!";
-	}
+  try {
+    await transporter.sendMail(mailOptions);
+    return "Mail has been sent!";
+  } catch {
+    return "Something is wrong!";
+  }
 }

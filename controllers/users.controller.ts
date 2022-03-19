@@ -11,7 +11,8 @@ import confirmation from "../src/users/confirmation";
 import deleteUser from "../src/users/deleteUser";
 import isMentor from "../src/users/isMentor";
 import changePassword from "../src/users/changePassword";
-
+import sendEmailNewPassword from "../src/users/sendEmailNewPassword";
+import newPassword from "../src/users/newPassword";
 export default class UserController {
   public path = "/users";
   public router = express.Router();
@@ -26,8 +27,10 @@ export default class UserController {
     this.router.get(`${this.path}/:id`, this.getUser);
     this.router.get(`${this.path}/confirmation/:token`, this.confirmation);
     this.router.post(`${this.path}/email`, this.sendEmailToUser);
+    this.router.post(`${this.path}/resetpassword`, auth, this.sendEmailNewPassword);
     this.router.put(`${this.path}/changepassword`, auth, this.changePassword);
-    this.router.patch(`${this.path}/:id`, this.editProfile);
+    this.router.put(`${this.path}/newpassword`, auth, this.newPassword);
+    this.router.put(`${this.path}/:id`, this.editProfile);
     this.router.delete(`${this.path}/:id`, this.deleteUser);
     this.router.get(`${this.path}/role/:id`, this.isMentor);
   }
@@ -64,6 +67,16 @@ export default class UserController {
     deleteUser(req, res);
   }
 
+<<<<<<< HEAD
+=======
+  sendEmailNewPassword(req: Request, res: Response) {
+    sendEmailNewPassword(req, res);
+  }
+
+  newPassword(req: Request, res: Response) {
+    newPassword(req, res);
+  }
+>>>>>>> 44e50d95ad5b128eac0b5831f61c7d370d8f6e89
   isMentor(req: Request, res: Response) {
     isMentor(req, res);
   }
