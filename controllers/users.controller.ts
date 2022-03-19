@@ -29,7 +29,7 @@ export default class UserController {
     this.router.put(`${this.path}/changepassword`, auth, this.changePassword);
     this.router.patch(`${this.path}/:id`, this.editProfile);
     this.router.delete(`${this.path}/:id`, this.deleteUser);
-    this.router.get(`${this.path}/role/:id`, this.isMentor)
+    this.router.get(`${this.path}/role/:id`, this.isMentor);
   }
 
   editProfile(req: Request, res: Response) {
@@ -64,7 +64,7 @@ export default class UserController {
     deleteUser(req, res);
   }
 
-  isMentor(req: Request, res: Response){
+  isMentor(req: Request, res: Response) {
     isMentor(req, res);
   }
 }

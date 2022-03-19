@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 import Opinion from "../interfaces/opinion.interface";
 
-const userSchema = new mongoose.Schema<Opinion>({
+const opinionSchema = new mongoose.Schema<Opinion>({
   content: {
     type: String,
     required: true,
@@ -27,6 +27,6 @@ const userSchema = new mongoose.Schema<Opinion>({
   },
 });
 
-const opinionModel = mongoose.model<Opinion & mongoose.Document>("Opinion", userSchema);
+const opinionModel = mongoose.model<Opinion & mongoose.Document>("Opinion", opinionSchema);
 
 export default opinionModel;
