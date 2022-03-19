@@ -89,30 +89,33 @@ Content-Type: application/json
 
 ###
 # ____________________________ PROJECT____________________________
-
+# create Project
 POST http://localhost:5000/project/create
 Content-Type: application/json
 
 {
-	"name": "apka4",
-	"userId": "622b9441f2950d6fe0a2b40c",
+	"name": "apka8",
+	"userId": "622b9441f2950d6fe0a2b40e",
     
 	"content": "Tajna apka 5"
 }
 ###
-PUT http://localhost:5000/project/621d56f22babbb717cfe0e46
+# edit Project
+PUT http://localhost:5000/project/6235f9b909fe6e1c88fde621
 Content-Type: application/json
 
 {
-	"name": "testowy projekt (edited)",
+	"name": "as",
 	"userId": "4edd40c86762e0fb12000003",
 	"mentorId": "fcee56c86762e0fb12000112",
 	"content": "Tajna apka hahahaHAHA"
 }
 ###
+# get all Project
 GET http://localhost:5000/project/
 
 ###
+# delete Project
 DELETE http://localhost:5000/project/622b96d05564155028570b45
 
 
