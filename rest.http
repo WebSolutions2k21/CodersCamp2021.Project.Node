@@ -82,11 +82,46 @@ Content-Type: application/json
     "firstname": "Edit user",
     "lastname": "Gosia last",
     "email": "test@test.xyz",
-    "isMentor": true,
+    "isMentor": true
 }
 ###
 # ____________________________ TEAM ____________________________
+POST http://localhost:5000/team/create HTTP/1.1
+Content-Type: application/json
 
+{
+    "teamName": "Team4",
+    # "usersIds": ["621d35383e5c3315845ca334", "62239d63a5182b274496ee34"],
+     "mentorId": { "62239d63a5182b274496ee34" },
+    # "programmingLanguage": [
+    #     {
+    #      "nameLang": "javaeeee",
+    #     "level": "jhjh"
+    #     }
+    # ],
+    "status": true
+}
+###
+GET http://localhost:5000/team HTTP/1.1
+###
+GET http://localhost:5000/team/62278e3a7cafabc04f5cbeab HTTP/1.1
+###
+PUT http://localhost:5000/team/62278e3a7cafabc04f5cbeab HTTP/1.1
+Content-Type: application/json
+
+{
+    "teamName": "Ftr",
+    "usersIds": ["621d35383e5c3315845ca334"],
+    "programmingLanguage": [
+        {
+         "nameLang": "javaeeee",
+        "level": "jhjh"
+        }
+    ],
+    "status": true
+}
+###
+DELETE http://localhost:5000/team/62278e3a7cafabc04f5cbeab HTTP/1.1
 ###
 # ____________________________ PROJECT ____________________________
 

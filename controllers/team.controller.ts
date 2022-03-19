@@ -14,22 +14,9 @@ export default class TeamController {
   initializeRoutes() {
     this.router.get(this.path, this.getAll);
     this.router.post(`${this.path}/create`, this.create);
-  }
-
-  async create (req: Request, res: Response){
-      let team = await teamModel.findOne({ name: req.body.teamName });
-    if (team) {
-        return res.status(400).send("Team already exists");
-    } else {
-        team = new teamModel({
-            teamName: req.body.teamName,
-        //   userIds: mongoose.Types.ObjectId(req.body.usersIds),
-            mentorId: mongoose.Types.ObjectId(req.body.mentorId),
-        });
-  
-        await team.save();
-        res.send(team);
-    }
+    this.router.get(`${this.path}/:id`, this.get);
+    this.router.put(`${this.path}/:id`, this.edit);
+    this.router.delete(`${this.path}/:id`, this.delete);
   }
 
   async getAll(req: Request, res: Response) {
@@ -38,4 +25,49 @@ export default class TeamController {
     res.status(StatusCodes.OK).send(teams);
   }
 
+  async create(req: Request, res: Response) {
+    let team = await teamModel.findOne({ teamName: req.body.teamName });
+    if (team) {
+      return res.status(400).send("Team already exists");
+    } else {
+      team = new teamModel({
+        teamName: req.body.teamName,
+        // usersIds: mongoose.Types.ObjectId(req.body.usersIds),
+        mentorId: mongoose.Types.ObjectId(req.body.mentorId),
+        // programmingLanguage: mongoose.Types.ObjectId(req.body.programmingLanguage),
+        status: req.body.status
+      });
+
+      await team.save();
+      res.send(team);
+    }
+  }
+
+  async get(req: Request, res: Response) {
+    const team = await teamModel.findById(req.params.id);
+    if (team === null) {
+      res.status(404).send();
+      return;
+    }
+
+    res.status(StatusCodes.OK).send(team);
+  }
+
+  async edit(req: Request, res: Response) {
+    let team = await teamModel.findById(req.params.id);
+    if (!team) return res.status(StatusCodes.NOT_FOUND).send("Team not found");
+
+    team = await teamModel.findByIdAndUpdate(req.params.id, {
+      ...req.body,
+    });
+
+    return res.status(StatusCodes.OK).send(team);
+  }
+
+  async delete(req: Request, res: Response) {
+    const team = await teamModel.findByIdAndDelete(req.params.id);
+    if (!team) return res.status(StatusCodes.NOT_FOUND).send("Team not found");
+
+    return res.status(StatusCodes.OK).send(`Team with id: ${req.params.id} has been deleted`);
+  }
 }
