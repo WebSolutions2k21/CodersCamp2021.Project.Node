@@ -20,7 +20,7 @@ const projectSchema = new mongoose.Schema<Project>({
 
   teamId: {
     type: mongoose.Schema.Types.ObjectId,
-    required: true,
+    required: false,
   },
 
   content: {

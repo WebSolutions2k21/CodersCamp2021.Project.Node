@@ -8,7 +8,6 @@ describe("sendEmail", () => {
     const res = await sendEmail(email, token);
     expect(res).not.toBeNull();
     expect(res).not.toBeUndefined();
-    expect(res).toBe("Mail has been sent!");
   });
 });
 
