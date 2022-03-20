@@ -5,7 +5,7 @@ export default function validateOpinion(req: string) {
     content: Joi.string().min(2).max(500).required(),
     userId: Joi.string().required(),
     mentorId: Joi.string().required(),
-    stars: Joi.number().min(1).max(5)
+    stars: Joi.number().greater(1).less(5)
   });
 
   return schema.validate(req);

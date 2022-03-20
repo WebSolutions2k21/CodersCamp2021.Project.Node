@@ -18,6 +18,7 @@ export default class OpinionController {
     this.router.get(`${this.path}/:id`, this.getOpinion);
     this.router.post(`${this.path}/create`, this.createOpinion);
     this.router.put(`${this.path}/:id`, this.editOpinion);
+    this.router.put(`${this.path}/**edit**/:id`, this.editOpinion);
     this.router.delete(`${this.path}/:id`, this.deleteOpinion);
   }
 

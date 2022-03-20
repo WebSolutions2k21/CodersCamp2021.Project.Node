@@ -129,10 +129,11 @@ POST http://localhost:5000/opinion/create
 Content-Type: application/json
 
 {
-    "name": "opinia testowa 123",
+    "opinionId":"12345",
     "userId": "4edd40c86762e0fb12000003",
     "mentorId": "fcee56c86762e0fb12000112",
-    "content": "Opinia pięciogwiadkowa"
+    "content": "Opinia pięciogwiadkowa",
+    "stars": "4"
 }
 ###
 # edit opinion
@@ -140,9 +141,9 @@ PUT http://localhost:5000/opinion/edit
 Content-Type: application/json
 
 {
-    "name": "opinia testowa 123",
-    "userId": "4edd40c86762e0fb12000004",
-    "mentorId": "fcee56c86762e0fb12000112",
+    //"name": "opinia testowa 123",
+    //"userId": "4edd40c86762e0fb12000004",
+    //"mentorId": "fcee56c86762e0fb12000112",
     "content": "Opinia czterogwiadkowa"
 }
 ###

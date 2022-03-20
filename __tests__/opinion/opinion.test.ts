@@ -65,7 +65,7 @@ describe("/opinion", () => {
       const res = await request(server).get("/opinion/" + opinion._id);
 
       expect(res.status).toBe(200);
-      expect(res.body.name).toEqual(opinion.name);
+      expect(res.body.stars).toEqual(opinion.stars);
       expect(res.body.userId).toBe(opinion.userId.toString());
       expect(res.body.mentorId).toBe(opinion.mentorId?.toString());
       expect(res.body.content).toBe(opinion.content);

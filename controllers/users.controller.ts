@@ -67,8 +67,6 @@ export default class UserController {
     deleteUser(req, res);
   }
 
-<<<<<<< HEAD
-=======
   sendEmailNewPassword(req: Request, res: Response) {
     sendEmailNewPassword(req, res);
   }
@@ -76,7 +74,6 @@ export default class UserController {
   newPassword(req: Request, res: Response) {
     newPassword(req, res);
   }
->>>>>>> 44e50d95ad5b128eac0b5831f61c7d370d8f6e89
   isMentor(req: Request, res: Response) {
     isMentor(req, res);
   }

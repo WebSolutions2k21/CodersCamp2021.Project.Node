@@ -1,6 +1,6 @@
 import { Response, Request } from "express";
 import { StatusCodes } from "http-status-codes";
-import _ from "lodash";
+// import _ from "lodash";  lodash najpewniej zbędny tu i może jeszce w innych plikach
 
 import opinionModel from "../../models/opinion.model";
 
