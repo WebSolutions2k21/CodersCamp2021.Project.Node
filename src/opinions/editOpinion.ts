@@ -5,18 +5,9 @@ import _ from "lodash";
 import opinionModel from "../../models/opinion.model";
 
 const editOpinion = async (req: Request, res: Response) => {
-  let opinion = await opinionModel.findById(req.params.id);
+  let opinion = await opinionModel.findByIdAndUpdate(req.params.id);
   if (!opinion) return res.status(StatusCodes.NOT_FOUND).send("opinion not found");
 
-  /*If you change opinion = await opinionModel.findByIdAndUpdate(
-  req.params.id,
-  {
-  ...req.body,
-  },
-  { new: true },
-  );
-  the edit works, {new:true} is important*/
-  
   opinion = await opinionModel.findByIdAndUpdate(
     req.params.id,
     {
