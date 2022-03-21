@@ -21,7 +21,7 @@ const createProject = async (req: Request, res: Response) => {
       content: req.body.content,
       status: req.body.content,
     });
-//asdasdg
+
     await project.save();
     res.send(project);
   }
