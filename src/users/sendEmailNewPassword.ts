@@ -10,7 +10,7 @@ const sendEmailNewPassword = async (req: Request, res: Response) => {
   if (error) return res.status(StatusCodes.BAD_REQUEST).send(error.details[0].message);
 
   const email = req.body.email;
-  const user = await userModel.findOne({ email }).select("id name email");
+  const user = await userModel.findOne({ email: email }).select("id name email");
   if (!user) return res.status(StatusCodes.NOT_FOUND).send("User not found");
 
   const token = user.generateAuthToken();

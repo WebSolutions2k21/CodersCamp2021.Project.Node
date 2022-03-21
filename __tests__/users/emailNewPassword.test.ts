@@ -6,6 +6,19 @@ import emailNewPassword from "../../src/utils/emailNewPassword";
 
 let server: Server;
 
+const createUser = async () => {
+  const user = new userModel({
+    username: "unitest",
+    firstname: "test",
+    lastname: "test",
+    email: "sometest@gmail.com",
+    password: "12345678",
+  });
+  await user.save();
+
+  return user;
+};
+
 describe("/resetpassword", () => {
   beforeEach(() => {
     server = require("../../src/server");
@@ -15,7 +28,7 @@ describe("/resetpassword", () => {
     await server.close();
   });
 
-  describe(" PUT /resetpassword", () => {
+  describe(" POST /resetpassword", () => {
     let token: string;
     let body: { email: string; token: string } | {} = {};
 
@@ -32,9 +45,7 @@ describe("/resetpassword", () => {
     });
 
     it("should send email", async () => {
-      const email = "user1@mail.com";
-      const token = new userModel().generateAuthToken();
-
+      const email = "sometest@gmail.com";
       const res = await emailNewPassword(email, token);
       expect(res).not.toBeNull();
       expect(res).not.toBeUndefined();
@@ -42,6 +53,9 @@ describe("/resetpassword", () => {
     });
 
     it("should send the email if it is valid", async () => {
+      const user = await createUser();
+      body = { email: "sometest@gmail.com" };
+
       const res = await exec();
 
       expect(res.status).toBe(200);

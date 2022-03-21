@@ -12,7 +12,7 @@ async function prepareUser() {
     firstname: "test",
     lastname: "test",
     email: "user1@mail.com",
-    password: "12345678",
+    password: "22222222",
   });
   await user.save();
   return user;
@@ -45,26 +45,23 @@ describe("/changepassword", () => {
       user = await prepareUser();
 
       token = user.generateAuthToken();
-      oldPassword = "123456789";
-      newPassword = "12345678";
-      confirmNewPassword = "12345678";
     });
 
     it("should return 400 if new password and confirm password isn't the same", async () => {
-      (oldPassword = "123456789"), (newPassword = "1234567890"), (confirmNewPassword = "12345678");
+      (oldPassword = "22222222"), (newPassword = "123456780"), (confirmNewPassword = "1234567890");
 
       const res = await exec();
       expect(res.status).toBe(400);
     });
 
     it("should return 400 if oldPassword is invalid", async () => {
-      (oldPassword = "12345678999"), (newPassword = "123456789"), (confirmNewPassword = "123456789");
+      (oldPassword = "11111111"), (newPassword = "123456789"), (confirmNewPassword = "123456789");
 
       const res = await exec();
       expect(res.status).toBe(400);
     });
 
-    it("should return 400 if user not found", async () => {
+    it("should return 404 if user not found", async () => {
       token = new userModel().generateAuthToken();
       const res = await exec();
 
