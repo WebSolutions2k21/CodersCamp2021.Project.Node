@@ -1,6 +1,5 @@
 import { Response, Request } from "express";
 import { StatusCodes } from "http-status-codes";
-import _ from "lodash";
 
 import opinionModel from "../../models/opinion.model";
 

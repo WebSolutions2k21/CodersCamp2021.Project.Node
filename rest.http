@@ -94,9 +94,9 @@ POST http://localhost:5000/project/create
 Content-Type: application/json
 
 {
-	"name": "apka8",
+	"name": "apka9",
 	"userId": "622b9441f2950d6fe0a2b40e",
-    
+
 	"content": "Tajna apka 5"
 }
 ###
@@ -129,10 +129,9 @@ POST http://localhost:5000/opinion/create
 Content-Type: application/json
 
 {
-    "opinionId":"12345",
     "userId": "4edd40c86762e0fb12000003",
     "mentorId": "fcee56c86762e0fb12000112",
-    "content": "Opinia pięciogwiadkowa",
+    "content": "Opinia pięciogwiazdkowaZzz",
     "stars": "4"
 }
 ###
@@ -141,9 +140,6 @@ PUT http://localhost:5000/opinion/edit
 Content-Type: application/json
 
 {
-    //"name": "opinia testowa 123",
-    //"userId": "4edd40c86762e0fb12000004",
-    //"mentorId": "fcee56c86762e0fb12000112",
     "content": "Opinia czterogwiadkowa"
 }
 ###
