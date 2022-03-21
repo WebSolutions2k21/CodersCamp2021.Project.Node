@@ -20,10 +20,10 @@ POST http://localhost:5000/users/register HTTP/1.1
 Content-Type: application/json
 
 {
-    "username": "Ania",
-    "firstname":"Fake mail",
-    "lastname":"test last name",
-    "email": "zioqzpqrrzzahktysg@bvhrk.com",
+    "username": "username_test",
+    "firstname":"firstname_test",
+    "lastname":"lastname_test",
+    "email": "test@mail.com",
     "password": "12345678"
 }
 ###
@@ -88,7 +88,36 @@ Content-Type: application/json
 # ____________________________ TEAM ____________________________
 
 ###
-# ____________________________ PROJECT ____________________________
+# ____________________________ PROJECT____________________________
+# create Project
+POST http://localhost:5000/project/create
+Content-Type: application/json
+
+{
+	"name": "apka8",
+	"userId": "622b9441f2950d6fe0a2b40e",
+    
+	"content": "Tajna apka 5"
+}
+###
+# edit Project
+PUT http://localhost:5000/project/6235f9b909fe6e1c88fde621
+Content-Type: application/json
+
+{
+	"name": "as",
+	"userId": "4edd40c86762e0fb12000003",
+	"mentorId": "fcee56c86762e0fb12000112",
+	"content": "Tajna apka hahahaHAHA"
+}
+###
+# get all Project
+GET http://localhost:5000/project/
+
+###
+# delete Project
+DELETE http://localhost:5000/project/622b96d05564155028570b45
+
 
 ###
 # ____________________________TEAM PROJECT ____________________________

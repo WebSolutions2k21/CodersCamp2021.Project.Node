@@ -1,5 +1,4 @@
 import nodemailer from "nodemailer";
-import "dotenv/config";
 
 export default async function emailNewPassword(email: string, url: string) {
   const transporter = nodemailer.createTransport({
