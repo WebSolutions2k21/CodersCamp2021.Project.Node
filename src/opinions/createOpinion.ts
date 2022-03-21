@@ -9,7 +9,7 @@ const createOpinion = async (req: Request, res: Response) => {
   const { error } = validateOpinion(req.body);
   if (error) return res.status(400).send(error.details[0].message);
 
-  let opinion = await opinionModel.findOne({ id: req.body.id }); //działa z content zamiast id
+  let opinion = await opinionModel.findOne({ userId: req.body.userId });
 
   if (opinion) {
     return res.status(StatusCodes.BAD_REQUEST).send("Opinion already exists");

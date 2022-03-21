@@ -129,9 +129,9 @@ POST http://localhost:5000/opinion/create
 Content-Type: application/json
 
 {
-    "userId": "4edd40c86762e0fb12000003",
+    "userId": "4edd40c86762e0fb12000005",
     "mentorId": "fcee56c86762e0fb12000112",
-    "content": "Opinia pięciogwiazdkowaZzz",
+    "content": "Opinia pięciogwiazdkowa",
     "stars": "4"
 }
 ###
