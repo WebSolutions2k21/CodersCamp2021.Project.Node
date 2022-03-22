@@ -7,7 +7,7 @@ import validateOpinion from "./validateOpinion";
 
 const createOpinion = async (req: Request, res: Response) => {
   const { error } = validateOpinion(req.body);
-  if (error) return res.status(400).send(error.details[0].message);
+  if (error) return res.status(StatusCodes.BAD_REQUEST).send(error.details[0].message);
 
   let opinion = await opinionModel.findOne({ userId: req.body.userId });
 
