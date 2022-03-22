@@ -26,6 +26,9 @@ Zespół pracował w ramach kursu CodersCamp. Aplikację wykonali uczestnicy kur
 
 [Diagram ERD](https://www.figma.com/file/rKjruMuYjpcQelDVIyJRZy/Projekt-3?node-id=0%3A1)
 
+<img width="686" alt="image" src="https://user-images.githubusercontent.com/84628957/159575697-1fbeabd5-b191-4efa-a6d6-574194a7f326.png">
+
+
 ### [WEJDŹ NA STRONĘ](https://ws-server-2022.herokuapp.com/)
 
 ## Cel projektu
