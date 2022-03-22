@@ -1,17 +1,17 @@
-import mongoose from "mongoose";
-import ProgrammingLanguage from "./programmingLanguage.interface";
+import mongoose from 'mongoose'
+import ProgrammingLanguageArr from './programmingLanguageArr.interface'
 
 interface User extends mongoose.Document {
-  username: string;
-  firstname: string;
-  lastname: string;
-  email: string;
-  password: string;
-  programmingLanguage?: ProgrammingLanguage[];
-  date?: Date;
-  isMentor: boolean;
+  name: string
+  firstname: string
+  lastname: string
+  email: string
+  password: string
+  programmingLanguage: ProgrammingLanguageArr[]
+  date?: Date
   isVerified?: boolean;
-  generateAuthToken(): string;
+  roleIsMentor: boolean
+  generateAuthToken(): string
 }
 
-export default User;
+export default User
