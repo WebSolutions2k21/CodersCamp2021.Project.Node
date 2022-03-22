@@ -7,6 +7,8 @@ import userModel from "../../models/user.model";
 import sendEmail from "../utils/email";
 
 const registerUser = async (req: Request, res: Response) => {
+  const salt = await bcrypt.genSalt(10);
+  const hashedPassword = await bcrypt.hash(req.body.password, salt);
   const { error } = validate(req.body);
   if (error) {
     return res.status(StatusCodes.BAD_REQUEST).send(error.details[0].message);
@@ -20,17 +22,16 @@ const registerUser = async (req: Request, res: Response) => {
       firstname: req.body.firstname,
       lastname: req.body.lastname,
       email: req.body.email,
-      password: req.body.password,
+      password: hashedPassword,
       date: req.body.date,
     });
-    const salt = await bcrypt.genSalt(10);
-    user.password = await bcrypt.hash(user.password, salt);
+
+    await user.save();
+    res.status(StatusCodes.OK).send(user._id);
 
     const token = user.generateAuthToken();
     const url = `http://${process.env.ADDRESSPORT}/users/confirmation/${token}`;
     sendEmail(req.body.email, url);
-    await user.save();
-    res.status(StatusCodes.OK).send(user._id);
   }
 };
 
