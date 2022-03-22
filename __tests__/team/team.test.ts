@@ -9,9 +9,9 @@ let server: Server;
 const createTeam = async () => {
   const team = new teamModel({
     teamName: "Test Team",
-    usersIds: ["4edd40c86762e0fb12000002",  "4edd40c86762e0fb12000003",  "4edd40c86762e0fb12000004"],
-    mentorId:  "fcee56c86762e0fb12000112",
-    programmingLanguage: ["javascript", "java", "python"],
+    usersIds: [{id:"622b9441f2950d6fe0a2b40c"}, {id: "4edd40c86762e0fb12000003"}],
+    mentorId:  "621d35383e5c3315845ca334",
+    programmingLanguage: [{nameLang: "javascript", level:"basic"}],
     status: true,
   });
 
@@ -33,9 +33,9 @@ describe("/team", () => {
     it("should create new team if it does not exist", async () => {
       const res = await request(server).post("/team/create").send({
         teamName: "Development Team",
-        usersIds: ["4edd40c86762e0fb12000005",  "4edd40c86762e0fb12000006",  "4edd40c86762e0fb12000007"],
-        mentorId:  "fcee56c86762e0fb12000122",
-        programmingLanguage: ["javascript", "java", "python"],
+        usersIds: [{id:"622b9441f2950d6fe0a2b40c"}, {id: "4edd40c86762e0fb12000003"}],
+        mentorId:   "621d35383e5c3315845ca334",
+        programmingLanguage: [{nameLang: "javascript", level:"basic"}],
         status: true,
       });
 
@@ -46,9 +46,9 @@ describe("/team", () => {
       const team = await createTeam();
       const res = await request(server).post("/team/create").send({
         teamName: team.name,
-        usersIds: ["4edd40c86762e0fb12000005",  "4edd40c86762e0fb12000006",  "4edd40c86762e0fb12000007"],
-        mentorId:  "fcee56c86762e0fb12000122",
-        programmingLanguage: ["javascript", "java", "python"],
+        usersIds: [{id:"622b9441f2950d6fe0a2b40c"}, {id: "4edd40c86762e0fb12000003"}],
+        mentorId: "621d35383e5c3315845ca334",
+        programmingLanguage: [{nameLang: "javascript", level:"basic"}],
         status: true,
       });
 

@@ -9,30 +9,30 @@ const teamSchema = new Schema<Team>({
 		maxlength: 50,
 		minlength: 2,
 	},
-  // usersIds: [
-  //   {
-  //     id: {
-  //       type: mongoose.Schema.Types.ObjectId,
-  //       }
-  //   }
-  // ],
+  usersIds: [
+    {
+      id: {
+        type: mongoose.Schema.Types.ObjectId,
+        }
+    }
+  ],
   mentorId: {
       type: mongoose.Schema.Types.ObjectId,
       required: true,
   },
-  // programmingLanguage: [
-  //   {
-  //     id: {
-  //       type: mongoose.Schema.Types.ObjectId,
-  //     },
-  //     nameLang: {
-  //       type: String,
-  //     },
-  //     level: {
-  //       type: String,
-  //       },
-  //     },
-  //   ],
+  programmingLanguage: [
+    {
+      id: {
+        type: mongoose.Schema.Types.ObjectId,
+      },
+      nameLang: {
+        type: String,
+      },
+      level: {
+        type: String,
+        },
+      },
+    ],
   status: {
     type: String,
     required: true,
