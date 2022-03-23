@@ -10,14 +10,9 @@ export default async function createTeam(req: Request, res: Response) {
     } else {
       team = new teamModel({
         teamName: req.body.teamName,
-        usersIds: [{
-            id: req.body.usersIds.id,
-        }],
+        usersIds: req.body.usersIds,
         mentorId: mongoose.Types.ObjectId(req.body.mentorId),
-        programmingLanguage: [{
-            nameLang: req.body.programmingLanguage.nameLang,
-            level: req.body.programmingLanguage.level
-        }],
+        programmingLanguage: req.body.programmingLanguage,
         status: req.body.status
       });
 
