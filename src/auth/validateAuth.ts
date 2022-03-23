@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import Joi from "joi";
 
 export default function validate(req: string) {
@@ -11,6 +12,9 @@ export default function validate(req: string) {
 
 	return schema.validate(req);
 }
+=======
+import Joi from 'joi'
+>>>>>>> develop
 
 export const loginValidation = (req: string) => {
 	const schema = Joi.object({
