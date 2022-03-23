@@ -8,7 +8,7 @@ export default async function editTeam (req: Request, res: Response) {
 
     team = await teamModel.findByIdAndUpdate(req.params.id, {
       ...req.body,
-    });
+    }, { new: true });
 
     return res.status(StatusCodes.OK).send(team);
 }

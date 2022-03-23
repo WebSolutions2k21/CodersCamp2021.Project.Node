@@ -7,7 +7,7 @@ let server: Server;
 const createTeam = async () => {
   const team = new teamModel({
     teamName: "Test Team2",
-    usersIds: [{id:"622b9441f2950d6fe0a2b40c"}, {id: "4edd40c86762e0fb12000003"}],
+    usersIds: ["622b9441f2950d6fe0a2b40c","4edd40c86762e0fb12000003"],
     mentorId:  "621d35383e5c3315845ca334",
     programmingLanguage: [{nameLang: "javascript", level:"basic"}],
     status: true,
@@ -35,7 +35,7 @@ describe("/team", () => {
     beforeEach(() => {
       body = {
         teamName: "Test Team3",
-        usersIds: [{id:"622b9441f2950d6fe0a2b40c"}, {id: "4edd40c86762e0fb12000003"}],
+        usersIds: ["622b9441f2950d6fe0a2b40c", "4edd40c86762e0fb12000003"],
         mentorId:  "621d35383e5c3315845ca334",
         programmingLanguage: [{nameLang: "javascript", level:"basic"}],
         status: true,
@@ -45,7 +45,7 @@ describe("/team", () => {
     it("should return 400 if team already registered", async () => {
       body = {
         teamName: "Test Team3",
-        usersIds: [{id:"622b9441f2950d6fe0a2b40c"}, {id: "4edd40c86762e0fb12000003"}],
+        usersIds: ["622b9441f2950d6fe0a2b40c", "4edd40c86762e0fb12000003"],
         mentorId:  "621d35383e5c3315845ca334",
         programmingLanguage: [{nameLang: "javascript", level:"basic"}],
         status: true,

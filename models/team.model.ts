@@ -11,9 +11,7 @@ const teamSchema = new Schema<Team>({
   },
   usersIds: [
     {
-      id: {
-        type: mongoose.Schema.Types.ObjectId,
-        }
+     type: mongoose.Schema.Types.ObjectId,
     }
   ],
   mentorId: {
