@@ -40,3 +40,5 @@ const teamSchema = new Schema<Team>({
 const teamModel = mongoose.model<Team & mongoose.Document>("Team", teamSchema);
 
 export default teamModel;
+
+
