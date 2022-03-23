@@ -6,8 +6,4 @@ export default function validateEmail(email: { email: string }) {
   });
 
   return schema.validate(email);
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> develop
