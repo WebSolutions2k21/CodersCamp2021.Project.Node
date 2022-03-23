@@ -3,38 +3,18 @@
 
 ###
 # login
-<<<<<<< HEAD
-POST http://localhost:3000/login 
-Content-Type: application/json
-
-{
-    "email": "test@ania.com",
-    "password": "12345678"
-=======
 POST http://localhost:5000/login 
 Content-Type: application/json
 
 {
     "email": "zioqzpqrrzzahktysg@bvhrk.com",
     "password": "123456789"
->>>>>>> develop
 
 }
 
 ###
 
 # ____________________________ USERS ____________________________
-<<<<<<< HEAD
-# create users
-POST http://localhost:3000/users/register HTTP/1.1
-Content-Type: application/json
-
-{
-    "name": "Marta",
-    "firstname":"Marta",
-    "lastname":"Probierz",
-    "email": "marta.anna.probierz@gmail.com",
-=======
 # create users only requied fields
 POST http://localhost:5000/users/register HTTP/1.1
 Content-Type: application/json
@@ -44,26 +24,10 @@ Content-Type: application/json
     "firstname":"firstname_test",
     "lastname":"lastname_test",
     "email": "test@mail.com",
->>>>>>> develop
     "password": "12345678"
 }
 ###
 
-<<<<<<< HEAD
-###
-# get users
-GET http://localhost:3000/users HTTP/1.1
-
-
-###
-# ____________________________ TEAM ____________________________
-
-###
-# ____________________________ PROJECT ____________________________
-
-###
-# ____________________________TEAM PROJECT ____________________________
-=======
 
 ###
 # get all users
@@ -226,4 +190,3 @@ GET http://localhost:5000/opinion/6234f97af8b4d700ef698542
 ###
 # get all opinions
 GET http://localhost:5000/opinion
->>>>>>> develop
