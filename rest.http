@@ -77,7 +77,7 @@ GET http://localhost:5000/users/role/62239d63a5182b274496ee34 HTTP/1.1
 PATCH  http://localhost:5000/users/62239d63a5182b274496ee34 HTTP/1.1
 Content-Type: application/json
 
-{   
+{
     "username": "t55tt",
     "firstname": "Edit user",
     "lastname": "Gosia last",
@@ -156,3 +156,37 @@ DELETE http://localhost:5000/project/622b96d05564155028570b45
 
 ###
 # ____________________________TEAM PROJECT ____________________________
+
+###
+# ____________________________ OPINIONS ____________________________
+# create opinion
+POST http://localhost:5000/opinion/create
+Content-Type: application/json
+
+{
+    "userId": "4edd40c86762e0fb12000005",
+    "mentorId": "fcee56c86762e0fb12000112",
+    "content": "Opinia pięciogwiazdkowa",
+    "stars": "4"
+}
+###
+# edit opinion
+PUT http://localhost:5000/opinion/edit
+Content-Type: application/json
+
+{
+    "content": "Opinia czterogwiadkowa"
+}
+###
+#
+# DELETE http://localhost:5000/opinion/delete
+
+DELETE http://localhost:5000/opinion/
+
+###
+# get one opinion
+GET http://localhost:5000/opinion/6234f97af8b4d700ef698542
+
+###
+# get all opinions
+GET http://localhost:5000/opinion
