@@ -30,7 +30,7 @@ export default class UserController {
     this.router.post(`${this.path}/resetpassword`, auth, this.sendEmailNewPassword);
     this.router.put(`${this.path}/changepassword`, auth, this.changePassword);
     this.router.put(`${this.path}/newpassword`, auth, this.newPassword);
-    this.router.put(`${this.path}/:id`, this.editProfile);
+    this.router.patch(`${this.path}/:id`, this.editProfile);
     this.router.delete(`${this.path}/:id`, this.deleteUser);
     this.router.get(`${this.path}/role/:id`, this.isMentor);
   }
