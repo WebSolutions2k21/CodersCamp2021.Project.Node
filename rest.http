@@ -82,7 +82,7 @@ Content-Type: application/json
     "firstname": "Edit user",
     "lastname": "Gosia last",
     "email": "test@test.xyz",
-    "isMentor": true,
+    "isMentor": true
 }
 ###
 # ____________________________ TEAM ____________________________
