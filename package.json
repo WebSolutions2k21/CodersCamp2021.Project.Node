@@ -1,5 +1,5 @@
 {
-  "name": "node",
+  "name": "server",
   "version": "1.0.0",
   "main": "index.js",
   "repository": "https://github.com/WebSolutions2k21/CodersCamp2021.Project.Node.git",
