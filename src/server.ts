@@ -7,7 +7,6 @@ import ProjectController from "../controllers/project.controller";
 import OpinionController from "../controllers/opinion.controller";
 import App from "./app/App";
 import TeamController from "../controllers/team.controller";
-import express, { Request, Response } from "express";
 import AppController from "../controllers/app.controller";
 
 if (!config.get("jwtPrivateKey")) {
