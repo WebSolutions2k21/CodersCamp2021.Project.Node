@@ -1,8 +1,9 @@
 import express, { Application } from "express";
 import config from "config";
-const mongoose = require("mongoose");
 
 import Controller from "../../interfaces/controller.interface";
+const mongoose = require("mongoose");
+const cors = require('cors');
 
 export default class App {
   public app: Application;
@@ -19,6 +20,7 @@ export default class App {
   initializeMiddlewares() {
     this.app.use(express.json());
     this.app.use(express.urlencoded({ extended: true }));
+    this.app.use(cors());
   }
 
   initializeControllers(controllers: Controller[]) {
@@ -51,3 +53,5 @@ export default class App {
     });
   }
 }
+
+
