@@ -28,5 +28,5 @@ export default async function authUser(req: Request, res: Response) {
   const id = user._id;
   const token = user.generateAuthToken();
 
-  res.send(`Logged In! Your ID: ${id}, Your token: ${token}`);
+  res.status(StatusCodes.OK).send({ token, id });
 }
