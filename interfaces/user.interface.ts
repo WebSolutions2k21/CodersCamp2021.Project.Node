@@ -7,6 +7,7 @@ interface User extends mongoose.Document {
   lastname: string;
   email: string;
   password: string;
+  confirmpassword: string;
   programmingLanguage?: ProgrammingLanguage[];
   date?: Date;
   isMentor: boolean;

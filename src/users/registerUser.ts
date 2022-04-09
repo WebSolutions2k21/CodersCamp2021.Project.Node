@@ -23,7 +23,7 @@ const registerUser = async (req: Request, res: Response) => {
       lastname: req.body.lastname,
       email: req.body.email,
       password: hashedPassword,
-     
+      confirmpassword: req.body.confirmpassword,
     });
 
     await user.save();

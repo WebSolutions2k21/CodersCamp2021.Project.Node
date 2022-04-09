@@ -24,7 +24,8 @@ Content-Type: application/json
     "firstname":"firstname_test",
     "lastname":"lastname_test",
     "email": "test@mail.com",
-    "password": "12345678"
+    "password": "12345678",
+    "confirmpassword": "12345678"
 }
 ###
 
