@@ -23,11 +23,11 @@ const registerUser = async (req: Request, res: Response) => {
       lastname: req.body.lastname,
       email: req.body.email,
       password: hashedPassword,
-      date: req.body.date,
+     
     });
 
     await user.save();
-    res.status(StatusCodes.OK).send(user._id);
+    res.status(StatusCodes.OK).send(user);
 
     const token = user.generateAuthToken();
     const url = `http://${process.env.ADDRESSPORT}/users/confirmation/${token}`;
