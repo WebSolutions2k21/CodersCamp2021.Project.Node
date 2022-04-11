@@ -9,6 +9,7 @@ import sendEmail from "../utils/email";
 const registerUser = async (req: Request, res: Response) => {
   const salt = await bcrypt.genSalt(10);
   const hashedPassword = await bcrypt.hash(req.body.password, salt);
+  const hashedConfirmPassword = await bcrypt.hash(req.body.confirmpassword, salt);
   const { error } = validate(req.body);
   if (error) {
     return res.status(StatusCodes.BAD_REQUEST).send(error.details[0].message);
@@ -23,7 +24,7 @@ const registerUser = async (req: Request, res: Response) => {
       lastname: req.body.lastname,
       email: req.body.email,
       password: hashedPassword,
-      confirmpassword: req.body.confirmpassword,
+      confirmpassword: hashedConfirmPassword,
     });
 
     await user.save();
