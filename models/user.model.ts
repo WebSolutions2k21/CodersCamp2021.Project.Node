@@ -15,12 +15,10 @@ const userSchema = new Schema<User>({
   firstname: {
     type: String,
     maxlength: 100,
-    minlength: 2,
   },
   lastname: {
     type: String,
     maxlength: 100,
-    minlength: 2,
   },
   email: {
     type: String,
