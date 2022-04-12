@@ -14,16 +14,16 @@ export default async function authUser(req: Request, res: Response) {
   //checkinf if the email exist in the database
   let user = await userModel.findOne({ email: req.body.email });
   if (!user) {
-    return res.status(StatusCodes.BAD_REQUEST).send("Invalid email or password.");
+    return res.status(StatusCodes.NOT_FOUND).send("Invalid email or password.");
   }
 
   //password is correct
   const validPassword = await bcrypt.compare(req.body.password, user.password);
   if (!validPassword) {
-    return res.status(StatusCodes.BAD_REQUEST).send("Invalid email or password.");
+    return res.status(StatusCodes.NOT_FOUND).send("Invalid email or password.");
   }
 
-  if (!user.isVerified) return res.status(StatusCodes.BAD_REQUEST).send("You must first confirm the registration.");
+  if (!user.isVerified) return res.status(StatusCodes.LOCKED).send("You must first confirm the registration.");
 
   const id = user._id;
   const token = user.generateAuthToken();
