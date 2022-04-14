@@ -26,7 +26,8 @@ export default async function authUser(req: Request, res: Response) {
   if (!user.isVerified) return res.status(StatusCodes.LOCKED).send("You must first confirm the registration.");
 
   const id = user._id;
+  const mentor = user.isMentor;
   const token = user.generateAuthToken();
 
-  res.status(StatusCodes.OK).send({ token, id });
+  res.status(StatusCodes.OK).send({ token, id, mentor });
 }
