@@ -4,6 +4,8 @@ import editProject from "../src/projects/editProject";
 import getProject from "../src/projects/getProject";
 import getAllProject from "../src/projects/getAllProject";
 import deleteProject from "../src/projects/deleteProject";
+import getUserProjects from "../src/projects/getUserProjects";
+import auth from "../middleware/auth";
 export default class ProjectController {
   public path = "/project";
   public router = express.Router();
@@ -14,6 +16,7 @@ export default class ProjectController {
 
   initializeRoutes() {
     this.router.get(this.path, this.getAllProject);
+    this.router.get(`${this.path}/user-projects`, auth, this.getUserProjects);
     this.router.get(`${this.path}/:id`, this.getProject);
     this.router.post(`${this.path}/create`, this.createProject);
     this.router.put(`${this.path}/:id`, this.editProject);
@@ -38,5 +41,9 @@ export default class ProjectController {
 
   deleteProject(req: Request, res: Response) {
     deleteProject(req, res);
+  }
+
+  getUserProjects(req: Request, res: Response) {
+    getUserProjects(req, res);
   }
 }
