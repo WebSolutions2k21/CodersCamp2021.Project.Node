@@ -10,7 +10,6 @@ const projectSchema = new mongoose.Schema<Project>({
   },
   userId: {
     type: mongoose.Schema.Types.ObjectId,
-    required: true,
   },
 
   mentorId: {
