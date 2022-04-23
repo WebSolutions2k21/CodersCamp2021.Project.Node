@@ -67,7 +67,7 @@ Content-Type: application/json
 
 ###
 # get only one user
-GET http://localhost:5000/users/621d35383e5c3315845ca334 HTTP/1.1
+GET http://localhost:5000/users/622515892186611850dd76d3 HTTP/1.1
 ###
 ###
 # get check is mentor
@@ -152,6 +152,12 @@ GET http://localhost:5000/project/
 ###
 # delete Project
 DELETE http://localhost:5000/project/622b96d05564155028570b45
+
+###
+# get User Projects
+GET http://localhost:5000/project/user-projects
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjIzN2ViYWRiOWY2ZDBkNWMzN2I3MTEiLCJ1c2VybmFtZSI6IkFuaWEiLCJpYXQiOjE2NDY1ODYyMDB9.GNeUognnUdkqUez-TCG6iSQtBLXvwHIAHm1OP3ZeIQg
+Content-Type: application/json
 
 
 ###
