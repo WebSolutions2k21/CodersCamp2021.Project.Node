@@ -131,9 +131,11 @@ POST http://localhost:5000/project/create
 Content-Type: application/json
 
 {
-	"name": "Projekt ja",
-	"userId": "622b9441f2950d6fe0a2b40e", 
-	"content": "aplikacja"
+	"name": "Projekt ja22282",
+	"userId": "622b9441f2950d6fe0a2b40e",
+    "mentorId": "", 
+	"content": "aplikacja",
+    "status": "true"
 }
 ###
 # edit Project

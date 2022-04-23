@@ -19,7 +19,7 @@ const createProject = async (req: Request, res: Response) => {
       mentorId: req.body.mentorId && mongoose.Types.ObjectId(req.body.mentorId),
       teamId: req.body.teamId && mongoose.Types.ObjectId(req.body.teamId),
       content: req.body.content,
-      status: req.body.content,
+      status: req.body.status,
     });
 
     await project.save();
