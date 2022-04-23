@@ -32,7 +32,6 @@ const projectSchema = new mongoose.Schema<Project>({
 
   status: {
     type: String,
-    required: true,
     minlength: 3,
     maxLength: 12,
   },
