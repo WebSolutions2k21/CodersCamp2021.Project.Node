@@ -11,7 +11,7 @@ const getUserProjects = async (req: Request, res: Response) => {
   //   console.log(user);
 
   const userProject = (await projectModel.find().select("content name userId _id")).filter((a) => {
-    return a.userId.toString() === user?._id.toString();
+    return a.userId?.toString() === user?._id.toString();
   });
   if (userProject === null) {
     res.status(StatusCodes.NOT_FOUND).send();
