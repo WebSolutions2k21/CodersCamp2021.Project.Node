@@ -17,6 +17,7 @@ const teamSchema = new Schema<Team>({
   ],
   mentorId: {
     type: mongoose.Schema.Types.ObjectId,
+    required: true,
   },
   programmingLanguage: [
     {
