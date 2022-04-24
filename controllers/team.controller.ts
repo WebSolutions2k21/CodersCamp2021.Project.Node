@@ -5,7 +5,9 @@ import getTeam from "../src/team/getTeam";
 import editTeam from "../src/team/editTeam";
 import deleteTeam from "../src/team/deleteTeam";
 import joinTeam from "../src/team/joinTeam";
+import getUserTeam from "../src/team/getUserTeam";
 import auth from "../middleware/auth";
+import { times } from "lodash";
 export default class TeamController {
   public path = "/team";
   public router = express.Router();
@@ -16,6 +18,7 @@ export default class TeamController {
 
   initializeRoutes() {
     this.router.get(this.path, this.getAll);
+    this.router.get(`${this.path}/user-team`, auth, this.getUserTeam);
     this.router.post(`${this.path}/create`, this.create);
     this.router.get(`${this.path}/:id`, this.getTeam);
     this.router.put(`${this.path}/:id`, this.editTeam);
@@ -31,14 +34,14 @@ export default class TeamController {
     create(req, res);
   }
 
-  getTeam (req: Request, res: Response) {
+  getTeam(req: Request, res: Response) {
     getTeam(req, res);
   }
 
-  editTeam (req: Request, res: Response) {
+  editTeam(req: Request, res: Response) {
     editTeam(req, res);
   }
-  
+
   deleteTeam(req: Request, res: Response) {
     deleteTeam(req, res);
   }
@@ -46,6 +49,8 @@ export default class TeamController {
   joinTeam(req: Request, res: Response) {
     joinTeam(req, res);
   }
+
+  getUserTeam(req: Request, res: Response) {
+    getUserTeam(req, res);
+  }
 }
-
-

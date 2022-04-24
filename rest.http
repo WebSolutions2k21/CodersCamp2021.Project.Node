@@ -133,6 +133,11 @@ PUT http://localhost:5000/team/join/626461515817540016b05701 HTTP/1.1
 x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjNjMTYzMTBhMjQxZjBlYjExNmFlNDAiLCJ1c2VybmFtZSI6InFxIiwiaWF0IjoxNjUwNzc5OTkxfQ.3r_Jp0YEuiULj2ZHYr9uHDfaJB-9RglxnQvUlh8D-mw
 Content-Type: application/json
 
+###
+# user Teams
+GET http://localhost:5000/team/user-team HTTP/1.1
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjI1MTU4OTIxODY2MTE4NTBkZDc2ZDMiLCJ1c2VybmFtZSI6IkFuaWEiLCJpYXQiOjE2NTA4MTQxOTJ9.RH85bFJ2pdBj0sflcdjv7VulTXb84TbbfHDKaxoic10
+Content-Type: application/json
 
 ###
 
