@@ -1,3 +1,4 @@
+import { number } from "joi";
 import mongoose from "mongoose";
 import Team from "../interfaces/team.interface";
 
@@ -11,12 +12,11 @@ const teamSchema = new Schema<Team>({
   },
   usersIds: [
     {
-     type: mongoose.Schema.Types.ObjectId,
-    }
+      type: mongoose.Schema.Types.ObjectId,
+    },
   ],
   mentorId: {
-      type: mongoose.Schema.Types.ObjectId,
-      required: true,
+    type: mongoose.Schema.Types.ObjectId,
   },
   programmingLanguage: [
     {
@@ -28,17 +28,28 @@ const teamSchema = new Schema<Team>({
       },
       level: {
         type: String,
-        },
       },
-    ],
+    },
+  ],
   status: {
     type: String,
-    required: true,
-  }
+    default: true,
+  },
+  places: {
+    type: Number,
+    minvalue: 1,
+    maxvalue: 10,
+  },
+  date: {
+    type: Date,
+    default: Date.now,
+  },
+  description: {
+    type: String,
+    maxlength: 50,
+  },
 });
 
 const teamModel = mongoose.model<Team & mongoose.Document>("Team", teamSchema);
 
 export default teamModel;
-
-

@@ -13,7 +13,9 @@ export default async function createTeam(req: Request, res: Response) {
         usersIds: req.body.usersIds,
         mentorId: mongoose.Types.ObjectId(req.body.mentorId),
         programmingLanguage: req.body.programmingLanguage,
-        status: req.body.status
+        status: req.body.status,
+        places: req.body.places,
+        description: req.body.description
       });
 
       await team.save();
