@@ -74,6 +74,10 @@ GET http://localhost:5000/users/621d35383e5c3315845ca334 HTTP/1.1
 # get check is mentor
 GET http://localhost:5000/users/role/62239d63a5182b274496ee34 HTTP/1.1
 ###
+
+# get all mentors
+GET http://localhost:5000/users/mentors HTTP/1.1
+###
 # get check is mentor
 PATCH  http://localhost:5000/users/62239d63a5182b274496ee34 HTTP/1.1
 Content-Type: application/json
@@ -123,6 +127,13 @@ Content-Type: application/json
 }
 ###
 DELETE http://localhost:5000/team/62278e3a7cafabc04f5cbeab HTTP/1.1
+###
+#Join Team
+PUT http://localhost:5000/team/join/626461515817540016b05701 HTTP/1.1
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjNjMTYzMTBhMjQxZjBlYjExNmFlNDAiLCJ1c2VybmFtZSI6InFxIiwiaWF0IjoxNjUwNzc5OTkxfQ.3r_Jp0YEuiULj2ZHYr9uHDfaJB-9RglxnQvUlh8D-mw
+Content-Type: application/json
+
+
 ###
 
 # ____________________________ PROJECT____________________________

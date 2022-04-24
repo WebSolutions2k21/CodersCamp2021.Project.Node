@@ -1,13 +1,11 @@
 import express, { Request, Response } from "express";
-import teamModel from "../models/team.model";
-import { StatusCodes } from "http-status-codes";
-import mongoose from "mongoose";
 import create from "../src/team/createTeam";
 import getAll from "../src/team/getAll";
 import getTeam from "../src/team/getTeam";
 import editTeam from "../src/team/editTeam";
 import deleteTeam from "../src/team/deleteTeam";
-
+import joinTeam from "../src/team/joinTeam";
+import auth from "../middleware/auth";
 export default class TeamController {
   public path = "/team";
   public router = express.Router();
@@ -22,6 +20,7 @@ export default class TeamController {
     this.router.get(`${this.path}/:id`, this.getTeam);
     this.router.put(`${this.path}/:id`, this.editTeam);
     this.router.delete(`${this.path}/:id`, this.deleteTeam);
+    this.router.put(`${this.path}/join/:id`, auth, this.joinTeam);
   }
 
   getAll(req: Request, res: Response) {
@@ -43,4 +42,10 @@ export default class TeamController {
   deleteTeam(req: Request, res: Response) {
     deleteTeam(req, res);
   }
+
+  joinTeam(req: Request, res: Response) {
+    joinTeam(req, res);
+  }
 }
+
+
