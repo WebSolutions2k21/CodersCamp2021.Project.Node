@@ -7,6 +7,9 @@ interface Team extends mongoose.Document {
     mentorId: string;
     programmingLanguage: ProgrammingLanguage[];
     status: boolean;
+    places: number;
+    description: string;
+    date?: Date;
 }
 
 export default Team
