@@ -7,7 +7,6 @@ import deleteTeam from "../src/team/deleteTeam";
 import joinTeam from "../src/team/joinTeam";
 import getUserTeam from "../src/team/getUserTeam";
 import auth from "../middleware/auth";
-import { times } from "lodash";
 export default class TeamController {
   public path = "/team";
   public router = express.Router();

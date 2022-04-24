@@ -7,7 +7,7 @@ const getUserTeam = async (req: Request, res: Response) => {
   let user = await userModel.findById(req.userInfo._id);
   if (!user) return res.status(StatusCodes.NOT_FOUND).send("User not found");
 
-  const allTeams = await teamModel.find().select("programmingLanguage teamName usersIds");
+  const allTeams = await teamModel.find().select("description status teamName usersIds");
 
   const userTeams: object[] = [];
 
