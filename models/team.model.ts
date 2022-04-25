@@ -1,4 +1,3 @@
-import { number } from "joi";
 import mongoose from "mongoose";
 import Team from "../interfaces/team.interface";
 

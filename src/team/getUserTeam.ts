@@ -12,7 +12,7 @@ const getUserTeam = async (req: Request, res: Response) => {
   const userTeams: object[] = [];
 
   allTeams.forEach((team) => {
-    if (team.usersIds.toString() === user?._id.toString()) {
+    if (team.usersIds?.toString() === user?._id.toString()) {
       return userTeams.push(team);
     }
   });

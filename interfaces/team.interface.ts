@@ -1,9 +1,9 @@
-import mongoose from 'mongoose';
+import mongoose, { ObjectId } from 'mongoose';
 import ProgrammingLanguage from "./programmingLanguage.interface";
 
 interface Team extends mongoose.Document {
     teamName: any;
-    usersIds: [];
+    usersIds?: ObjectId[];
     mentorId: string;
     programmingLanguage: ProgrammingLanguage[];
     status: boolean;
