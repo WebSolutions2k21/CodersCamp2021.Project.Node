@@ -72,7 +72,7 @@ GET http://localhost:5000/users/622515892186611850dd76d3 HTTP/1.1
 ###
 ###
 # get check is mentor
-GET http://localhost:5000/users/role/62239d63a5182b274496ee34 HTTP/1.1
+GET http://localhost:5000/users/role/62210331e4339c1e71363587 HTTP/1.1
 ###
 
 # get all mentors
@@ -162,10 +162,12 @@ POST http://localhost:5000/project/create
 Content-Type: application/json
 
 {
-	"name": "Projekt09",
+	"name": "Projekt23",
+	"teamId": "6264facc175f012d595a1ef3",
 	"mentorId": "62210331e4339c1e71363587",
 	"content": "aplikacja",
-    "status": "open"
+    "language": ["JavaScript", "Python"],
+    "description": "awesome project!"
 }
 
 ###

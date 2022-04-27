@@ -26,6 +26,7 @@ const projectSchema = new Schema<IProject>({
   status: {
     type: String,
     enum: projectStatuses,
+    default: "open",
   },
   language: {
     type: [String],
