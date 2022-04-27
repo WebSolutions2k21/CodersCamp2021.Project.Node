@@ -1,6 +1,6 @@
 import { Response, Request } from "express";
 import { StatusCodes } from "http-status-codes";
-import projectModel from "../../models/project.model";
+import { projectModel } from "../../models/project.model";
 import userModel from "../../models/user.model";
 
 const getUserProjects = async (req: Request, res: Response) => {

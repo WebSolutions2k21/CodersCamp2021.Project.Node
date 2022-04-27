@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-interface Project extends mongoose.Document {
+export interface IProject extends mongoose.Document {
   name: string;
   userId?: string;
   mentorId?: string;
@@ -8,5 +8,3 @@ interface Project extends mongoose.Document {
   content: string;
   status: string;
 }
-
-export default Project;

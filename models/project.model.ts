@@ -1,7 +1,7 @@
-import mongoose from "mongoose";
-import Project from "../interfaces/project.interface";
+import { Schema, Document, model } from "mongoose";
+import { IProject } from "../interfaces/project.interface";
 
-const projectSchema = new mongoose.Schema<Project>({
+const projectSchema = new Schema<IProject>({
   name: {
     type: String,
     required: true,
@@ -9,16 +9,16 @@ const projectSchema = new mongoose.Schema<Project>({
     maxLength: 50,
   },
   userId: {
-    type: mongoose.Schema.Types.ObjectId,
+    type: Schema.Types.ObjectId,
   },
 
   mentorId: {
-    type: mongoose.Schema.Types.ObjectId,
+    type: Schema.Types.ObjectId,
     required: false,
   },
 
   teamId: {
-    type: mongoose.Schema.Types.ObjectId,
+    type: Schema.Types.ObjectId,
     required: false,
   },
 
@@ -32,11 +32,10 @@ const projectSchema = new mongoose.Schema<Project>({
 
   status: {
     type: String,
+    enum: ["closed", "open"],
     minlength: 3,
     maxLength: 12,
   },
 });
 
-const projectModel = mongoose.model<Project & mongoose.Document>("Project", projectSchema);
-
-export default projectModel;
+export const projectModel = model<IProject & Document>("Project", projectSchema);

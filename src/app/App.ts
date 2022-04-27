@@ -3,7 +3,7 @@ import config from "config";
 
 import Controller from "../../interfaces/controller.interface";
 const mongoose = require("mongoose");
-const cors = require('cors');
+const cors = require("cors");
 
 export default class App {
   public app: Application;
@@ -53,5 +53,3 @@ export default class App {
     });
   }
 }
-
-

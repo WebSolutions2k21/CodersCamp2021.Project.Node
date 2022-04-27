@@ -1,12 +1,13 @@
 import { Response, Request } from "express";
 import { StatusCodes } from "http-status-codes";
-import projectModel from "../../models/project.model";
-import validateProject from "../validators/projectValidator";
 import mongoose from "mongoose";
+
+import { validateProject } from "./projectValidator";
+import { projectModel } from "../../models/project.model";
 
 const createProject = async (req: Request, res: Response) => {
   const { error } = validateProject(req.body);
-  if (error) return res.status(400).send(error.details[0].message);
+  if (error) return res.status(StatusCodes.BAD_REQUEST).send(error.details[0].message);
 
   let project = await projectModel.findOne({ name: req.body.name });
 
@@ -23,7 +24,7 @@ const createProject = async (req: Request, res: Response) => {
     });
 
     await project.save();
-    res.send(project);
+    res.status(StatusCodes.OK).send(project);
   }
 };
 

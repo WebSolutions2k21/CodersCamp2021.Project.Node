@@ -1,6 +1,6 @@
 import { Response, Request } from "express";
 import { StatusCodes } from "http-status-codes";
-import projectModel from "../../models/project.model";
+import { projectModel } from "../../models/project.model";
 
 const deleteProject = async (req: Request, res: Response) => {
   const project = await projectModel.findByIdAndDelete(req.params.id);
