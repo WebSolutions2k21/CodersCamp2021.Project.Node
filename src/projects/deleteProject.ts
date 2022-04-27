@@ -3,6 +3,7 @@ import { StatusCodes } from "http-status-codes";
 import { projectModel } from "../../models/project.model";
 
 const deleteProject = async (req: Request, res: Response) => {
+  // TODO only owner should has access to delete project
   const project = await projectModel.findByIdAndDelete(req.params.id);
   if (!project) return res.status(StatusCodes.NOT_FOUND).send("Project not found");
 

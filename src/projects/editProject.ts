@@ -4,6 +4,7 @@ import { projectModel } from "../../models/project.model";
 import { validateProject } from "./projectValidator";
 
 const editProject = async (req: Request, res: Response) => {
+  // TODO only owner should has access to edit project
   const { error } = validateProject(req.body);
   if (error) return res.status(400).send(error.details[0].message);
 

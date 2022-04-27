@@ -1,4 +1,7 @@
+import { boolean } from "joi";
 import { Schema, Document, model } from "mongoose";
+
+import { projectStatuses } from "../constants/constatns";
 import { IProject } from "../interfaces/project.interface";
 
 const projectSchema = new Schema<IProject>({
@@ -11,30 +14,27 @@ const projectSchema = new Schema<IProject>({
   userId: {
     type: Schema.Types.ObjectId,
   },
-
   mentorId: {
     type: Schema.Types.ObjectId,
-    required: false,
   },
-
   teamId: {
     type: Schema.Types.ObjectId,
-    required: false,
   },
-
   content: {
     type: String,
-    required: true,
-    minlength: 3,
-    maxLength: 255,
-    default: null,
   },
-
   status: {
     type: String,
-    enum: ["closed", "open"],
-    minlength: 3,
-    maxLength: 12,
+    enum: projectStatuses,
+  },
+  language: {
+    type: [String],
+  },
+  description: {
+    type: String,
+  },
+  isIndividual: {
+    type: Boolean,
   },
 });
 

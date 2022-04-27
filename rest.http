@@ -141,27 +141,31 @@ GET http://localhost:5000/team/user-team HTTP/1.1
 x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjI1MTU4OTIxODY2MTE4NTBkZDc2ZDMiLCJ1c2VybmFtZSI6IkFuaWEiLCJpYXQiOjE2NTA4MTQxOTJ9.RH85bFJ2pdBj0sflcdjv7VulTXb84TbbfHDKaxoic10
 Content-Type: application/json
 
-
-# ____________________________ PROJECT____________________________
-
 ###
-# get all projects 
-GET http://localhost:5000/project/622f91e5e0d35f0c08e80e7a
+# ____________________________ PROJECT ____________________________
 
-###
-# get project 
+# GET ALL PROJECTS 
 GET http://localhost:5000/project
 
 ###
-# create Project
+# GET PROJECT BY ID
+GET http://localhost:5000/project/6269a78042fa5855b82be00c
+
+###
+# GET USER PROJECTS
+GET http://localhost:5000/project/user-projects
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjIxMDMzMWU0MzM5YzFlNzEzNjM1ODciLCJ1c2VybmFtZSI6Ik1lbnRvciBKYXZhIiwiaWF0IjoxNjUxMDkxMjc4fQ.8Rejdd8TNbfQkqoQ6bGo_msccy9ZrvEhVAEY-h_9ADk
+
+###
+# CREATE PROJECT
 POST http://localhost:5000/project/create
 Content-Type: application/json
 
 {
-	"name": "Projekt01",
-	"userId": "622b9441f2950d6fe0a2b40e",
+	"name": "Projekt09",
+	"mentorId": "62210331e4339c1e71363587",
 	"content": "aplikacja",
-    "status": "true"
+    "status": "open"
 }
 
 ###
@@ -179,13 +183,6 @@ Content-Type: application/json
 ###
 # delete Project
 DELETE http://localhost:5000/project/622b96d05564155028570b45
-
-###
-# get User Projects
-GET http://localhost:5000/project/user-projects
-x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjIzN2ViYWRiOWY2ZDBkNWMzN2I3MTEiLCJ1c2VybmFtZSI6IkFuaWEiLCJpYXQiOjE2NDY1ODYyMDB9.GNeUognnUdkqUez-TCG6iSQtBLXvwHIAHm1OP3ZeIQg
-Content-Type: application/json
-
 
 ###
 # ____________________________TEAM PROJECT ____________________________

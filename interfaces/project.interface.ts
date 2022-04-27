@@ -7,4 +7,7 @@ export interface IProject extends mongoose.Document {
   teamId?: string;
   content: string;
   status: string;
+  language: string[];
+  description: string;
+  isIndividual: boolean;
 }
