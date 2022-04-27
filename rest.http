@@ -172,7 +172,7 @@ Content-Type: application/json
 
 ###
 # edit Project
-PUT http://localhost:5000/project/6235f9b909fe6e1c88fde621
+PUT http://localhost:5000/project/62210331e4339c1e71363587
 Content-Type: application/json
 
 {
@@ -183,11 +183,9 @@ Content-Type: application/json
 }
 
 ###
-# delete Project
-DELETE http://localhost:5000/project/622b96d05564155028570b45
-
-###
-# ____________________________TEAM PROJECT ____________________________
+# DELETE PROJECT
+DELETE http://localhost:5000/project/6269b8fb8ad9c71a70ca76b7
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjIxMDMzMWU0MzM5YzFlNzEzNjM1ODciLCJ1c2VybmFtZSI6Ik1lbnRvciBKYXZhIiwiaWF0IjoxNjUxMDkxMjc4fQ.8Rejdd8TNbfQkqoQ6bGo_msccy9ZrvEhVAEY-h_9ADk
 
 ###
 # ____________________________ OPINIONS ____________________________
