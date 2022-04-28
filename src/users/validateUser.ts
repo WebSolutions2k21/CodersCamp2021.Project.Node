@@ -1,4 +1,4 @@
-import Joi from 'joi'
+import Joi from "joi";
 
 export default function validate(req: string) {
   const schema = Joi.object({
@@ -7,7 +7,7 @@ export default function validate(req: string) {
     lastname: Joi.string().min(0).max(100),
     email: Joi.string().min(5).max(250).required().email(),
     password: Joi.string().min(8).max(500).required(),
-    confirmpassword: Joi.string().min(8).max(500).required().valid(Joi.ref('password')),
-  })
-  return schema.validate(req)
+    confirmpassword: Joi.string().min(8).max(500).required().valid(Joi.ref("password")),
+  });
+  return schema.validate(req);
 }

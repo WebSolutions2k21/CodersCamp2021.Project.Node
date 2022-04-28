@@ -7,8 +7,8 @@
   "scripts": {
     "build": "tsc",
     "start": "node ./dist/src/server.js",
-    "dev": "set NODE_ENV=development && nodemon ./src/server.ts",
-    "dev-prod": "set NODE_ENV=production && nodemon ./src/server.ts",
+    "dev": "set NODE_ENV=development&& nodemon ./src/server.ts",
+    "dev-prod": "set NODE_ENV=production&& nodemon ./src/server.ts",
     "dev:t": "ts-node ./src/server.ts",
     "test": "jest  --watchAll --detectOpenHandles --verbose",
     "test:c": "jest --watchAll --detectOpenHandles --verbose --coverage"
@@ -22,6 +22,8 @@
     "express": "^4.17.1",
     "http-status-codes": "^2.1.4",
     "joi": "^17.4.0",
+    "joi-objectid": "^4.0.2",
+    "joi-oid": "^1.1.2",
     "jsonwebtoken": "^8.5.1",
     "lodash": "^4.17.21",
     "mongoose": "5.11.15",

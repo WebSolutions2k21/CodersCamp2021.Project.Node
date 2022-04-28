@@ -1,7 +1,10 @@
-import mongoose from "mongoose";
-import Project from "../interfaces/project.interface";
+import { boolean } from "joi";
+import { Schema, Document, model } from "mongoose";
 
-const projectSchema = new mongoose.Schema<Project>({
+import { projectStatuses } from "../constants/constatns";
+import { IProject } from "../interfaces/project.interface";
+
+const projectSchema = new Schema<IProject>({
   name: {
     type: String,
     required: true,
@@ -9,34 +12,31 @@ const projectSchema = new mongoose.Schema<Project>({
     maxLength: 50,
   },
   userId: {
-    type: mongoose.Schema.Types.ObjectId,
+    type: Schema.Types.ObjectId,
   },
-
   mentorId: {
-    type: mongoose.Schema.Types.ObjectId,
-    required: false,
+    type: Schema.Types.ObjectId,
   },
-
   teamId: {
-    type: mongoose.Schema.Types.ObjectId,
-    required: false,
+    type: Schema.Types.ObjectId,
   },
-
   content: {
     type: String,
-    required: true,
-    minlength: 3,
-    maxLength: 255,
-    default: null,
   },
-
   status: {
     type: String,
-    minlength: 3,
-    maxLength: 12,
+    enum: projectStatuses,
+    default: "open",
+  },
+  language: {
+    type: [String],
+  },
+  description: {
+    type: String,
+  },
+  isIndividual: {
+    type: Boolean,
   },
 });
 
-const projectModel = mongoose.model<Project & mongoose.Document>("Project", projectSchema);
-
-export default projectModel;
+export const projectModel = model<IProject & Document>("Project", projectSchema);

@@ -6,5 +6,5 @@ module.exports = {
   },
   testEnvironment: "node",
   testTimeout: 30000,
-    // testPathIgnorePatterns: ["project"],
+  // testPathIgnorePatterns: ["project"],
 };

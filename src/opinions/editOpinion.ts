@@ -16,6 +16,6 @@ const editOpinion = async (req: Request, res: Response) => {
   );
 
   return res.status(StatusCodes.OK).send(opinion);
-}
+};
 
-  export default editOpinion;
+export default editOpinion;

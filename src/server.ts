@@ -14,7 +14,14 @@ if (!config.get("jwtPrivateKey")) {
   process.exit(1);
 }
 
-const app = new App([new UserController(), new AuthController(), new ProjectController(), new TeamController(),  new AppController(), new OpinionController()]);
+const app = new App([
+  new UserController(),
+  new AuthController(),
+  new ProjectController(),
+  new TeamController(),
+  new AppController(),
+  new OpinionController(),
+]);
 
 const server = app.listen();
 

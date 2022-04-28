@@ -3,3 +3,5 @@ declare namespace Express {
     userInfo: any;
   }
 }
+
+declare module "joi-oid";
