@@ -41,7 +41,7 @@ export default class App {
         useNewUrlParser: true,
         useUnifiedTopology: true,
         useCreateIndex: true,
-        useFindAndModify: true,
+        useFindAndModify: false,
       })
       .then(() => console.log(`Connected to MongoDB ${dbName}`))
       .catch((err: { message: any }) => console.log(err.message));

@@ -149,7 +149,7 @@ GET http://localhost:5000/project
 
 ###
 # GET PROJECT BY ID
-GET http://localhost:5000/project/6269a78042fa5855b82be00c
+GET http://localhost:5000/project/6269b9098ad9c71a70ca76b8
 
 ###
 # GET USER PROJECTS
@@ -171,15 +171,26 @@ Content-Type: application/json
 }
 
 ###
-# edit Project
-PUT http://localhost:5000/project/62210331e4339c1e71363587
+# EDIT PROJECT
+PUT http://localhost:5000/project/6269b9098ad9c71a70ca76b8
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjIxMDMzMWU0MzM5YzFlNzEzNjM1ODciLCJ1c2VybmFtZSI6Ik1lbnRvciBKYXZhIiwiaWF0IjoxNjUxMDkxMjc4fQ.8Rejdd8TNbfQkqoQ6bGo_msccy9ZrvEhVAEY-h_9ADk
 Content-Type: application/json
 
 {
-	"name": "Zmieniona nazwa",
-	"userId": "4edd40c86762e0fb12000003",
-	"mentorId": "fcee56c86762e0fb12000112",
-	"content": "Dodany mentor"
+	"name": "Super Project!",
+	"content": "Gitlab",
+    "status": "closed",
+    "description": "Projekt Roku!"
+}
+
+###
+# EDIT PROJECT'S MEMBERS 
+PUT http://localhost:5000/project/members/6269b9098ad9c71a70ca76b8
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjIxMDMzMWU0MzM5YzFlNzEzNjM1ODciLCJ1c2VybmFtZSI6Ik1lbnRvciBKYXZhIiwiaWF0IjoxNjUxMDkxMjc4fQ.8Rejdd8TNbfQkqoQ6bGo_msccy9ZrvEhVAEY-h_9ADk
+Content-Type: application/json
+
+{
+	"teamId": "6264facc175f012d595a1ef3"
 }
 
 ###
