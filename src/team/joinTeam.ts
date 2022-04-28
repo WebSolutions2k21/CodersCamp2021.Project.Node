@@ -12,7 +12,7 @@ export default async function joinTeam(req: Request, res: Response) {
 
   const getAllUsersAtTeam = team.usersIds;
 
-  if (team.usersIds?.includes(user._id)){
+  if (team.usersIds?.includes(user._id)) {
     return res.status(StatusCodes.LOCKED).send("You are already enrolled");
   }
   getAllUsersAtTeam?.push(user?._id);

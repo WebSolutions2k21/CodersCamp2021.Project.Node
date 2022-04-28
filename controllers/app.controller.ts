@@ -13,9 +13,9 @@ export default class AppController {
   }
   handleRequest(req: Request, res: Response) {
     res.writeHead(200, {
-        'Content-Type': 'text/plain'
+      "Content-Type": "text/plain",
     });
-    res.write('Welcome to our Node.js App.');
+    res.write("Welcome to our Node.js App.");
     res.end();
-};
-}   
+  }
+}

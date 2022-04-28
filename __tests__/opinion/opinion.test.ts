@@ -41,7 +41,7 @@ describe("/opinion", () => {
     });
   });
 
-    describe("EDIT", () => {
+  describe("EDIT", () => {
     it("should return 404 if opinion not found", async () => {
       let nonExistingId = "1420f53b09ff6213d719b4b2";
 
@@ -108,5 +108,4 @@ describe("/opinion", () => {
       expect(res.status).toBe(404);
     });
   });
-
 });

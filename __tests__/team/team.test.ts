@@ -7,9 +7,9 @@ let server: Server;
 const createTeam = async () => {
   const team = new teamModel({
     teamName: "Test Team2",
-    usersIds: ["622b9441f2950d6fe0a2b40c","4edd40c86762e0fb12000003"],
-    mentorId:  "621d35383e5c3315845ca334",
-    programmingLanguage: [{nameLang: "javascript", level:"basic"}],
+    usersIds: ["622b9441f2950d6fe0a2b40c", "4edd40c86762e0fb12000003"],
+    mentorId: "621d35383e5c3315845ca334",
+    programmingLanguage: [{ nameLang: "javascript", level: "basic" }],
     status: true,
   });
   await team.save();
@@ -36,8 +36,8 @@ describe("/team", () => {
       body = {
         teamName: "Test Team3",
         usersIds: ["622b9441f2950d6fe0a2b40c", "4edd40c86762e0fb12000003"],
-        mentorId:  "621d35383e5c3315845ca334",
-        programmingLanguage: [{nameLang: "javascript", level:"basic"}],
+        mentorId: "621d35383e5c3315845ca334",
+        programmingLanguage: [{ nameLang: "javascript", level: "basic" }],
         status: true,
       };
     });
@@ -46,16 +46,15 @@ describe("/team", () => {
       body = {
         teamName: "Test Team3",
         usersIds: ["622b9441f2950d6fe0a2b40c", "4edd40c86762e0fb12000003"],
-        mentorId:  "621d35383e5c3315845ca334",
-        programmingLanguage: [{nameLang: "javascript", level:"basic"}],
+        mentorId: "621d35383e5c3315845ca334",
+        programmingLanguage: [{ nameLang: "javascript", level: "basic" }],
         status: true,
       };
       await exec();
       let res = await exec();
-      expect(res.text).toBe('Team already exists')
+      expect(res.text).toBe("Team already exists");
       expect(res.status).toBe(400);
     });
-
 
     it("should save the team if it is valid", async () => {
       await exec();
@@ -63,7 +62,6 @@ describe("/team", () => {
       expect(team).not.toBeNull();
     });
   });
-
 
   describe("GET /:id", () => {
     it("should return a team if valid id is entered", async () => {
@@ -74,7 +72,7 @@ describe("/team", () => {
       expect(res.status).toBe(200);
       expect(res.body.teamName).toEqual(team.teamName);
     });
-});
+  });
 
   describe("DELETE /:id", () => {
     it("should delete team if id exists", async () => {
@@ -99,4 +97,3 @@ describe("/team", () => {
     });
   });
 });
-

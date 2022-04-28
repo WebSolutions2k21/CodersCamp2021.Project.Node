@@ -21,7 +21,7 @@ describe("error", () => {
       expect(e).toEqual({
         error: "Something is wrong!",
       });
-      expect(e).toMatch('error');
+      expect(e).toMatch("error");
       expect.assertions(2);
     }
   });

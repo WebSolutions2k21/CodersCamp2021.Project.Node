@@ -62,7 +62,7 @@ describe("/users", () => {
       };
       await exec();
       let res = await exec();
-      expect(res.text).toBe('That user already exisits!')
+      expect(res.text).toBe("That user already exisits!");
       expect(res.status).toBe(400);
     });
 

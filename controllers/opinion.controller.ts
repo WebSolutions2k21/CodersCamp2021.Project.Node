@@ -37,7 +37,7 @@ export default class OpinionController {
     getOpinion(req, res);
   }
 
-  getAllOpinions(req: Request, res:Response) {
+  getAllOpinions(req: Request, res: Response) {
     getAllOpinions(req, res);
   }
 }
