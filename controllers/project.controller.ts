@@ -1,6 +1,10 @@
 import express, { Request, Response } from "express";
 
 import auth from "../middleware/auth";
+import findProject from "../middleware/findProject";
+import authProject from "../middleware/authProject";
+import checkProjectIds from "../middleware/checkProjectIds";
+
 import getAllProject from "../src/projects/getAllProject";
 import getProject from "../src/projects/getProject";
 import getUserProjects from "../src/projects/getUserProjects";
@@ -20,11 +24,18 @@ export default class ProjectController {
   initializeRoutes() {
     this.router.get(this.path, this.getAllProject);
     this.router.get(`${this.path}/user-projects`, auth, this.getUserProjects);
-    this.router.get(`${this.path}/:id`, this.getProject);
-    this.router.post(`${this.path}/create`, this.createProject);
-    this.router.put(`${this.path}/:id`, auth, this.editProject);
-    this.router.put(`${this.path}/members/:id`, auth, this.updateProjectMembers);
-    this.router.delete(`${this.path}/:id`, auth, this.deleteProject);
+    this.router.get(`${this.path}/:projectId`, findProject, this.getProject);
+    this.router.post(`${this.path}/create`, checkProjectIds, this.createProject);
+    this.router.put(`${this.path}/:projectId`, auth, findProject, authProject, this.editProject);
+    this.router.put(
+      `${this.path}/members/:projectId`,
+      auth,
+      findProject,
+      authProject,
+      checkProjectIds,
+      this.updateProjectMembers,
+    );
+    this.router.delete(`${this.path}/:projectId`, auth, findProject, authProject, this.deleteProject);
   }
 
   getAllProject(req: Request, res: Response) {

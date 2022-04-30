@@ -172,12 +172,12 @@ Content-Type: application/json
 
 ###
 # EDIT PROJECT
-PUT http://localhost:5000/project/6269b9098ad9c71a70ca76b8
+PUT http://localhost:5000/project/626d019cb513693f389a0c75
 x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjIxMDMzMWU0MzM5YzFlNzEzNjM1ODciLCJ1c2VybmFtZSI6Ik1lbnRvciBKYXZhIiwiaWF0IjoxNjUxMDkxMjc4fQ.8Rejdd8TNbfQkqoQ6bGo_msccy9ZrvEhVAEY-h_9ADk
 Content-Type: application/json
 
 {
-	"name": "Super Project!",
+	"name": "Super Project!!!",
 	"content": "Gitlab",
     "status": "closed",
     "description": "Projekt Roku!"
@@ -185,17 +185,17 @@ Content-Type: application/json
 
 ###
 # EDIT PROJECT'S MEMBERS 
-PUT http://localhost:5000/project/members/6269b9098ad9c71a70ca76b8
+PUT http://localhost:5000/project/members/626d019cb513693f389a0c75
 x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjIxMDMzMWU0MzM5YzFlNzEzNjM1ODciLCJ1c2VybmFtZSI6Ik1lbnRvciBKYXZhIiwiaWF0IjoxNjUxMDkxMjc4fQ.8Rejdd8TNbfQkqoQ6bGo_msccy9ZrvEhVAEY-h_9ADk
 Content-Type: application/json
 
 {
-	"teamId": "6264facc175f012d595a1ef3"
+	"teamId": null
 }
 
 ###
 # DELETE PROJECT
-DELETE http://localhost:5000/project/6269b8fb8ad9c71a70ca76b7
+DELETE http://localhost:5000/project/626d019cb513693f389a0c75
 x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjIxMDMzMWU0MzM5YzFlNzEzNjM1ODciLCJ1c2VybmFtZSI6Ik1lbnRvciBKYXZhIiwiaWF0IjoxNjUxMDkxMjc4fQ.8Rejdd8TNbfQkqoQ6bGo_msccy9ZrvEhVAEY-h_9ADk
 
 ###
