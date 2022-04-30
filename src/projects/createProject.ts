@@ -11,9 +11,6 @@ const createProject = async (req: Request, res: Response) => {
   const { error } = validateProject(req.body);
   if (error) return res.status(StatusCodes.BAD_REQUEST).send(error.details[0].message);
 
-  const isProjectExist = await projectModel.findOne({ name: req.body.name });
-  if (isProjectExist) return res.status(StatusCodes.BAD_REQUEST).send("Project already exists");
-
   const user = await userModel.findById(req.body.userId);
   if (req.body.userId && !user) return res.status(StatusCodes.NOT_FOUND).send("User not found");
 

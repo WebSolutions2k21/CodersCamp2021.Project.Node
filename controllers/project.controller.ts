@@ -1,11 +1,13 @@
 import express, { Request, Response } from "express";
+
+import auth from "../middleware/auth";
+import getAllProject from "../src/projects/getAllProject";
+import getProject from "../src/projects/getProject";
+import getUserProjects from "../src/projects/getUserProjects";
 import createProject from "../src/projects/createProject";
 import editProject from "../src/projects/editProject";
-import getProject from "../src/projects/getProject";
-import getAllProject from "../src/projects/getAllProject";
+import updateProjectMembers from "../src/projects/updateProjectMembers";
 import deleteProject from "../src/projects/deleteProject";
-import getUserProjects from "../src/projects/getUserProjects";
-import auth from "../middleware/auth";
 
 export default class ProjectController {
   public path = "/project";
@@ -21,9 +23,21 @@ export default class ProjectController {
     this.router.get(`${this.path}/:id`, this.getProject);
     this.router.post(`${this.path}/create`, this.createProject);
     this.router.put(`${this.path}/:id`, auth, this.editProject);
+    this.router.put(`${this.path}/members/:id`, auth, this.updateProjectMembers);
     this.router.delete(`${this.path}/:id`, auth, this.deleteProject);
   }
 
+  getAllProject(req: Request, res: Response) {
+    getAllProject(req, res);
+  }
+
+  getProject(req: Request, res: Response) {
+    getProject(req, res);
+  }
+
+  getUserProjects(req: Request, res: Response) {
+    getUserProjects(req, res);
+  }
   createProject(req: Request, res: Response) {
     createProject(req, res);
   }
@@ -32,19 +46,11 @@ export default class ProjectController {
     editProject(req, res);
   }
 
-  getProject(req: Request, res: Response) {
-    getProject(req, res);
-  }
-
-  getAllProject(req: Request, res: Response) {
-    getAllProject(req, res);
+  updateProjectMembers(req: Request, res: Response) {
+    updateProjectMembers(req, res);
   }
 
   deleteProject(req: Request, res: Response) {
     deleteProject(req, res);
-  }
-
-  getUserProjects(req: Request, res: Response) {
-    getUserProjects(req, res);
   }
 }
