@@ -4,7 +4,6 @@ import { StatusCodes } from "http-status-codes";
 import { projectModel } from "../models/project.model";
 
 const findProject = async (req: Request, res: Response, next: NextFunction) => {
-  console.log(req.params.projectId);
   try {
     const project = await projectModel.findById(req.params.projectId);
     if (!project) throw new Error();
