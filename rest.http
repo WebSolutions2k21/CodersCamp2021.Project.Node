@@ -163,7 +163,7 @@ Content-Type: application/json
 
 {
 	"name": "Projekt23",
-	"teamId": "6264facc175f012d595a1ef3",
+	"teamId": null,
 	"mentorId": "62210331e4339c1e71363587",
 	"content": "aplikacja",
     "language": ["JavaScript", "Python"],
@@ -180,17 +180,21 @@ Content-Type: application/json
 	"name": "Super Project!!!",
 	"content": "Gitlab",
     "status": "closed",
-    "description": "Projekt Roku!"
+    "description": "Projekt Roku!",
+    "language": ["TypeScript", "GO"],
 }
 
 ###
 # EDIT PROJECT'S MEMBERS 
+# teamId : objectID | null
+# mentorId : objectID | null
+# userId : objectID | null
 PUT http://localhost:5000/project/members/626d019cb513693f389a0c75
 x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjIxMDMzMWU0MzM5YzFlNzEzNjM1ODciLCJ1c2VybmFtZSI6Ik1lbnRvciBKYXZhIiwiaWF0IjoxNjUxMDkxMjc4fQ.8Rejdd8TNbfQkqoQ6bGo_msccy9ZrvEhVAEY-h_9ADk
 Content-Type: application/json
 
 {
-	"teamId": null
+	"teamId": "6264facc175f012d595a1ef3"
 }
 
 ###
