@@ -14,6 +14,7 @@ import changePassword from "../src/users/changePassword";
 import sendEmailNewPassword from "../src/users/sendEmailNewPassword";
 import newPassword from "../src/users/newPassword";
 import getAllMentors from "../src/users/getAllMentors";
+import getOnlyUsers from "../src/users/getOnlyUsers";
 export default class UserController {
   public path = "/users";
   public router = express.Router();
@@ -25,6 +26,7 @@ export default class UserController {
   initializeRoutes() {
     this.router.get(this.path, this.getAllUsers);
     this.router.get(`${this.path}/mentors`, this.getAllMentors);
+    this.router.get(`${this.path}/only-users`, this.getOnlyUsers);
     this.router.post(`${this.path}/register`, this.registerUser);
     this.router.get(`${this.path}/:id`, this.getUser);
     this.router.get(`${this.path}/confirmation/:token`, this.confirmation);
@@ -82,5 +84,9 @@ export default class UserController {
 
   getAllMentors(req: Request, res: Response) {
     getAllMentors(req, res);
+  }
+
+  getOnlyUsers(req: Request, res: Response) {
+    getOnlyUsers(req, res);
   }
 }
