@@ -14,7 +14,7 @@ const sendEmailNewPassword = async (req: Request, res: Response) => {
   if (!user) return res.status(StatusCodes.NOT_FOUND).send("User not found");
 
   const token = user.generateAuthToken();
-  const url = `http://${process.env.ADDRESSPORT}/users/newpassword/${token}`;
+  const url = `http://${process.env.URL}/set-password/${token}`;
   const message = await emailNewPassword(req.body.email, url);
 
   res.status(StatusCodes.OK).send(message);
