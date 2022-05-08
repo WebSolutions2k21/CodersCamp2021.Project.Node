@@ -7,7 +7,7 @@ import deleteTeam from "../src/team/deleteTeam";
 import joinTeam from "../src/team/joinTeam";
 import getUserTeam from "../src/team/getUserTeam";
 import auth from "../middleware/auth";
-import isMentor from "../src/users/isMentor";
+import getMentorTeam from "../src/team/getMentorTeam";
 export default class TeamController {
   public path = "/team";
   public router = express.Router();
@@ -19,10 +19,11 @@ export default class TeamController {
   initializeRoutes() {
     this.router.get(this.path, this.getAll);
     this.router.get(`${this.path}/user-team`, auth, this.getUserTeam);
+    this.router.get(`${this.path}/mentor-team`, auth, this.getMentorTeam);
     this.router.post(`${this.path}/create`, this.create);
     this.router.get(`${this.path}/:id`, this.getTeam);
     this.router.put(`${this.path}/:id`, this.editTeam);
-    this.router.delete(`${this.path}/:id`, this.deleteTeam);
+    this.router.delete(`${this.path}/:id`, auth, this.deleteTeam);
     this.router.put(`${this.path}/join/:id`, auth, this.joinTeam);
   }
 
@@ -52,5 +53,9 @@ export default class TeamController {
 
   getUserTeam(req: Request, res: Response) {
     getUserTeam(req, res);
+  }
+
+  getMentorTeam(req: Request, res: Response) {
+    getMentorTeam(req, res);
   }
 }
