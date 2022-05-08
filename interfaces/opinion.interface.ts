@@ -6,7 +6,6 @@ interface Opinion extends mongoose.Document {
   userId: string;
   mentorId: string;
   stars: number;
-  //asdasdas
 }
 
 export default Opinion;
