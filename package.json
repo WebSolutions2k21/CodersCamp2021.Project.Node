@@ -29,9 +29,7 @@
     "mongoose": "5.11.15",
     "nodemailer": "^6.7.2",
     "production": "^0.0.2",
-    "supertest": "^6.2.2"
-  },
-  "devDependencies": {
+    "supertest": "^6.2.2",
     "@types/bcrypt": "^5.0.0",
     "@types/config": "^0.0.38",
     "@types/express": "^4.17.11",
