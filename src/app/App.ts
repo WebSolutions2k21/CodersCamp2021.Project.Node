@@ -1,5 +1,4 @@
 import express, { Application } from "express";
-import config from "config";
 
 import Controller from "../../interfaces/controller.interface";
 const mongoose = require("mongoose");
@@ -31,7 +30,7 @@ export default class App {
 
   connectToDatabase() {
     const { MONGO_USER, MONGO_PASSWORD, MONGO_DB_NAME } = process.env;
-    const dbName = !!config.get("dbName") ? <string>config.get("dbName") : MONGO_DB_NAME;
+    const dbName = MONGO_DB_NAME;
 
     mongoose
       .connect(`mongodb+srv://@cluster0.sfyfo.mongodb.net/`, {

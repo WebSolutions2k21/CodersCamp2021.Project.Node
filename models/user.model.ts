@@ -1,6 +1,5 @@
 import mongoose from "mongoose";
 import jwt from "jsonwebtoken";
-import config from "config";
 
 import User from "../interfaces/user.interface";
 
@@ -67,7 +66,7 @@ const userSchema = new Schema<User>({
 });
 
 userSchema.methods.generateAuthToken = function () {
-  const token = jwt.sign({ _id: this._id, username: this.username }, config.get("jwtPrivateKey"));
+  const token = jwt.sign({ _id: this._id, username: this.username }, process.env.JWT_PRIVATE_KEY as string);
   return token;
 };
 

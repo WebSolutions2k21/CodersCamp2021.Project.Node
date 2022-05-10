@@ -1,5 +1,4 @@
 import "dotenv/config";
-import config from "config";
 
 import AuthController from "../controllers/auth.controller";
 import UserController from "../controllers/users.controller";
@@ -9,7 +8,7 @@ import App from "./app/App";
 import TeamController from "../controllers/team.controller";
 import AppController from "../controllers/app.controller";
 
-if (!config.get("jwtPrivateKey")) {
+if (!process.env.JWT_PRIVATE_KEY) {
   console.error("Fatal Error: jwtPrivateKey is not defined.");
   process.exit(1);
 }

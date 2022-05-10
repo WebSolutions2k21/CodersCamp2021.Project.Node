@@ -1,4 +1,3 @@
-import config from "config";
 import jwt from "jsonwebtoken";
 import { StatusCodes } from "http-status-codes";
 import { NextFunction, Request, Response } from "express";
@@ -8,7 +7,7 @@ export default function auth(req: Request, res: Response, next: NextFunction) {
   if (!token) return res.status(StatusCodes.UNAUTHORIZED).send("Access denied. No token provided.");
 
   try {
-    const decoded = jwt.verify(token, config.get("jwtPrivateKey"));
+    const decoded = jwt.verify(token, process.env.JWT_PRIVATE_KEY as string);
     req.userInfo = decoded;
     next();
   } catch (ex) {
