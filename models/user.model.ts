@@ -32,6 +32,7 @@ const userSchema = new Schema<User>({
     maxlength: 500,
     minlength: 8,
   },
+  // nie ma potrzeby przechowywania w bazie confirm password
   confirmpassword: {
     type: String,
     required: true,
@@ -48,7 +49,7 @@ const userSchema = new Schema<User>({
   },
   programmingLanguage: [
     {
-      id: {
+      langId: {
         type: mongoose.Schema.Types.ObjectId,
       },
       nameLang: {

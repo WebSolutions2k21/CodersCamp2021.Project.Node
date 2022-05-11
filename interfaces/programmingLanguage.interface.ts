@@ -1,5 +1,5 @@
 export default interface ProgrammingLanguageArr {
-  id: string;
+  langId: string;
   level: string;
   nameLang: string;
 }
