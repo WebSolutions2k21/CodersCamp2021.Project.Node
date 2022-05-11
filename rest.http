@@ -86,7 +86,7 @@ Content-Type: application/json
 
 {
     "firstname": "Edit user",
-    "lastname": "Gosia last",
+    "lastname": "Gosia last 2",
     "isMentor": true
 }
 
@@ -97,10 +97,17 @@ x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjIxMDMzMWU0MzM5Y
 Content-Type: application/json
 
 {
-    "name": "python",
-    "level": "junior"
+    "programmingLanguage":[
+        {
+            "nameLang": "python",
+            "level": "junior3"
+        },
+        {
+            "nameLang": "c++",
+            "level": "senior"
+        }
+    ]
 }
-
 
 ###
 # ____________________________ TEAM ____________________________
