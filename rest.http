@@ -100,7 +100,7 @@ Content-Type: application/json
     "programmingLanguage":[
         {
             "nameLang": "python",
-            "level": "junior3"
+            "level": "junior"
         },
         {
             "nameLang": "c++",
