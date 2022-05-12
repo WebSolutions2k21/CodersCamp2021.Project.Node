@@ -2,6 +2,7 @@ import mongoose from "mongoose";
 import jwt from "jsonwebtoken";
 
 import User from "../interfaces/user.interface";
+import LANG_LEVEL from "../enums/userLanguages";
 
 const Schema = mongoose.Schema;
 const userSchema = new Schema<User>({
@@ -32,6 +33,7 @@ const userSchema = new Schema<User>({
     maxlength: 500,
     minlength: 8,
   },
+  // nie ma potrzeby przechowywania w bazie confirm password
   confirmpassword: {
     type: String,
     required: true,
@@ -48,14 +50,12 @@ const userSchema = new Schema<User>({
   },
   programmingLanguage: [
     {
-      id: {
-        type: mongoose.Schema.Types.ObjectId,
-      },
       nameLang: {
         type: String,
       },
       level: {
-        type: String,
+        type: LANG_LEVEL,
+        default: LANG_LEVEL.JUNIOR,
       },
     },
   ],
