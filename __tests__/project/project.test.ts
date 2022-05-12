@@ -1,8 +1,7 @@
 import { Server } from "http";
 import { StatusCodes } from "http-status-codes";
 import request from "supertest";
-import projectModel from "../../models/project.model";
-import mongoose from "mongoose";
+import { projectModel } from "../../models/project.model";
 
 let server: Server;
 

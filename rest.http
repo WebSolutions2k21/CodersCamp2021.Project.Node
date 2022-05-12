@@ -43,8 +43,8 @@ Content-Type: application/json
 
 {
     "oldPassword": "12345678",
-    "newPassword": "12345678",
-    "confirmNewPassword": "12345678"
+    "newPassword": "123456789",
+    "confirmNewPassword": "123456789"
 }
 ###
 # send email newPassword
@@ -77,18 +77,38 @@ GET http://localhost:5000/users/role/62210331e4339c1e71363587 HTTP/1.1
 
 # get all mentors
 GET http://localhost:5000/users/mentors HTTP/1.1
+
 ###
-# get check is mentor
-PATCH  http://localhost:5000/users/62239d63a5182b274496ee34 HTTP/1.1
+# EDIT USER
+PATCH  http://localhost:5000/users/edit HTTP/1.1
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjIxMDMzMWU0MzM5YzFlNzEzNjM1ODciLCJ1c2VybmFtZSI6Ik1lbnRvciBKYXZhIiwiaWF0IjoxNjUyMjIxNDMyfQ.NQR1ZQXZlLvFtR-qPZaastS8K7vrZ1aZI99al8_60sU
 Content-Type: application/json
 
 {
-    "username": "t55tt",
     "firstname": "Edit user",
-    "lastname": "Gosia last",
-    "email": "test@test.xyz",
+    "lastname": "Gosia last 2",
     "isMentor": true
 }
+
+###
+# EDIT USER LANGUAGES
+PATCH  http://localhost:5000/users/lang HTTP/1.1
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjIxMDMzMWU0MzM5YzFlNzEzNjM1ODciLCJ1c2VybmFtZSI6Ik1lbnRvciBKYXZhIiwiaWF0IjoxNjUyMjIxNDMyfQ.NQR1ZQXZlLvFtR-qPZaastS8K7vrZ1aZI99al8_60sU
+Content-Type: application/json
+
+{
+    "programmingLanguage":[
+        {
+            "nameLang": "python",
+            "level": "junior"
+        },
+        {
+            "nameLang": "c++",
+            "level": "senior"
+        }
+    ]
+}
+
 ###
 # ____________________________ TEAM ____________________________
 POST http://localhost:5000/team/create HTTP/1.1
@@ -163,7 +183,7 @@ Content-Type: application/json
 
 {
 	"name": "Projekt23",
-	"teamId": "6264facc175f012d595a1ef3",
+	"teamId": null,
 	"mentorId": "62210331e4339c1e71363587",
 	"content": "aplikacja",
     "language": ["JavaScript", "Python"],
@@ -172,20 +192,24 @@ Content-Type: application/json
 
 ###
 # EDIT PROJECT
-PUT http://localhost:5000/project/6269b9098ad9c71a70ca76b8
+PUT http://localhost:5000/project/626d019cb513693f389a0c75
 x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjIxMDMzMWU0MzM5YzFlNzEzNjM1ODciLCJ1c2VybmFtZSI6Ik1lbnRvciBKYXZhIiwiaWF0IjoxNjUxMDkxMjc4fQ.8Rejdd8TNbfQkqoQ6bGo_msccy9ZrvEhVAEY-h_9ADk
 Content-Type: application/json
 
 {
-	"name": "Super Project!",
+	"name": "Super Project!!!",
 	"content": "Gitlab",
     "status": "closed",
-    "description": "Projekt Roku!"
+    "description": "Projekt Roku!",
+    "language": ["TypeScript", "GO"],
 }
 
 ###
 # EDIT PROJECT'S MEMBERS 
-PUT http://localhost:5000/project/members/6269b9098ad9c71a70ca76b8
+# teamId : objectID | null
+# mentorId : objectID | null
+# userId : objectID | null
+PUT http://localhost:5000/project/members/626d019cb513693f389a0c75
 x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjIxMDMzMWU0MzM5YzFlNzEzNjM1ODciLCJ1c2VybmFtZSI6Ik1lbnRvciBKYXZhIiwiaWF0IjoxNjUxMDkxMjc4fQ.8Rejdd8TNbfQkqoQ6bGo_msccy9ZrvEhVAEY-h_9ADk
 Content-Type: application/json
 
@@ -195,7 +219,7 @@ Content-Type: application/json
 
 ###
 # DELETE PROJECT
-DELETE http://localhost:5000/project/6269b8fb8ad9c71a70ca76b7
+DELETE http://localhost:5000/project/626d019cb513693f389a0c75
 x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjIxMDMzMWU0MzM5YzFlNzEzNjM1ODciLCJ1c2VybmFtZSI6Ik1lbnRvciBKYXZhIiwiaWF0IjoxNjUxMDkxMjc4fQ.8Rejdd8TNbfQkqoQ6bGo_msccy9ZrvEhVAEY-h_9ADk
 
 ###

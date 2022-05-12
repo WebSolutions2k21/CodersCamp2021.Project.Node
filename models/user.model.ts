@@ -1,8 +1,8 @@
 import mongoose from "mongoose";
 import jwt from "jsonwebtoken";
-import config from "config";
 
 import User from "../interfaces/user.interface";
+import LANG_LEVEL from "../enums/userLanguages";
 
 const Schema = mongoose.Schema;
 const userSchema = new Schema<User>({
@@ -33,6 +33,7 @@ const userSchema = new Schema<User>({
     maxlength: 500,
     minlength: 8,
   },
+  // nie ma potrzeby przechowywania w bazie confirm password
   confirmpassword: {
     type: String,
     required: true,
@@ -49,14 +50,12 @@ const userSchema = new Schema<User>({
   },
   programmingLanguage: [
     {
-      id: {
-        type: mongoose.Schema.Types.ObjectId,
-      },
       nameLang: {
         type: String,
       },
       level: {
-        type: String,
+        type: LANG_LEVEL,
+        default: LANG_LEVEL.JUNIOR,
       },
     },
   ],
@@ -67,7 +66,7 @@ const userSchema = new Schema<User>({
 });
 
 userSchema.methods.generateAuthToken = function () {
-  const token = jwt.sign({ _id: this._id, username: this.username }, config.get("jwtPrivateKey"));
+  const token = jwt.sign({ _id: this._id, username: this.username }, process.env.JWT_PRIVATE_KEY as string);
   return token;
 };
 

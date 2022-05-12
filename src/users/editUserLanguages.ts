@@ -3,10 +3,10 @@ import { StatusCodes } from "http-status-codes";
 import _ from "lodash";
 
 import userModel from "../../models/user.model";
-import validateEditProfile from "./validateEditProfile";
+import validateUserLanguages from "./validateUserLanguages";
 
-const editProfile = async (req: Request, res: Response) => {
-  const { error } = validateEditProfile(req.body);
+const editLanguage = async (req: Request, res: Response) => {
+  const { error } = validateUserLanguages(req.body);
   if (error) return res.status(StatusCodes.BAD_REQUEST).send(error.details[0].message);
 
   const { user } = res.locals;
@@ -17,4 +17,4 @@ const editProfile = async (req: Request, res: Response) => {
     .send(_.pick(userProf, ["_id", "username", "email", "firstname", "lastname", "isMentor", "programmingLanguage"]));
 };
 
-export default editProfile;
+export default editLanguage;
