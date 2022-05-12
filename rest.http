@@ -43,8 +43,8 @@ Content-Type: application/json
 
 {
     "oldPassword": "12345678",
-    "newPassword": "12345678",
-    "confirmNewPassword": "12345678"
+    "newPassword": "123456789",
+    "confirmNewPassword": "123456789"
 }
 ###
 # send email newPassword
