@@ -1,7 +1,7 @@
 import { Response, Request } from "express";
 import { StatusCodes } from "http-status-codes";
 import teamModel from "../../models/team.model";
-import mongoose from "mongoose";
+import userModel from "../../models/user.model";
 
 export default async function createTeam(req: Request, res: Response) {
   let team = await teamModel.findOne({ teamName: req.body.teamName });
@@ -11,7 +11,7 @@ export default async function createTeam(req: Request, res: Response) {
     team = new teamModel({
       teamName: req.body.teamName,
       usersIds: req.body.usersIds,
-      mentorId: mongoose.Types.ObjectId(req.body.mentorId),
+      mentorId: req.body.mentorId,
       programmingLanguage: req.body.programmingLanguage,
       status: req.body.status,
       places: req.body.places,
