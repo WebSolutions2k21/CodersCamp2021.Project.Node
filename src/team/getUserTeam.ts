@@ -1,5 +1,6 @@
 import { Response, Request } from "express";
 import { StatusCodes } from "http-status-codes";
+import User from "../../interfaces/user.interface";
 import teamModel from "../../models/team.model";
 import userModel from "../../models/user.model";
 
@@ -11,8 +12,8 @@ const getUserTeam = async (req: Request, res: Response) => {
   const userTeams: object[] = [];
 
   allTeams.forEach((team) => {
-    team.usersIds?.forEach((user: any) => {
-      if (user.toString() === user?._id.toString()) {
+    team.usersIds?.forEach((userTeam: any) => {
+      if (userTeam.toString() === user?._id.toString()) {
         return userTeams.push(team);
       }
     });
