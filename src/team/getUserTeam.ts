@@ -1,6 +1,5 @@
 import { Response, Request } from "express";
 import { StatusCodes } from "http-status-codes";
-import User from "../../interfaces/user.interface";
 import teamModel from "../../models/team.model";
 import userModel from "../../models/user.model";
 
