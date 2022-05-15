@@ -8,13 +8,14 @@ const getUserTeam = async (req: Request, res: Response) => {
   if (!user) return res.status(StatusCodes.NOT_FOUND).send("User not found");
 
   const allTeams = await teamModel.find().select("description status teamName usersIds");
-
   const userTeams: object[] = [];
 
   allTeams.forEach((team) => {
-    if (team.usersIds?.toString() === user?._id.toString()) {
-      return userTeams.push(team);
-    }
+    team.usersIds?.forEach((userTeam: any) => {
+      if (userTeam.toString() === user?._id.toString()) {
+        return userTeams.push(team);
+      }
+    });
   });
 
   if (userTeams === null) {
