@@ -270,7 +270,20 @@ Content-Type: application/json
 
 {
     "userId": "62210331e4339c1e71363587",
-    "text": "masz wiadomość"
+    "text": "dodano do zespołu"
 }
 
+###
+# CHANGE NOTIFICATION STATUS ON READ
+PUT http://localhost:5000/notification/change/6282d303fb49a25ab47f43ef
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjIxMDMzMWU0MzM5YzFlNzEzNjM1ODciLCJ1c2VybmFtZSI6InQ1NXR0IiwiaWF0IjoxNjUyNzM3NjQzfQ._hyMmWVVyeZPZG-SsKsRBThcaX_VM7cVhMXcEDaD1C0
 
+###
+# CLEAR NOTIFICATIONS (Change all notification's statuses on read)
+PUT http://localhost:5000/notification/clear
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjIxMDMzMWU0MzM5YzFlNzEzNjM1ODciLCJ1c2VybmFtZSI6InQ1NXR0IiwiaWF0IjoxNjUyNzM3NjQzfQ._hyMmWVVyeZPZG-SsKsRBThcaX_VM7cVhMXcEDaD1C0
+
+###
+# DELETE NOTIFICATION
+DELETE  http://localhost:5000/notification/6282d2f9fb49a25ab47f43ee
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjIxMDMzMWU0MzM5YzFlNzEzNjM1ODciLCJ1c2VybmFtZSI6InQ1NXR0IiwiaWF0IjoxNjUyNzM3NjQzfQ._hyMmWVVyeZPZG-SsKsRBThcaX_VM7cVhMXcEDaD1C0
