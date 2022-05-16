@@ -2,20 +2,15 @@ import { Response, Request } from "express";
 import { StatusCodes } from "http-status-codes";
 
 import { opinionModel } from "../../models/opinion.model";
+import { validateOpinionEdit } from "./validateOpinionEdit";
 
 const editOpinion = async (req: Request, res: Response) => {
-  let opinion = await opinionModel.findById(req.params.id);
-  if (!opinion) return res.status(StatusCodes.NOT_FOUND).send("opinion not found");
+  const { error } = validateOpinionEdit(req.body);
+  if (error) return res.status(StatusCodes.BAD_REQUEST).send(error.details[0].message);
 
-  opinion = await opinionModel.findByIdAndUpdate(
-    req.params.id,
-    {
-      ...req.body,
-    },
-    { new: true },
-  );
+  const opinionUpdated = await opinionModel.findByIdAndUpdate(req.params.opinionId, { ...req.body }, { new: true });
 
-  return res.status(StatusCodes.OK).send(opinion);
+  return res.status(StatusCodes.OK).send(opinionUpdated);
 };
 
 export default editOpinion;

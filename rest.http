@@ -227,7 +227,11 @@ x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjIxMDMzMWU0MzM5Y
 
 ###
 # GET OPINIONS
-GET http://localhost:5000/opinion/6234f97af8b4d700ef698542
+GET http://localhost:5000/opinion
+
+###
+# GET OPINION
+GET http://localhost:5000/opinion/6282907fb062064904f7e73f
 
 ###
 # CREATE OPINION
@@ -241,20 +245,19 @@ Content-Type: application/json
     "content": "Opinia pięciogwiazdkowa",
     "stars": "5"
 }
+
 ###
-# edit opinion
-PUT http://localhost:5000/opinion/edit
+# EDIT OPINION
+PUT http://localhost:5000/opinion/edit/6282907fb062064904f7e73f
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjIxMDMzMWU0MzM5YzFlNzEzNjM1ODciLCJ1c2VybmFtZSI6InQ1NXR0IiwiaWF0IjoxNjUyNzIyNTUxfQ.i8GDCMz-M0LtJsimJ0U9sE0k2P5qZty0uDnmbSJISrU
 Content-Type: application/json
 
 {
-    "content": "Opinia czterogwiadkowa"
+    "content": "Opinia czterogwiadkowa",
+    "stars": "4"
 }
-###
-#
-# DELETE http://localhost:5000/opinion/delete
-
-DELETE http://localhost:5000/opinion/
 
 ###
-# get all opinions
-GET http://localhost:5000/opinion
+# DELETE OPINION
+DELETE http://localhost:5000/opinion/6282907fb062064904f7e73f
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjIxMDMzMWU0MzM5YzFlNzEzNjM1ODciLCJ1c2VybmFtZSI6InQ1NXR0IiwiaWF0IjoxNjUyNzIyNTUxfQ.i8GDCMz-M0LtJsimJ0U9sE0k2P5qZty0uDnmbSJISrU
