@@ -1,7 +1,7 @@
 import { Response, Request } from "express";
 import { StatusCodes } from "http-status-codes";
 
-import opinionModel from "../../models/opinion.model";
+import { opinionModel } from "../../models/opinion.model";
 
 const editOpinion = async (req: Request, res: Response) => {
   let opinion = await opinionModel.findById(req.params.id);

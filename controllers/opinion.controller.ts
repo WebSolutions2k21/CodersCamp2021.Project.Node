@@ -1,3 +1,5 @@
+import auth from "../middleware/auth";
+import checkOpinionIds from "../middleware/checkOpinionIds";
 import express, { Request, Response } from "express";
 import createOpinion from "../src/opinions/createOpinion";
 import editOpinion from "../src/opinions/editOpinion";
@@ -16,7 +18,7 @@ export default class OpinionController {
   initializeRoutes() {
     this.router.get(this.path, this.getAllOpinions);
     this.router.get(`${this.path}/:id`, this.getOpinion);
-    this.router.post(`${this.path}/create`, this.createOpinion);
+    this.router.post(`${this.path}/create`, auth, checkOpinionIds, this.createOpinion);
     this.router.put(`${this.path}/edit/:id`, this.editOpinion);
     this.router.delete(`${this.path}/:id`, this.deleteOpinion);
   }

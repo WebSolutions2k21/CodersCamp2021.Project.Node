@@ -224,15 +224,22 @@ x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjIxMDMzMWU0MzM5Y
 
 ###
 # ____________________________ OPINIONS ____________________________
-# create opinion
+
+###
+# GET OPINIONS
+GET http://localhost:5000/opinion/6234f97af8b4d700ef698542
+
+###
+# CREATE OPINION
 POST http://localhost:5000/opinion/create
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjIxMDMzMWU0MzM5YzFlNzEzNjM1ODciLCJ1c2VybmFtZSI6InQ1NXR0IiwiaWF0IjoxNjUyNzIyNTUxfQ.i8GDCMz-M0LtJsimJ0U9sE0k2P5qZty0uDnmbSJISrU
 Content-Type: application/json
 
 {
-    "userId": "4edd40c86762e0fb12000005",
-    "mentorId": "fcee56c86762e0fb12000112",
+    "userId": "62210331e4339c1e71363587",
+    "mentorId": "622101a32be5811d66abde97",
     "content": "Opinia pięciogwiazdkowa",
-    "stars": "4"
+    "stars": "5"
 }
 ###
 # edit opinion
@@ -247,10 +254,6 @@ Content-Type: application/json
 # DELETE http://localhost:5000/opinion/delete
 
 DELETE http://localhost:5000/opinion/
-
-###
-# get one opinion
-GET http://localhost:5000/opinion/6234f97af8b4d700ef698542
 
 ###
 # get all opinions
