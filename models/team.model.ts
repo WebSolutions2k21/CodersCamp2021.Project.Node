@@ -32,7 +32,7 @@ const teamSchema = new Schema<Team>({
     },
   ],
   status: {
-    type: String,
+    type: Boolean,
     default: true,
   },
   places: {
