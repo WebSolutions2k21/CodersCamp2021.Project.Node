@@ -10,6 +10,7 @@ const notificationSchema = new Schema<INotification>({
   },
   text: {
     type: String,
+    maxLength: 50,
     default: "",
   },
   status: {

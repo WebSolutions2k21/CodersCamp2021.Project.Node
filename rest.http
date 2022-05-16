@@ -255,3 +255,22 @@ GET http://localhost:5000/opinion/6234f97af8b4d700ef698542
 ###
 # get all opinions
 GET http://localhost:5000/opinion
+
+###
+# ____________________________ NOTIFICATIONS ____________________________
+
+# GET NOTIFICATIONS
+GET http://localhost:5000/notification
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjIxMDMzMWU0MzM5YzFlNzEzNjM1ODciLCJ1c2VybmFtZSI6InQ1NXR0IiwiaWF0IjoxNjUyNzM3NjQzfQ._hyMmWVVyeZPZG-SsKsRBThcaX_VM7cVhMXcEDaD1C0
+
+###
+# SEND NOTIFICATION
+POST http://localhost:5000/notification/send
+Content-Type: application/json
+
+{
+    "userId": "62210331e4339c1e71363587",
+    "text": "masz wiadomość"
+}
+
+

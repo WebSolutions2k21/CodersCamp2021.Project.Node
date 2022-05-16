@@ -4,6 +4,7 @@ import AuthController from "../controllers/auth.controller";
 import UserController from "../controllers/users.controller";
 import ProjectController from "../controllers/project.controller";
 import OpinionController from "../controllers/opinion.controller";
+import NotificationController from "../controllers/notification.controller";
 import App from "./app/App";
 import TeamController from "../controllers/team.controller";
 import AppController from "../controllers/app.controller";
@@ -20,6 +21,7 @@ const app = new App([
   new TeamController(),
   new AppController(),
   new OpinionController(),
+  new NotificationController(),
 ]);
 
 const server = app.listen();
