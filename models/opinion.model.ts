@@ -1,7 +1,7 @@
-import mongoose from "mongoose";
-import Opinion from "../interfaces/opinion.interface";
+import mongoose, { Schema, Document } from "mongoose";
+import { IOpinion } from "../interfaces/opinion.interface";
 
-const opinionSchema = new mongoose.Schema<Opinion>({
+const opinionSchema = new Schema<IOpinion>({
   content: {
     type: String,
     required: true,
@@ -9,11 +9,11 @@ const opinionSchema = new mongoose.Schema<Opinion>({
     minlength: 2,
   },
   userId: {
-    type: mongoose.Schema.Types.ObjectId,
+    type: Schema.Types.ObjectId,
     required: true,
   },
   mentorId: {
-    type: mongoose.Schema.Types.ObjectId,
+    type: Schema.Types.ObjectId,
     required: true,
   },
   stars: {
@@ -21,12 +21,6 @@ const opinionSchema = new mongoose.Schema<Opinion>({
     minvalue: 1,
     maxvalue: 5,
   },
-  date: {
-    type: Date,
-    default: Date.now,
-  },
 });
 
-const opinionModel = mongoose.model<Opinion & mongoose.Document>("Opinion", opinionSchema);
-
-export default opinionModel;
+export const opinionModel = mongoose.model<IOpinion & Document>("Opinion", opinionSchema);
