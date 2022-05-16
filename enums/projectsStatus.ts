@@ -1,6 +1,4 @@
-enum STATUS {
+export enum PROJECT_STATUS {
   CLOSED = "closed",
   OPEN = "open",
 }
-
-export default STATUS;

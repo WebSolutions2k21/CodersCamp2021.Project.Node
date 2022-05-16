@@ -1,6 +1,6 @@
 import { Schema, Document, model } from "mongoose";
 
-import STATUS from "../enums/projectsStatus";
+import { PROJECT_STATUS } from "../enums/projectsStatus";
 import { IProject } from "../interfaces/project.interface";
 
 const projectSchema = new Schema<IProject>({
@@ -27,8 +27,8 @@ const projectSchema = new Schema<IProject>({
     default: "",
   },
   status: {
-    type: STATUS,
-    default: STATUS.OPEN,
+    type: PROJECT_STATUS,
+    default: PROJECT_STATUS.OPEN,
   },
   language: {
     type: [String],
