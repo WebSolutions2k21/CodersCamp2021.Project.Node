@@ -110,7 +110,7 @@ Content-Type: application/json
 
 ### DELETE USER
 DELETE http://localhost:5000/users HTTP/1.1
-x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjdmYWM3N2U4MWE0ODJmYTA5MTcxYjIiLCJ1c2VybmFtZSI6InVzZXJuYW1lX3Rlc3QiLCJpYXQiOjE2NTI1MzQ2ODR9.ih30QFkeHqX3fSrxUnMZsSm3qjBG8Zf7iSBoVLIORvI
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjgyODY1MWY0YzAxMzU3YTBlMGZkYzMiLCJ1c2VybmFtZSI6InVzZXJuYW1lX3Rlc3QiLCJpYXQiOjE2NTI3MjEyODV9.ift1xE2egi6Ta8RI-FIWfpatFaKiy5wDVB5HlGVjN-k
 
 ###
 # ____________________________ TEAM ____________________________
@@ -154,8 +154,8 @@ Content-Type: application/json
 DELETE http://localhost:5000/team/62278e3a7cafabc04f5cbeab HTTP/1.1
 ###
 #Join Team
-PUT http://localhost:5000/team/join/62651720564414412e13b1bd HTTP/1.1
-x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjNjMTYzMTBhMjQxZjBlYjExNmFlNDAiLCJ1c2VybmFtZSI6InFxIiwiaWF0IjoxNjUwNzk4MDgxfQ.LkQIsGlEcZdvgTUu9TQepsD4f1SvwK0uC-67m_b2-Vw
+PUT http://localhost:5000/team/join/627fe4230c1e381902817114 HTTP/1.1
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjgyODY1MWY0YzAxMzU3YTBlMGZkYzMiLCJ1c2VybmFtZSI6InVzZXJuYW1lX3Rlc3QiLCJpYXQiOjE2NTI3MjEzMTR9.veJKBT7UhehhumgO3Nt0JTuzdCjsmpT2jhYaDSlMkYE
 Content-Type: application/json
 
 ###
