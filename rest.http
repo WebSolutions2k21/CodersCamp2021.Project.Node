@@ -7,9 +7,8 @@ POST http://localhost:5000/login
 Content-Type: application/json
 
 {
-    "email": "margiebed+8@gmail.com",
+    "email": "test123@mail.com",
     "password": "12345678"
-
 }
 
 ###
@@ -23,7 +22,7 @@ Content-Type: application/json
     "username": "username_test",
     "firstname":"firstname_test",
     "lastname":"lastname_test",
-    "email": "test@mail.com",
+    "email": "test123@mail.com",
     "password": "12345678",
     "confirmpassword": "12345678"
 }
@@ -109,6 +108,10 @@ Content-Type: application/json
     ]
 }
 
+### DELETE USER
+DELETE http://localhost:5000/users HTTP/1.1
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjgyODY1MWY0YzAxMzU3YTBlMGZkYzMiLCJ1c2VybmFtZSI6InVzZXJuYW1lX3Rlc3QiLCJpYXQiOjE2NTI3MjEyODV9.ift1xE2egi6Ta8RI-FIWfpatFaKiy5wDVB5HlGVjN-k
+
 ###
 # ____________________________ TEAM ____________________________
 POST http://localhost:5000/team/create HTTP/1.1
@@ -151,8 +154,8 @@ Content-Type: application/json
 DELETE http://localhost:5000/team/62278e3a7cafabc04f5cbeab HTTP/1.1
 ###
 #Join Team
-PUT http://localhost:5000/team/join/62651720564414412e13b1bd HTTP/1.1
-x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjNjMTYzMTBhMjQxZjBlYjExNmFlNDAiLCJ1c2VybmFtZSI6InFxIiwiaWF0IjoxNjUwNzk4MDgxfQ.LkQIsGlEcZdvgTUu9TQepsD4f1SvwK0uC-67m_b2-Vw
+PUT http://localhost:5000/team/join/627fe4230c1e381902817114 HTTP/1.1
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjgyODY1MWY0YzAxMzU3YTBlMGZkYzMiLCJ1c2VybmFtZSI6InVzZXJuYW1lX3Rlc3QiLCJpYXQiOjE2NTI3MjEzMTR9.veJKBT7UhehhumgO3Nt0JTuzdCjsmpT2jhYaDSlMkYE
 Content-Type: application/json
 
 ###
@@ -169,12 +172,12 @@ GET http://localhost:5000/project
 
 ###
 # GET PROJECT BY ID
-GET http://localhost:5000/project/6269b9098ad9c71a70ca76b8
+GET http://localhost:5000/project/627fad94e81a482fa09171b3
 
 ###
 # GET USER PROJECTS
 GET http://localhost:5000/project/user-projects
-x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjIxMDMzMWU0MzM5YzFlNzEzNjM1ODciLCJ1c2VybmFtZSI6Ik1lbnRvciBKYXZhIiwiaWF0IjoxNjUxMDkxMjc4fQ.8Rejdd8TNbfQkqoQ6bGo_msccy9ZrvEhVAEY-h_9ADk
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjdmYWM3N2U4MWE0ODJmYTA5MTcxYjIiLCJ1c2VybmFtZSI6InVzZXJuYW1lX3Rlc3QiLCJpYXQiOjE2NTI1MzQ2ODR9.ih30QFkeHqX3fSrxUnMZsSm3qjBG8Zf7iSBoVLIORvI
 
 ###
 # CREATE PROJECT
@@ -183,7 +186,7 @@ Content-Type: application/json
 
 {
 	"name": "Projekt23",
-	"teamId": null,
+	"userId": "627fac77e81a482fa09171b2",
 	"mentorId": "62210331e4339c1e71363587",
 	"content": "aplikacja",
     "language": ["JavaScript", "Python"],
@@ -224,37 +227,42 @@ x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjIxMDMzMWU0MzM5Y
 
 ###
 # ____________________________ OPINIONS ____________________________
-# create opinion
+
+###
+# GET OPINIONS
+GET http://localhost:5000/opinion
+
+###
+# GET OPINION
+GET http://localhost:5000/opinion/6282907fb062064904f7e73f
+
+###
+# CREATE OPINION
 POST http://localhost:5000/opinion/create
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjIxMDMzMWU0MzM5YzFlNzEzNjM1ODciLCJ1c2VybmFtZSI6InQ1NXR0IiwiaWF0IjoxNjUyNzIyNTUxfQ.i8GDCMz-M0LtJsimJ0U9sE0k2P5qZty0uDnmbSJISrU
 Content-Type: application/json
 
 {
-    "userId": "4edd40c86762e0fb12000005",
-    "mentorId": "fcee56c86762e0fb12000112",
+    "userId": "62210331e4339c1e71363587",
+    "mentorId": "622101a32be5811d66abde97",
     "content": "Opinia pięciogwiazdkowa",
+    "stars": "5"
+}
+
+###
+# EDIT OPINION
+PUT http://localhost:5000/opinion/edit/6282907fb062064904f7e73f
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjIxMDMzMWU0MzM5YzFlNzEzNjM1ODciLCJ1c2VybmFtZSI6InQ1NXR0IiwiaWF0IjoxNjUyNzIyNTUxfQ.i8GDCMz-M0LtJsimJ0U9sE0k2P5qZty0uDnmbSJISrU
+Content-Type: application/json
+
+{
+    "content": "Opinia czterogwiadkowa",
     "stars": "4"
 }
-###
-# edit opinion
-PUT http://localhost:5000/opinion/edit
-Content-Type: application/json
 
-{
-    "content": "Opinia czterogwiadkowa"
-}
-###
-#
-# DELETE http://localhost:5000/opinion/delete
-
-DELETE http://localhost:5000/opinion/
-
-###
-# get one opinion
-GET http://localhost:5000/opinion/6234f97af8b4d700ef698542
-
-###
-# get all opinions
-GET http://localhost:5000/opinion
+# DELETE OPINION
+DELETE http://localhost:5000/opinion/6282907fb062064904f7e73f
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjIxMDMzMWU0MzM5YzFlNzEzNjM1ODciLCJ1c2VybmFtZSI6InQ1NXR0IiwiaWF0IjoxNjUyNzIyNTUxfQ.i8GDCMz-M0LtJsimJ0U9sE0k2P5qZty0uDnmbSJISrU
 
 ###
 # ____________________________ NOTIFICATIONS ____________________________
