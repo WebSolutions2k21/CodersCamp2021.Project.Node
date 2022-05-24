@@ -13,7 +13,7 @@ export default async function createTeam(req: Request, res: Response) {
 
   let team = await teamModel.findOne({ teamName: req.body.teamName });
   if (team) {
-    return res.status(StatusCodes.BAD_REQUEST).send("Team already exists");
+    return res.status(StatusCodes.LOCKED).send("Team already exists");
   } else {
     team = new teamModel({
       teamName: req.body.teamName,
