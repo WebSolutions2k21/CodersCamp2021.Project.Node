@@ -2,8 +2,8 @@ import { Response, Request } from "express";
 import { StatusCodes } from "http-status-codes";
 import mongoose from "mongoose";
 
-import opinionModel from "../../models/opinion.model";
-import validateOpinion from "./validateOpinion";
+import { opinionModel } from "../../models/opinion.model";
+import { validateOpinion } from "./validateOpinion";
 
 const createOpinion = async (req: Request, res: Response) => {
   const { error } = validateOpinion(req.body);
