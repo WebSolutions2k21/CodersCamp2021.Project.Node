@@ -16,6 +16,7 @@ const createOpinion = async (req: Request, res: Response) => {
   } else {
     opinion = new opinionModel({
       stars: req.body.stars,
+      username: req.body.username,
       userId: mongoose.Types.ObjectId(req.body.userId),
       mentorId: mongoose.Types.ObjectId(req.body.mentorId),
       content: req.body.content,

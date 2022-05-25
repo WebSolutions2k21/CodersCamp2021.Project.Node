@@ -8,6 +8,10 @@ const opinionSchema = new mongoose.Schema<Opinion>({
     maxlength: 500,
     minlength: 2,
   },
+  username: {
+    type: String,
+    required: true,
+  },
   userId: {
     type: mongoose.Schema.Types.ObjectId,
     required: true,
