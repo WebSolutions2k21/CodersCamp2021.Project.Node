@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-import STATUS from "../enums/projectsStatus";
+import { PROJECT_STATUS } from "../enums/projectsStatus";
 
 export interface IProject extends mongoose.Document {
   name: string;
@@ -8,7 +8,7 @@ export interface IProject extends mongoose.Document {
   mentorId?: string;
   teamId?: string;
   content?: string;
-  status?: STATUS;
+  status?: PROJECT_STATUS;
   language?: string[];
   description?: string;
   isIndividual?: boolean;

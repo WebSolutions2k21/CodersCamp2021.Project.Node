@@ -1,12 +1,9 @@
 import mongoose from "mongoose";
 
-interface Opinion extends mongoose.Document {
-  date: Date;
+export interface IOpinion extends mongoose.Document {
   content: string;
   userId: string;
   username: string;
   mentorId: string;
   stars: number;
 }
-
-export default Opinion;
