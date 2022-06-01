@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Web Socket Client</title>
+  </head>
+  <body>
+    <h4>Client 1</h4>
+    <ul id="notifications"></ul>
+
+    <script>
+      const container = document.querySelector("#notifications");
+
+      const userId = "62210331e4339c1e71363587";
+      const token =
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjIxMDMzMWU0MzM5YzFlNzEzNjM1ODciLCJ1c2VybmFtZSI6InQ1NXR0IiwiaWF0IjoxNjUyODIwNjA3fQ.lnn4vIyuBrTdyNkVuvMDpqawbhDIeBMXwcvwm_TNri0";
+
+      const socket = new WebSocket("ws://localhost:5000/" + token);
+
+      socket.addEventListener("open", (e) => {
+        console.log("Connected to WS Server");
+        showList();
+      });
+
+      socket.addEventListener("message", ({ data }) => {
+        const res = JSON.parse(data);
+        console.log("Message from server: " + res.message);
+
+        if (res.code === 200 && res.body && res.body.userId === userId) {
+          console.log(res.body.notificationId);
+          showList();
+        }
+      });
+
+      const showList = () => {
+        container.innerHTML = "";
+
+        fetch("http://localhost:5000/notification", {
+          method: "GET",
+          headers: {
+            "x-auth-token": token,
+          },
+        })
+          .then((res) => res.json())
+          .then((res) =>
+            res.forEach((element) => {
+              const el = document.createElement("li");
+              el.innerText = element.text + " -- " + element.status;
+              container.appendChild(el);
+            }),
+          )
+          .catch((e) => console.log(e));
+      };
+    </script>
+  </body>
+</html>

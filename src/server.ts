@@ -1,5 +1,6 @@
 import "dotenv/config";
 
+import { webSocket } from "./webSocket";
 import AuthController from "../controllers/auth.controller";
 import UserController from "../controllers/users.controller";
 import ProjectController from "../controllers/project.controller";
@@ -25,5 +26,6 @@ const app = new App([
 ]);
 
 const server = app.listen();
+webSocket(server);
 
 module.exports = server;

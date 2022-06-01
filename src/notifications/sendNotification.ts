@@ -6,6 +6,7 @@ import { notificationModel } from "../../models/notification.model";
 import { INotification } from "../../interfaces/notification.interface";
 import userModel from "../../models/user.model";
 import { NOTIFICATION_STATUS } from "../../enums/notificationStatus";
+import { pushNotification } from "../webSocket";
 
 const sendNotification = async (req: Request, res: Response) => {
   const { error } = validateNotification(req.body);
@@ -17,6 +18,13 @@ const sendNotification = async (req: Request, res: Response) => {
   const notificationData: INotification = { status: NOTIFICATION_STATUS.PENDING, ...req.body };
   const notification = new notificationModel(notificationData);
   await notification.save();
+
+  const data = JSON.stringify({
+    code: 200,
+    message: "success",
+    body: { notificationId: notification._id, userId: req.body.userId },
+  });
+  pushNotification(data);
 
   res.status(StatusCodes.OK).send(notification);
 };
